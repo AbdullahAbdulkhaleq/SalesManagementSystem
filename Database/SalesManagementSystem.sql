@@ -1,48 +1,1607 @@
-declare @int int 
-EXEC [P_Get_Next_Id] @tableName='Supplier', @NextId= @int output
-select @int
+﻿use master
+go
 
-create proc GetNextId 
-@tableName varchar(30) ,@NextId int output
+drop database if exists SaleManagementSystem;
+go
+-------------------------------------------create database-----------------------------------------------
+create database SaleManagementSystem
+on primary 
+(Name='Main' ,filename='E:\DB\SaleManagementSystem\Main.mdf' ,size =8MB ,filegrowth=1024KB),
+FileGroup [Human]
+(Name='Human_M' ,filename='E:\DB\SaleManagementSystem\Human_M.ldf' ,size =8MB ,filegrowth=1024KB),
+(Name='Human_S' ,filename='E:\DB\SaleManagementSystem\Human_S.ldf' ,size =8MB ,filegrowth=1024KB),
+FileGroup [Inventory]
+(Name='Inventory_M' ,filename='E:\DB\SaleManagementSystem\Inventory_M.ldf' ,size =8MB ,filegrowth=1024KB),
+(Name='Inventory_S' ,filename='E:\DB\SaleManagementSystem\Inventory_S.ldf' ,size =8MB ,filegrowth=1024KB),
+FileGroup [Purchasing]
+(Name='Purchasing_M' ,filename='E:\DB\SaleManagementSystem\Purchasing_M.ldf' ,size =8MB ,filegrowth=1024KB),
+(Name='Purchasing_S' ,filename='E:\DB\SaleManagementSystem\Purchasing_S.ldf' ,size =8MB ,filegrowth=1024KB),
+FileGroup [Sales]
+(Name='Sales_M' ,filename='E:\DB\SaleManagementSystem\Sales_M.ldf' ,size =8MB ,filegrowth=1024KB),
+(Name='Sales_S' ,filename='E:\DB\SaleManagementSystem\Sales_S.ldf' ,size =8MB ,filegrowth=1024KB)
+LOG ON 
+(Name='Log' ,filename='E:\DB\SaleManagementSystem\Log\Log.ldf' ,size =4MB ,filegrowth=1024KB)
+go
+
+-------------------------------------------End create database-----------------------------------------------
+use SaleManagementSystem
+go
+
+-------------------------------------------create schema-----------------------------------------------
+CREATE schema Human;
+GO
+
+create schema [Inventory];
+go
+create schema [Purchasing];
+go
+
+create schema [Sales];
+go
+
+
+-------------------------------------------End create schema-----------------------------------------------
+
+-------------------------------------------create Rule-----------------------------------------------
+
+-------------------------------------------End create Rule-----------------------------------------------
+
+-------------------------------------------create DataType-----------------------------------------------
+create TYPE Id
+from int
+not null
+go
+
+create TYPE Name_
+from nvarchar(max)
+not null
+go
+
+create TYPE SName
+from nvarchar(30)
+not null
+go
+
+create TYPE Password_
+from nvarchar(30)
+not null
+go
+
+create TYPE Email
+from nvarchar(30)
+not null
+go
+
+
+create TYPE Phone
+from nvarchar(20)
+not null
+go
+
+
+create TYPE Description_
+from nvarchar(max)
+not null
+go
+
+create TYPE Brand
+from nvarchar(20)
+not null
+go
+
+
+create TYPE Address_
+from nvarchar(100)
+not null
+go
+
+
+create TYPE Quantity
+from int
+not null
+go
+
+create TYPE Table_
+from nvarchar(30)
+not null
+go
+-------------------------------------------End create DataType-----------------------------------------------
+
+-------------------------------------------create Table-----------------------------------------------
+
+create table Human.User_ (
+UserId Id identity(1,1) primary key,
+UserName SName unique,
+UserPassword Password_ unique,
+UserPermission tinyint default 0
+)
+go
+
+create table Inventory.Unit (
+UnitId Id identity(1,1) primary key ,
+UnitCode nvarchar(30) not null unique ,
+UnitDesc description_ 
+)
+go
+
+create table Inventory.ProductCategory (
+ProductCategoryId Id identity(1,1) primary key ,
+ProductCategoryName SName unique ,
+ModifiedDate datetime default SYSDATETIME()
+)
+go
+
+create table Human.Customer (
+CustomerId Id primary key identity(1,1),
+CustomerName Name_,
+CustomerEmail Email,
+CustomerType nvarchar(max) not null default 'Local' ,
+customerPhone Phone
+)
+go
+
+create table Human.Supplier (
+SupplierId Id primary key identity(1,1),
+SupplierName Name_,
+SupplierEmail Email,
+SupplierType nvarchar(max) not null default 'Local' ,
+SupplierPhone Phone ,
+SupplierBrand Brand
+)
+go
+
+
+create table Inventory.Store (
+StoreId Id primary key identity(1,1),
+StoreName Name_,
+StoreAddress Address_,
+StorePhone Phone ,
+)
+go
+
+create table Inventory.Product (
+ProductId Id primary key identity(1,1),
+ProductName Name_,
+ProductNumber nvarchar(max) not null,
+LastPrice money not null,
+StoreId Id foreign key references Inventory.Store(StoreId) ,
+UnitId Id foreign key references Inventory.Unit (UnitId) ,
+ProductCategoryId Id foreign key references Inventory.ProductCategory (ProductCategoryId)
+)
+go
+
+
+create table Inventory.Transactions (
+TransactionId Id primary key identity(1,1),
+TransactionType nvarchar(10) not null check (TransactionType in (N'مبيعات',N'مشتريات')),
+TransactionNumber int not null,
+TransactionDate datetime ,
+UnitPrice money not null,
+QuantityPlus Quantity,
+QuantityMinus Quantity,
+ProductId Id foreign key references Inventory.Product(ProductId)
+)
+go
+
+create table Purchasing.PurchasingInvoice (
+PurchasingId Id identity(1,1) primary key,
+PurchasingDate datetime default SYSDATETIME(),
+PurchasingTotal money not null,
+SupplierId Id foreign key references  Human.Supplier(SupplierId),
+UserId Id foreign key references Human.User_(UserId),
+StoreId Id foreign key references Inventory.Store(StoreId)
+)
+go
+
+create table Purchasing.PurchasingDetails (
+PurchasingDetailsId Id identity(1,1) primary key,
+Quantity Quantity default 1,
+UnitPrice money not null ,
+ProductId Id foreign key references  Inventory.Product(ProductId),
+PurchasingId Id foreign key references Purchasing.PurchasingInvoice(PurchasingId)
+)
+go
+
+create table Sales.SalesInvoice (
+SalesId Id identity(1,1) primary key,
+SalesDate datetime default SYSDATETIME(),
+SalesTotal money not null,
+CustomerId Id foreign key references  Human.Customer(CustomerId),
+UserId Id foreign key references Human.User_(UserId),
+StoreId Id foreign key references Inventory.Store(StoreId)
+)
+go
+
+create table Sales.SalesDetails (
+SalesDetailsId Id identity(1,1) primary key,
+Quantity Quantity default 1,
+UnitPrice money not null ,
+ProductId Id foreign key references  Inventory.Product(ProductId),
+SalesId Id foreign key references Sales.SalesInvoice(SalesId)
+)
+go
+
+-------------------------------------------End create Table-----------------------------------------------
+
+
+
+
+-------------------------------------------create procedure-----------------------------------------------
+CREATE procedure [dbo].[PLogin]
+(@UserName nvarchar(50), @UserPassword nvarchar(50) ,@exist int out)
 as
 begin
-select @NextId =
-		CASE @tableName
-				WHEN 'Customer' THEN  (select count(CustomerId)+1 from Human.Customer)
-				WHEN'Supplier' THEN (select count(SupplierId)+1 from Human.Supplier)
-				WHEN'Product' THEN (select count(ProductId)+1 from Inventory.Product)
-				WHEN'ProductCategory' THEN (select count(ProductCategoryId)+1 from Inventory.ProductCategory)
-				WHEN'Store' THEN (select count(StoreId)+1 from Inventory.Store)
-				WHEN'Transactions' THEN (select count(TransactionId)+1 from Inventory.Transactions)
-				WHEN'Unit' THEN (select count(UnitId)+1 from Inventory.Unit)
-				WHEN'PurchasingDetails' THEN (select count(PurchasingDetailsId)+1 from Purchasing.PurchasingDetails)
-				WHEN'PurchasingInvoice' THEN (select count(PurchasingId)+1 from Purchasing.PurchasingInvoice)
-				WHEN'SalesDetails' THEN (select count(SalesDetailsId)+1 from Sales.SalesDetails)
-				WHEN'SalesInvoice' THEN (select count(SalesId)+1 from Sales.SalesInvoice)
-		END	
-end
 
-/*
- create proc a 
-as 
-begin
 	begin try 
-		
-		begin tran 
-		select * from a;
-		end tran 
+		if exists(select * from Human.User_ where UserName = @UserName and UserPassword = @UserPassword)
+			set @exist =1 ;
+		ELSE 
+			set @exist =0;	
 	end try 
 
 	begin catch 
-
+		set @exist =0;
 	end catch
+
 end
- */
+GO
 
- use SalesManagementSystem
- create proc pLoginInsert 
+CREATE procedure [dbo].[P_Get_Next_Id] 
+@tableName Nvarchar(30) ,@NextId int output
+as
+begin
+	declare @Id int ;
 
-@id int, @name nvarchar(MAX), @email nvarchar(MAX)
+	select  @Id   =
+			CASE @tableName 
+				
+					WHEN 'Customer' THEN  (select max(CustomerId)+1 from Human.Customer)
+					WHEN'Supplier' THEN (select max(SupplierId)+1 from Human.Supplier)
+					WHEN'Product' THEN (select max(ProductId)+1 from Inventory.Product)
+					WHEN'ProductCategory' THEN (select max(ProductCategoryId)+1 from Inventory.ProductCategory)
+					WHEN'Store' THEN (select max(StoreId)+1 from Inventory.Store)
+					WHEN'Transactions' THEN (select max(TransactionId)+1 from Inventory.Transactions)
+					WHEN'Unit' THEN (select max(UnitId)+1 from Inventory.Unit)
+					WHEN'PurchasingDetails' THEN (select max(PurchasingDetailsId)+1 from Purchasing.PurchasingDetails)
+					WHEN'PurchasingInvoice' THEN (select max(PurchasingId)+1 from Purchasing.PurchasingInvoice)
+					WHEN'SalesDetails' THEN (select max(SalesDetailsId)+1 from Sales.SalesDetails)
+					WHEN'SalesInvoice' THEN (select max(SalesId)+1 from Sales.SalesInvoice)
+			END
+	------check if the id is onec ------
+	select @NextId = 
+					case when 
+					      @Id  is null then 1 
+						  else @Id 
+					end
+	
+end
+GO
+
+
+
+
+declare @int Id 
+EXEC [P_Get_Next_Id] @tableName='Supplier', @NextId= @int output
+select @int
+go
+
+
+create procedure [dbo].[P_Insert]
+(
+		 @TableName Table_,
+		 @Name Name_ ='NOT INSERTED',
+		 @Email Email ='NOT INSERTED',
+		 @Type nvarchar(max) ='NOT INSERTED',
+		 @Phone Phone ='NOT INSERTED',
+		 @Address Address_ ='NOT INSERTED',
+		 @SupplierBrand Brand ='NOT INSERTED',
+		 @LastPrice money =0,
+		 @StoreId Id = 1,
+		 @PurchasingDetailsId Id =1,
+		 @ProductId Id =1 ,
+		 @ProductCategoryId Id =1 ,
+		 @UserId Id =1,
+		 @CustomerId Id =1,
+		 @SupplierId Id =1 ,
+		 @SalesId Id =1 ,
+		 @PurchasingId Id =1 ,
+		 @SalesDetailsId Id =1,
+		 @UnitId Id  =1,
+		 @UnitCode nvarchar(max) ='NOT INSERTED',
+		 @UnitDesc Description_ ='NOT INSERTED' ,
+		 @UnitPrice money =0,
+		 @QuantityMinus Quantity = 0,
+		 @QuantityPlus Quantity =0,
+		 @Quantity Quantity =1 ,
+		 @Total money =0 ,
+		 @Sccessfully bit output
+ )
+as
+begin
+
+	if(@TableName like 'Customer') 
+	begin
+		begin try 
+			begin transaction
+				INSERT INTO [Human].[Customer]
+				   (CustomerName ,CustomerEmail ,CustomerType ,customerPhone) 
+				   VALUES (@Name,@Email ,@Type,@Phone);
+				   set @Sccessfully =1;
+			commit transaction
+		end try
+
+		begin catch 
+			rollback transaction
+			   set @Sccessfully =2;
+		end catch
+	end
+
+	else if(@TableName  like 'Supplier')
+	begin
+		begin try 
+			begin transaction
+				INSERT INTO Human.Supplier
+				   (SupplierName ,SupplierEmail ,SupplierType ,SupplierPhone,SupplierBrand) 
+				   VALUES (@Name,@Email ,@Type,@Phone,@SupplierBrand);
+				   set @Sccessfully =1;
+			commit transaction
+		end try
+
+		begin catch 
+			rollback transaction
+			   set @Sccessfully =2;
+		end catch
+	end
+
+	else if(@TableName  like 'Product')
+	begin
+		begin try 
+			begin transaction
+				INSERT INTO Inventory.Product 
+					(ProductName,LastPrice,StoreId,UnitId,ProductCategoryId)
+					values (@Name,@LastPrice,@StoreId,@UnitId,@ProductCategoryId);
+				   set @Sccessfully =1;
+			commit transaction
+		end try
+
+		begin catch 
+			rollback transaction
+			   set @Sccessfully =2;
+		end catch
+	end
+
+	else if(@TableName  like 'ProductCategory')
+	begin
+		begin try 
+			begin transaction
+				INSERT INTO Inventory.ProductCategory 
+					(ProductCategoryName) values (@Name);
+				   set @Sccessfully =1;
+			commit transaction
+		end try
+
+		begin catch 
+			rollback transaction
+			   set @Sccessfully =2;
+		end catch			
+	end
+
+	else if(@TableName  like 'Store')
+	begin
+		begin try 
+			begin transaction
+				INSERT INTO Inventory.Store 
+					(StoreName,StoreAddress,StorePhone)
+					values (@Name ,@Address,@Phone);
+				   set @Sccessfully =1;
+			commit transaction
+		end try
+
+		begin catch 
+			rollback transaction
+			   set @Sccessfully =2;
+		end catch
+	end
+
+	else if(@TableName  like 'Unit')
+	begin
+		begin try 
+			begin transaction
+				INSERT INTO Inventory.Unit 
+					(UnitCode,UnitDesc)
+					values (@UnitCode,@UnitDesc);
+				   set @Sccessfully =1;
+			commit transaction
+		end try
+
+		begin catch 
+			rollback transaction
+			   set @Sccessfully =2;
+		end catch
+	end
+
+	else if(@TableName  like 'PurchasingInvoice')
+	begin
+		begin try 
+			begin transaction
+				INSERT INTO Purchasing.PurchasingInvoice 
+					(PurchasingTotal,SupplierId,UserId,StoreId)
+					values (@Total,@SupplierId,@UserId,@StoreId);
+				   set @Sccessfully =1;
+			commit transaction
+		end try
+
+		begin catch 
+			rollback transaction
+			   set @Sccessfully =2;
+		end catch
+	end
+
+	else if(@TableName  like 'PurchasingDetails')
+	begin
+		begin try 
+			rollback transaction
+				INSERT INTO Purchasing.PurchasingDetails
+					(Quantity,UnitPrice,ProductId,PurchasingId)
+					values (@Quantity,@UnitPrice,@ProductId,@PurchasingId);
+				INSERT INTO Inventory.Transactions 
+						(TransactionType,TransactionNumber,TransactionDate,UnitPrice,QuantityPlus,QuantityMinus,ProductId)
+						values (N'مشتريات',@PurchasingId,(SELECT PurchasingDate FROM Purchasing.PurchasingInvoice WHERE PurchasingId= @PurchasingId),@UnitPrice,@QuantityPlus,@QuantityMinus,@ProductId); 
+			rollback transaction
+			set @Sccessfully =1;
+		end try
+
+		begin catch 
+			rollback transaction
+			   set @Sccessfully =2;
+		end catch
+	end
+
+	else if(@TableName  like 'SalesInvoice')
+	begin
+		begin try 
+			rollback transaction
+				INSERT INTO Sales.SalesInvoice
+					(SalesTotal,CustomerId,UserId,StoreId)
+					values (@Total,@CustomerId,@UserId,@StoreId);
+			rollback transaction
+			   set @Sccessfully =1;
+		end try
+
+		begin catch 
+			rollback transaction
+			   set @Sccessfully =2;
+		end catch
+	end
+	
+	else if(@TableName  like 'SalesDetails')
+	begin
+		begin try 
+		--begin transaction
+			begin transaction				
+				if((select SUM(QuantityPlus-QuantityMinus) from Inventory.Transactions where ProductId =@ProductId)>@Quantity)
+				begin 
+					INSERT INTO Sales.SalesDetails 
+						(Quantity,UnitPrice,ProductId,SalesId)
+						values (@Quantity,@UnitPrice,@ProductId,@SalesId);
+					INSERT INTO Inventory.Transactions 
+						(TransactionType,TransactionNumber,TransactionDate,UnitPrice,QuantityPlus,QuantityMinus,ProductId)
+						values (N'مبيعات',@SalesId,(SELECT SalesDate FROM sales.SalesInvoice WHERE SalesId= @SalesId),@UnitPrice,@QuantityPlus,@QuantityMinus,@ProductId);
+					   set @Sccessfully =1;
+				end
+				else 
+				begin
+					ROLLBACK TRANSACTION
+					set @Sccessfully =3;
+				end
+			COMMIT TRANSACTION
+		--End transaction
+		end try
+
+		begin catch 
+			ROLLBACK TRANSACTION
+			   set @Sccessfully =2;
+		end catch
+
+	end
+
+end
+GO
+
+create procedure [dbo].[P_Delete] 
+(
+	@TableName Table_,
+	@Id Id ,
+	@Sccessfully bit output
+)
+as
+begin
+
+	 if(@TableName  like 'Customer')
+	begin
+		begin try 
+			begin Transaction
+				if exists (select * from Human.Customer where CustomerId =@Id)
+				begin
+					delete from Human.Customer where CustomerId =@Id;
+					set @Sccessfully =1;
+				end
+				else
+					set @Sccessfully =4;
+			commit Transaction
+		end try 
+
+		begin catch 
+			rollback Transaction
+				set @Sccessfully =5;
+		end catch
+	end
+	
+	else if(@TableName  like 'Supplier')
+
+	begin
+		begin try 
+			begin Transaction
+				if exists (select * from Human.Supplier where SupplierId =@Id)
+				begin
+					delete from Human.Supplier where SupplierId =@Id;
+					set @Sccessfully =1;
+				end
+				else
+					set @Sccessfully =4;
+			commit Transaction
+		end try 
+
+		begin catch 
+			rollback Transaction
+				set @Sccessfully =5;
+		end catch
+	end
+	
+	else if(@TableName  like 'Product')
+
+	begin
+		begin try 
+			begin Transaction
+				if exists (select * from Inventory.Product where ProductId =@Id)
+				begin
+					delete from Inventory.Product where ProductId =@Id;
+					set @Sccessfully =1;
+				end
+				else
+					set @Sccessfully =4;
+			commit Transaction
+		end try 
+
+		begin catch 
+			rollback Transaction
+				set @Sccessfully =5;
+		end catch
+	end
+	
+	else if(@TableName  like 'ProductCategory')
+	begin
+		begin try 
+			begin Transaction
+				if exists (select * from Inventory.ProductCategory where ProductCategoryId =@Id)
+				begin
+					delete from Inventory.ProductCategory where ProductCategoryId =@Id;
+					set @Sccessfully =1;
+				end
+				else
+					set @Sccessfully =4;
+			commit Transaction
+		end try 
+
+		begin catch 
+			rollback Transaction
+				set @Sccessfully =5;
+		end catch
+	end
+	
+	else if(@TableName  like 'Store')
+	begin
+		begin try 
+			begin Transaction
+				if exists (select * from Inventory.Store where StoreId =@Id)
+				begin
+					delete from Inventory.Store where StoreId =@Id;
+					set @Sccessfully =1;
+				end
+				else
+					set @Sccessfully =4;
+			commit Transaction
+		end try 
+
+		begin catch 
+			rollback Transaction
+				set @Sccessfully =5;
+		end catch
+	end
+	
+	else if(@TableName  like 'Unit')
+	begin
+		begin try 
+			begin Transaction
+				if exists (select * from Inventory.Unit where UnitId =@Id)
+				begin
+					delete from Inventory.Unit where UnitId =@Id;
+					set @Sccessfully =1;
+				end
+				else
+					set @Sccessfully =4;
+			commit Transaction
+		end try 
+
+		begin catch 
+			rollback Transaction
+				set @Sccessfully =5;
+		end catch
+	end
+	
+	else if(@TableName  like 'PurchasingInvoice')
+	begin
+		begin try 
+			begin Transaction
+				if exists (select * from Purchasing.PurchasingInvoice where PurchasingId =@Id)
+				begin
+					delete from Purchasing.PurchasingInvoice where PurchasingId =@Id;
+					set @Sccessfully =1;
+				end
+				else
+					set @Sccessfully =4;
+			commit Transaction
+		end try 
+
+		begin catch 
+			rollback Transaction
+				set @Sccessfully =5;
+		end catch
+	end
+	
+	else if(@TableName  like 'PurchasingDetails')
+	begin
+		begin try 
+			begin Transaction
+				if exists (select * from Purchasing.PurchasingDetails where PurchasingDetailsId =@Id)
+				begin
+					delete from Purchasing.PurchasingDetails where PurchasingDetailsId =@Id;
+					set @Sccessfully =1;
+				end
+				else
+					set @Sccessfully =4;
+			commit Transaction
+		end try 
+
+		begin catch 
+			rollback Transaction
+				set @Sccessfully =5;
+		end catch
+	end
+	
+	else if(@TableName  like 'SalesInvoice')
+	begin
+		begin try 
+			begin Transaction
+				if exists (select * from Sales.SalesInvoice where SalesId =@Id)
+				begin
+					delete from Sales.SalesInvoice where SalesId =@Id;
+					set @Sccessfully =1;
+				end
+				else
+					set @Sccessfully =4;
+			commit Transaction
+		end try 
+
+		begin catch 
+			rollback Transaction
+				set @Sccessfully =5;
+		end catch
+	end
+	
+	else if(@TableName  like 'SalesDetails')
+	begin
+		begin try 
+			begin Transaction
+				if exists (select * from Sales.SalesDetails where SalesDetailsId =@Id)
+				begin
+					delete from Sales.SalesDetails where SalesDetailsId =@Id;
+					set @Sccessfully =1;
+				end
+				else
+					set @Sccessfully =4;
+			commit Transaction
+		end try 
+
+		begin catch 
+			rollback Transaction
+				set @Sccessfully =5;
+		end catch
+	end
+end
+go
+
+
+
+create procedure [dbo].[P_Delete_All] 
+(
+	@TableName Table_,
+	@Sccessfully int output
+)
+as
+begin
+	 if(@TableName  like 'Customer')
+	begin
+		begin try 
+			begin Transaction
+				if (select count(CustomerId) from [Human].[Customer]) >0
+				begin
+					delete from Human.Customer ;
+					set @Sccessfully =3;
+				end
+				else
+					set @Sccessfully =4;
+			commit Transaction
+		end try 
+
+		begin catch 
+			rollback Transaction
+				set @Sccessfully =5;
+		end catch
+	end
+	
+	else if(@TableName  like 'Supplier')
+
+	begin
+		begin try 
+			begin Transaction
+				if (select count(SupplierId) from Human.Supplier) > 0
+				begin
+					delete from Human.Supplier ;
+					set @Sccessfully =1;
+				end
+				else
+					set @Sccessfully =4;
+			commit Transaction
+		end try 
+
+		begin catch 
+			rollback Transaction
+				set @Sccessfully =5;
+		end catch
+	end
+	
+	else if(@TableName  like 'Product')
+
+	begin
+		begin try 
+			begin Transaction
+				if (select count(ProductId) from Inventory.Product) >0
+				begin
+					delete from Inventory.Product;
+					set @Sccessfully =1;
+				end
+				else
+					set @Sccessfully =4;
+			commit Transaction
+		end try 
+
+		begin catch 
+			rollback Transaction
+				set @Sccessfully =5;
+		end catch
+	end
+	
+	else if(@TableName  like 'ProductCategory')
+	begin
+		begin try 
+			begin Transaction
+				if (select count(ProductCategoryId) from Inventory.ProductCategory) >0
+				begin
+					delete from Inventory.ProductCategory;
+					set @Sccessfully =1;
+				end
+				else
+					set @Sccessfully =4;
+			commit Transaction
+		end try 
+
+		begin catch 
+			rollback Transaction
+				set @Sccessfully =5;
+		end catch
+	end
+	
+	else if(@TableName  like 'Store')
+	begin
+		begin try 
+			begin Transaction
+				if (select count(StoreId) from Inventory.Store) >0
+				begin
+					delete from Inventory.Store ;
+					set @Sccessfully =1;
+				end
+				else
+					set @Sccessfully =4;
+			commit Transaction
+		end try 
+
+		begin catch 
+			rollback Transaction
+				set @Sccessfully =5;
+		end catch
+	end
+	
+	else if(@TableName  like 'Unit')
+	begin
+		begin try 
+			begin Transaction
+				if (select count(UnitId) from Inventory.Unit) >0
+				begin
+					delete from Inventory.Unit;
+					set @Sccessfully =1;
+				end
+				else
+					set @Sccessfully =4;
+			commit Transaction
+		end try 
+
+		begin catch 
+			rollback Transaction
+				set @Sccessfully =5;
+		end catch
+	end
+	
+	else if(@TableName  like 'PurchasingInvoice')
+	begin
+		begin try 
+			begin Transaction
+				if (select count(PurchasingId) from Purchasing.PurchasingInvoice) >0
+				begin
+					delete from Purchasing.PurchasingInvoice;
+					set @Sccessfully =1;
+				end
+				else
+					set @Sccessfully =4;
+			commit Transaction
+		end try 
+
+		begin catch 
+			rollback Transaction
+				set @Sccessfully =5;
+		end catch
+	end
+	
+	else if(@TableName  like 'PurchasingDetails')
+	begin
+		begin try 
+			begin Transaction
+				if (select count(PurchasingDetailsId) from Purchasing.PurchasingDetails) >0
+				begin
+					delete from Purchasing.PurchasingDetails;
+					set @Sccessfully =1;
+				end
+				else
+					set @Sccessfully =4;
+			commit Transaction
+		end try 
+
+		begin catch 
+			rollback Transaction
+				set @Sccessfully =5;
+		end catch
+	end
+	
+	else if(@TableName  like 'SalesInvoice')
+	begin
+		begin try 
+			begin Transaction
+				if (select count(SalesId) from Sales.SalesInvoice) >0
+				begin
+					delete from Sales.SalesInvoice ;
+					set @Sccessfully =1;
+				end
+				else
+					set @Sccessfully =4;
+			commit Transaction
+		end try 
+
+		begin catch 
+			rollback Transaction
+				set @Sccessfully =5;
+		end catch
+	end
+	
+	else if(@TableName  like 'SalesDetails')
+	begin
+		begin try 
+			begin Transaction
+				if (select count(SalesDetailsId) from Sales.SalesDetails) >0
+				begin
+					delete from Sales.SalesDetails;
+					set @Sccessfully =1;
+				end
+				else
+					set @Sccessfully =4;
+			commit Transaction
+		end try 
+
+		begin catch 
+			rollback Transaction
+				set @Sccessfully =5;
+		end catch
+	end
+end
+go
+
+
+create procedure [dbo].[P_Update] 
+(
+		 @TableName Table_,
+		 @Name Name_ ='NOT INSERTED',
+		 @Email Email ='NOT INSERTED',
+		 @Type nvarchar(max) ='NOT INSERTED',
+		 @Phone Phone ='NOT INSERTED',
+		 @Address Address_ ='NOT INSERTED',
+		 @SupplierBrand Brand ='NOT INSERTED',
+		 @LastPrice money =0,
+		 @StoreId Id = 1,
+		 @PurchasingDetailsId Id =1,
+		 @ProductId Id =1 ,
+		 @ProductCategoryId Id =1 ,
+		 @UserId Id =1,
+		 @CustomerId Id =1,
+		 @SupplierId Id =1 ,
+		 @SalesId Id =1 ,
+		 @PurchasingId Id =1 ,
+		 @SalesDetailsId Id =1,
+		 @UnitId Id  =1,
+		 @UnitCode nvarchar(max) ='NOT INSERTED',
+		 @UnitDesc Description_ ='NOT INSERTED' ,
+		 @UnitPrice money =0,
+		 @QuantityMinus Quantity = 0,
+		 @QuantityPlus Quantity =0,
+		 @Quantity Quantity =1 ,
+		 @Total money =0 ,
+		 @Sccessfully bit output
+)
+as
+begin
+	if(@TableName like 'Customer') 
+	begin
+		begin try 
+			begin transaction
+			if exists (SELECT * FROM Human.Customer WHERE CustomerId =@CustomerId)
+				begin
+				UPDATE  [Human].[Customer]
+					set CustomerName =@Name ,
+						CustomerEmail = @Email ,
+						CustomerType=@Type,
+						customerPhone =@Phone
+					where CustomerId =@CustomerId;
+					set @Sccessfully =1;
+				end
+			else 
+				set @Sccessfully =4;
+			commit transaction
+		end try
+
+		begin catch 
+			rollback transaction
+			   set @Sccessfully =6;
+		end catch
+	end
+
+	else if(@TableName  like 'Supplier')
+	begin
+		begin try 
+			begin transaction
+			if exists (SELECT * FROM Human.Supplier WHERE SupplierId =@SupplierId)
+				begin
+				UPDATE  [Human].[Supplier]
+					set SupplierName =@Name ,
+						SupplierEmail = @Email ,
+						SupplierType=@Type,
+						SupplierPhone =@Phone
+					where SupplierId =@SupplierId;
+					set @Sccessfully =1;
+				end
+			else 
+				set @Sccessfully =4;
+			commit transaction
+		end try
+
+		begin catch 
+			rollback transaction
+			   set @Sccessfully =6;
+		end catch
+	end
+
+	else if(@TableName  like 'Product')
+	begin
+		begin try 
+			begin transaction
+			if exists (SELECT * FROM Inventory.Product  WHERE ProductId =@ProductId)
+				begin
+					UPDATE  Inventory.Product 
+						set ProductName =@Name ,
+							LastPrice = @LastPrice ,
+							StoreId=@StoreId,
+							UnitId =@UnitId,
+							ProductCategoryId=@ProductCategoryId
+						where ProductId =@ProductId;
+					   set @Sccessfully =1;
+				end
+			else 
+				set @Sccessfully =4;
+			commit transaction
+		end try
+
+		begin catch 
+			rollback transaction
+			   set @Sccessfully =6;
+		end catch
+	end
+
+	else if(@TableName  like 'ProductCategory')
+	begin
+		begin try 
+			begin transaction
+				if exists (SELECT * FROM Inventory.ProductCategory WHERE ProductCategoryId =@ProductCategoryId)
+					begin
+						UPDATE  Inventory.ProductCategory
+							set ProductCategoryName =@Name 
+							where ProductCategoryId =@ProductCategoryId;
+						   set @Sccessfully =1;
+					end
+				else 
+					set @Sccessfully =4;
+			commit transaction
+		end try
+
+		begin catch 
+			rollback transaction
+			   set @Sccessfully =6;
+		end catch			
+	end
+
+	else if(@TableName  like 'Store')
+	begin
+		begin try 
+			if exists (SELECT * FROM Inventory.Store WHERE StoreId =@StoreId)
+				begin
+				begin transaction
+					UPDATE  Inventory.Store
+						set StoreName =@Name ,
+							StoreAddress =@Address,
+							StorePhone =@Phone
+						where StoreId =@StoreId;
+					   set @Sccessfully =1;
+				end
+			else 
+				set @Sccessfully =4;
+			commit transaction
+		end try
+
+		begin catch 
+			rollback transaction
+			   set @Sccessfully =6;
+		end catch
+	end
+
+	else if(@TableName  like 'Unit')
+	begin
+		begin try 
+			begin transaction
+			
+			if exists (SELECT * FROM Inventory.Unit WHERE UnitId =@UnitId)
+				begin
+					UPDATE  Inventory.Unit
+						set UnitCode =@UnitCode ,
+							UnitDesc =@UnitDesc
+						where UnitId =@UnitId;
+					   set @Sccessfully =1;
+				end
+			else 
+				set @Sccessfully =4;
+			commit transaction
+		end try
+
+		begin catch 
+			rollback transaction
+			   set @Sccessfully =6;
+		end catch
+	end
+
+	else if(@TableName  like 'PurchasingInvoice')
+	begin
+		begin try 
+			begin transaction	
+			if exists (SELECT * FROM Purchasing.PurchasingInvoice WHERE PurchasingId =@PurchasingId)
+				begin	
+				UPDATE  Purchasing.PurchasingInvoice 
+						set PurchasingTotal =@Total ,
+							SupplierId =@SupplierId ,
+							UserId = @UserId,
+							StoreId = @StoreId
+						where PurchasingId =@PurchasingId;
+					   set @Sccessfully =1;
+				end
+			else 
+				set @Sccessfully =4;
+			commit transaction
+		end try
+
+		begin catch 
+			rollback transaction
+			   set @Sccessfully =6;
+		end catch
+	end
+
+	else if(@TableName  like 'PurchasingDetails')
+	begin
+		begin try 
+			rollback transaction	
+			if exists (SELECT * FROM Purchasing.PurchasingDetails WHERE PurchasingDetailsId =@PurchasingDetailsId)
+				begin
+				UPDATE  Purchasing.PurchasingDetails 
+						set Quantity =@Quantity ,
+							UnitPrice =@UnitPrice ,
+							ProductId = @ProductId,
+							PurchasingId = @PurchasingId
+						where PurchasingDetailsId =@PurchasingDetailsId;
+					   set @Sccessfully =1;
+					   
+				end
+			else 
+				set @Sccessfully =4;
+			rollback transaction
+			set @Sccessfully =6;
+		end try
+
+		begin catch 
+			rollback transaction
+			   set @Sccessfully =2;
+		end catch
+	end
+
+	else if(@TableName  like 'SalesInvoice')
+	begin
+		begin try 	
+			begin transaction	
+			if exists (SELECT * FROM Sales.SalesInvoice WHERE SalesId =@SalesId)
+				begin	
+				UPDATE  Sales.SalesInvoice 
+						set SalesTotal =@Total ,
+							CustomerId =@CustomerId ,
+							UserId = @UserId,
+							StoreId = @StoreId
+						where SalesId =@SalesId;
+					   set @Sccessfully =1;
+				commit transaction
+				   set @Sccessfully =1;
+				   
+				end
+			else 
+				set @Sccessfully =4;
+		end try
+
+		begin catch 
+			rollback transaction
+			   set @Sccessfully =6;
+		end catch
+	end
+	
+	else if(@TableName  like 'SalesDetails')
+	begin
+		begin try 
+		--begin transaction
+			begin transaction	
+			
+			if exists (SELECT * FROM Sales.SalesDetails WHERE SalesDetailsId =@SalesDetailsId)
+				begin
+				UPDATE  Sales.SalesDetails 
+						set Quantity =@Quantity ,
+							UnitPrice =@UnitPrice ,
+							ProductId = @ProductId,
+							SalesId = SalesId
+						where SalesDetailsId =@SalesDetailsId;
+					   set @Sccessfully =1;
+						--INSERT INTO Inventory.Transactions 
+						--	(TransactionType,TransactionNumber,TransactionDate,UnitPrice,QuantityPlus,QuantityMinus,ProductId)
+						--	values (N'مبيعات',@SalesId,(SELECT SalesDate FROM sales.SalesInvoice WHERE SalesId= @SalesId),@UnitPrice,@QuantityPlus,@QuantityMinus,@ProductId);
+						--   set @Sccessfully =1;
+					--end
+					--else 
+					--begin
+					--	ROLLBACK TRANSACTION
+					--	set @Sccessfully =3;
+					--end
+				end
+			else 
+				set @Sccessfully =4;
+			COMMIT TRANSACTION
+		--End transaction
+		end try
+
+		begin catch 
+			ROLLBACK TRANSACTION
+			   set @Sccessfully =6;
+		end catch
+
+	end
+
+end
+go
+
+
+
+create procedure [dbo].[P_Select] 
+(
+	@TableName Table_,
+	@Id Id,
+	@Sccessfully Id out
+)
+as
+begin
+
+	if(@TableName  like 'Customer')
+	begin
+		begin try 
+			if exists (select * from [Human].[Customer] WHERE CustomerId =@Id)
+				begin
+				select * from [Human].[Customer] WHERE CustomerId =@Id;
+				set @Sccessfully =1;
+				end
+			else 
+				set @Sccessfully =4;
+		end try
+
+		begin catch 
+			set @Sccessfully =10;
+		end catch
+	end
+	
+	else if(@TableName  like 'Supplier')
+	begin
+		begin try 
+			if exists (select * from [Human].[Supplier] WHERE SupplierId =@Id)
+				begin
+				select * from [Human].[Supplier] WHERE SupplierId =@Id;
+				set @Sccessfully =1;
+				end
+			else 
+				set @Sccessfully =4;
+		end try
+
+		begin catch 
+			set @Sccessfully =10;
+		end catch
+	end
+	
+	else if(@TableName  like 'Product')
+	begin
+		begin try 
+			if exists (select * from [Inventory].[Product] WHERE ProductId =@Id)
+				begin
+				SELECT * FROM [Inventory].[Product] WHERE ProductId =@Id;
+				set @Sccessfully =1;
+				end
+			else 
+				set @Sccessfully =4;
+		end try
+
+		begin catch 
+			set @Sccessfully =10;
+		end catch
+	end
+	
+	else if(@TableName  like 'ProductCategory')
+	begin
+		begin try 
+			if exists (select * from [Inventory].[ProductCategory] WHERE ProductCategoryId =@Id)
+				begin
+				SELECT * FROM [Inventory].[ProductCategory] WHERE ProductCategoryId =@Id;
+				set @Sccessfully =1;
+				end
+			else 
+				set @Sccessfully =4;
+		end try
+
+		begin catch 
+			set @Sccessfully =10;
+		end catch
+	end
+	
+	else if(@TableName  like 'Store')
+	begin
+		begin try 
+			if exists (select * from [Inventory].[Store] WHERE StoreId =@Id)
+				begin
+				SELECT * FROM [Inventory].[Store] WHERE StoreId =@Id;
+				set @Sccessfully =1;
+				end
+			else 
+				set @Sccessfully =4;
+		end try
+
+		begin catch 
+			set @Sccessfully =10;
+		end catch
+	end
+	
+	else if(@TableName  like 'Unit')
+	begin
+		begin try 
+			if exists (select * from [Inventory].[Unit] WHERE UnitId =@Id)
+				begin
+				SELECT * FROM [Inventory].[Unit] WHERE UnitId =@Id;
+				set @Sccessfully =1;
+				end
+			else 
+				set @Sccessfully =4;
+		end try
+
+		begin catch 
+			set @Sccessfully =10;
+		end catch
+	end
+	
+	else if(@TableName  like 'PurchasingInvoice')
+	begin
+		begin try 
+			if exists (select * from [Purchasing].[PurchasingInvoice] WHERE PurchasingId =@Id)
+				begin
+				SELECT * FROM [Purchasing].[PurchasingInvoice] WHERE PurchasingId =@Id;
+				set @Sccessfully =1;
+				end
+			else 
+				set @Sccessfully =4;
+		end try
+
+		begin catch 
+			set @Sccessfully =10;
+		end catch
+	end
+	
+	else if(@TableName  like 'PurchasingDetails')
+	begin
+		begin try 
+			if exists (select * from [Purchasing].[PurchasingDetails] WHERE PurchasingDetailsId =@Id)
+				begin
+				SELECT * FROM [Purchasing].[PurchasingDetails] WHERE PurchasingDetailsId =@Id;
+				set @Sccessfully =1;
+				end
+			else 
+				set @Sccessfully =4;
+		end try
+
+		begin catch 
+			set @Sccessfully =10;
+		end catch
+	end
+	
+	else if(@TableName  like 'SalesInvoice')
+	begin
+		begin try 
+			if exists (select * from [Sales].[SalesInvoice] WHERE SalesId =@Id) 
+				begin
+				SELECT * FROM [Sales].[SalesInvoice] WHERE SalesId =@Id;
+				set @Sccessfully =1;
+				end
+			else 
+				set @Sccessfully =4;
+		end try
+
+		begin catch 
+			set @Sccessfully =10;
+		end catch
+	end
+	
+	else if(@TableName  like 'SalesDetails')
+	begin
+		begin try 
+			if exists (select * from  [Sales].[SalesDetails] WHERE SalesDetailsId =@Id)
+				begin
+				SELECT * FROM [Sales].[SalesDetails] WHERE SalesDetailsId =@Id;
+				set @Sccessfully =1;
+				end
+			else 
+				set @Sccessfully =4;
+		end try
+
+		begin catch 
+			set @Sccessfully =10;
+		end catch
+	end
+end
+go
+
+
+create procedure [dbo].[P_Select_All] 
+(
+	@TableName Table_,
+	@Sccessfully int out
+)
+as
+begin
+
+	if(@TableName  like 'Customer')
+	begin
+		begin try 
+			if (select count(CustomerId) from [Human].[Customer]) >0
+				begin
+				select * from [Human].[Customer];
+				set @Sccessfully =1;
+				end
+			else 
+				set @Sccessfully =4;
+		end try
+
+		begin catch 
+			set @Sccessfully =10;
+		end catch
+	end
+	
+	else if(@TableName  like 'Supplier')
+	begin
+		begin try 
+			if (select count(SupplierId) from [Human].[Supplier]) > 0
+				begin
+				select * from [Human].[Supplier];
+				set @Sccessfully =1;
+				end
+			else 
+				set @Sccessfully =4;
+		end try
+
+		begin catch 
+			set @Sccessfully =10;
+		end catch
+	end
+	
+	else if(@TableName  like 'Product')
+	begin
+		begin try 
+			if (select count(ProductId) from [Inventory].[Product]) >0
+				begin
+				SELECT * FROM [Inventory].[Product];
+				set @Sccessfully =1;
+				end
+			else 
+				set @Sccessfully =4;
+		end try
+
+		begin catch 
+			set @Sccessfully =10;
+		end catch
+	end
+	
+	else if(@TableName  like 'ProductCategory')
+	begin
+		begin try 
+			if (select count(ProductCategoryId) from [Inventory].[ProductCategory]) >0
+				begin
+				SELECT * FROM [Inventory].[ProductCategory];
+				set @Sccessfully =1;
+				end
+			else 
+				set @Sccessfully =4;
+		end try
+
+		begin catch 
+			set @Sccessfully =10;
+		end catch
+	end
+	
+	else if(@TableName  like 'Store')
+	begin
+		begin try 
+			if (select count(StoreId) from [Inventory].[Store]) >0
+				begin
+				SELECT * FROM [Inventory].[Store];
+				set @Sccessfully =1;
+				end
+			else 
+				set @Sccessfully =4;
+		end try
+
+		begin catch 
+			set @Sccessfully =10;
+		end catch
+	end
+	
+	else if(@TableName  like 'Unit')
+	begin
+		begin try 
+			if (select count(UnitId) from [Inventory].[Unit])  >0
+				begin
+				SELECT * FROM [Inventory].[Unit];
+				set @Sccessfully =1;
+				end
+			else 
+				set @Sccessfully =4;
+		end try
+
+		begin catch 
+			set @Sccessfully =10;
+		end catch
+	end
+	
+	else if(@TableName  like 'PurchasingInvoice')
+	begin
+		begin try 
+			if (select count(PurchasingId) from [Purchasing].[PurchasingInvoice]) >0
+				begin
+				SELECT * FROM [Purchasing].[PurchasingInvoice];
+				set @Sccessfully =1;
+				end
+			else 
+				set @Sccessfully =4;
+		end try
+
+		begin catch 
+			set @Sccessfully =10;
+		end catch
+	end
+	
+	else if(@TableName  like 'PurchasingDetails')
+	begin
+		begin try 
+			if (select count(PurchasingDetailsId) from [Purchasing].[PurchasingDetails]) >0
+				begin
+				SELECT * FROM [Purchasing].[PurchasingDetails];
+				set @Sccessfully =1;
+				end
+			else 
+				set @Sccessfully =4;
+		end try
+
+		begin catch 
+			set @Sccessfully =10;
+		end catch
+	end
+	
+	else if(@TableName  like 'SalesInvoice')
+	begin
+		begin try 
+			if (select count(SalesId) from [Sales].[SalesInvoice] ) >0
+				begin
+				SELECT * FROM [Sales].[SalesInvoice] ;
+				set @Sccessfully =1;
+				end
+			else 
+				set @Sccessfully =4;
+		end try
+
+		begin catch 
+			set @Sccessfully =10;
+		end catch
+	end
+	
+	else if(@TableName  like 'SalesDetails')
+	begin
+		begin try 
+			if ( select count(SalesDetailsId) from  [Sales].[SalesDetails] ) >0
+				begin
+				SELECT * FROM [Sales].[SalesDetails] ;
+				set @Sccessfully =1;
+				end
+			else 
+				set @Sccessfully =4;
+		end try
+
+		begin catch 
+			set @Sccessfully =10;
+		end catch
+	end
+end
+go
+
+
+ create procedure pLoginInsert 
+
+@id Id, @name Name_, @email Email
 as 
 begin
 
@@ -57,174 +1616,8 @@ INSERT INTO [dbo].[Login]
 
 
 end
+go
+select * from Human.User_
+go
 
-select * from Human.Users
-create proc PLogin @UserName nvarchar(50),@UserPassword nvarchar(50)
-as
-begin
-	begin try 
-		select * from Human.Users where UserName = @UserName and UserPassword = @UserPassword;
-		
-	end try 
-
-	begin catch 
-		print 'Error';
-	end catch
-end
-
-PLogin @UserName ='root',@UserPassword='l';
-
-create table Human.User_ (
-UserId int identity(1,1) primary key,
-UserName nvarchar(50) not null unique,
-UserPassword nvarchar(50) not null unique,
-UserPermission tinyint default 0
-)
-
-create table Inventory.Unit (
-UnitId int identity(1,1) primary key ,
-UnitCode nvarchar(10) not null unique ,
-UnitDesc nvarchar(50) not null 
-)
-create table Inventory.ProductCategory (
-ProductCategoryId int identity(1,1) primary key ,
-ProductCategoryName nvarchar(50) not null unique ,
-ModifiedDate datetime default SYSDATETIME()
-)
-
-create table Human.Customer (
-CustomerId int primary key identity(1,1),
-CustomerName nvarchar(max) not null,
-CustomerEmail nvarchar(30) not null,
-CustomerType nvarchar(30) not null default 'Local' ,
-customerPhone nvarchar(30) not null
-)
-create proc P_Customer_Insert
-(@CustomerName nvarchar(max),@CustomerEmail nvarchar(30),@CustomerType nvarchar(30),@customerPhone nvarchar(30))
-as
-begin
-INSERT INTO [Human].[Customer]
-           (CustomerName
-           ,CustomerEmail
-           ,CustomerType
-           ,customerPhone)
-     VALUES
-           (@CustomerName
-           ,@CustomerEmail
-           ,@CustomerType
-           ,@customerPhone);
-end
---procedure for update customer
-create proc P_Customer_Update 
-(@CustomerId int,@CustomerName nvarchar(max),@CustomerEmail nvarchar(30),@CustomerType nvarchar(30),@customerPhone nvarchar(30))
-as 
-begin
-	UPDATE Human.Customer
-	   SET CustomerName = @CustomerName
-		  ,CustomerEmail = @CustomerEmail
-		  ,CustomerType = @CustomerType
-		  ,customerPhone = @CustomerPhone
-	 WHERE CustomerId = @CustomerId;
-
-end
-
-
-
-create table Human.Supplier (
-SupplierId int primary key identity(1,1),
-SupplierName nvarchar(max) not null,
-SupplierEmail nvarchar(30) not null,
-SupplierType nvarchar(30) not null default 'Local' ,
-SupplierPhone nvarchar(30) not null ,
-SupplierBrand nvarchar(30)
-)
-
-create proc P_Supplier_Insert
-(@SupplierName nvarchar(max),@SupplierEmail nvarchar(30),@SupplierType nvarchar(30),@SupplierPhone nvarchar(30),@SupplierBrand nvarchar(30))
-as
-begin
-
-	Insert into Human.Supplier (SupplierName,SupplierEmail,SupplierType,SupplierPhone,SupplierBrand)
-	   values (@SupplierName,@SupplierEmail,@SupplierType,@SupplierPhone,@SupplierBrand);
-end
--------
-create proc P_Supplier_Delete
-(@SupplierId int)
-as
-begin
-	delete from Human.Supplier where SupplierId =@SupplierId;
-end
---
-create proc P_Supplier_Delete_All
-as
-begin
-	delete from Human.Supplier;
-end
-
-create table Inventory.Store (
-StoreId int primary key identity(1,1),
-StoreName nvarchar(max) not null,
-StoreAddress nvarchar(max) not null,
-SupplierPhone nvarchar(max) not null ,
-)
-
-create table Inventory.Product (
-ProductId int primary key identity(1,1),
-ProductName nvarchar(max) not null,
-ProductNumber nvarchar(max) not null,
-ListPrice money not null,
-StoreId int foreign key references Inventory.Store(StoreId) ,
-UnitId int foreign key references Inventory.Unit (UnitId) ,
-ProductCategoryId int foreign key references Inventory.ProductCategory (ProductCategoryId)
-)
-
-
-
-
-create table Inventory.Transactions (
-TransactionId int primary key identity(1,1),
-TransactionType int not null,
-TransactionNumber nvarchar(30),
-TransactionDate datetime default SYSDATETIME(),
-UnitPrice money not null,
-QuantityPlus int  not null,
-QuantityMinus int not null,
-ProductId int foreign key references Inventory.Product(ProductId)
-)
-create rule rTransactionType
-as
-in (1,2)
-
-create table Purchasing.PurchasingInvoice (
-PurchasingId int identity(1,1) primary key,
-PurchasingDate datetime default SYSDATETIME(),
-PurchasingTotal money not null,
-SupplierId int foreign key references  Human.Supplier(SupplierId),
-UserId int foreign key references Human.User_(UserId),
-StoreId int foreign key references Inventory.Store(StoreId)
-)
-create table Purchasing.PurchasingDetails (
-PurchasingDetailsId int identity(1,1) primary key,
-Quantity int default 1,
-UnitPrice money not null ,
-ProductId int foreign key references  Inventory.Product(ProductId),
-PurchasingId int foreign key references Purchasing.PurchasingInvoice(PurchasingId)
-)
-
-
-create table Sales.SalesInvoice (
-SalesId int identity(1,1) primary key,
-SalesDate datetime default SYSDATETIME(),
-SalesTotal money not null,
-CustomerId int foreign key references  Human.Customer(CustomerId),
-UserId int foreign key references Human.User_(UserId),
-StoreId int foreign key references Inventory.Store(StoreId)
-)
-create table Sales.SalesDetails (
-SalesDetailsId int identity(1,1) primary key,
-Quantity int default 1,
-UnitPrice money not null ,
-availableQuantity int ,
-ProductId int foreign key references  Inventory.Product(ProductId),
-SalesId int foreign key references Sales.SalesInvoice(SalesId)
-)
+-------------------------------------------End create procedure-----------------------------------------------

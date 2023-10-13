@@ -14,6 +14,7 @@ namespace SalesManagementSystem.Presenters.Presenters
     {
         ICustomer icustomer;
         CustomerModel customermodel;
+
         public CustomerPresenter(ICustomer icustomer)
         {
             customermodel = new CustomerModel();
@@ -30,14 +31,11 @@ namespace SalesManagementSystem.Presenters.Presenters
         public bool Insert()
         {
             connectedInterfaceAndModel();
-            return CustomerServices.CustomerInsert(this.customermodel.CustomerName,
-                                                   this.customermodel.CustomerEmail, 
-                                                   this.customermodel.CustomerType, 
-                                                   this.customermodel.CustomerPhone);
+            return CustomerServices.CustomerInsert(this.customermodel);
         }
         public bool Delete()
         {connectedInterfaceAndModel();
-            return CustomerServices.CustomerDelete(this.customermodel.CustomerId);
+            return CustomerServices.CustomerDelete(this.customermodel);
         }
         public bool DeleteAll()
         {
@@ -47,16 +45,17 @@ namespace SalesManagementSystem.Presenters.Presenters
         public bool Update()
         {
             connectedInterfaceAndModel();
-            return CustomerServices.CustomerUpdate(this.customermodel.CustomerId,
-                                                   this.customermodel.CustomerName,
-                                                   this.customermodel.CustomerEmail,
-                                                   this.customermodel.CustomerType,
-                                                   this.customermodel.CustomerPhone);
+            return CustomerServices.CustomerUpdate(this.customermodel);
         }
         public DataTable Select()
         {
             connectedInterfaceAndModel();
-            return CustomerServices.CustomerSelect(this.customermodel.CustomerId);
+            return CustomerServices.CustomerSelect(this.customermodel);
+        }
+
+        public string  GetCustomerId()
+        {
+            return CustomerServices.GetCustomerId().ToString();
         }
     }
 }

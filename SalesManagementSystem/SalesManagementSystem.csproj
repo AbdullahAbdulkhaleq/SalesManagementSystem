@@ -9,12 +9,13 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>SalesManagementSystem</RootNamespace>
     <AssemblyName>SalesManagementSystem</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -43,7 +44,7 @@
       <HintPath>..\packages\Bunifu.Licensing.5.0.0\lib\net40\Bunifu.Licensing.dll</HintPath>
     </Reference>
     <Reference Include="Bunifu_UI_v1.52">
-      <HintPath>..\..\..\..\Users\Abdullah Abdulkhaleq\Downloads\Bunifu_UI_v1.52.dll</HintPath>
+      <HintPath>..\..\..\..\Downloads\Bunifu_UI_v1.52.dll</HintPath>
     </Reference>
     <Reference Include="Costura, Version=3.3.3.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
       <HintPath>..\packages\Costura.Fody.3.3.3\lib\net40\Costura.dll</HintPath>
@@ -242,6 +243,15 @@
     <Compile Include="Presenters\Presenters\SupplierPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Enum\ELogin.cs" />
+    <Compile Include="Views\Enum\EErrorMessage.cs" />
+    <Compile Include="Views\Functions\FLogin.cs" />
+    <Compile Include="Views\Functions\FMessage.cs" />
     <Compile Include="Views\Interface\ICustomer.cs" />
     <Compile Include="Views\Interface\ILogin.cs" />
     <Compile Include="Views\Interface\ISupplier.cs" />
@@ -263,35 +273,77 @@
     <Compile Include="Views\UI\Designer\FDMain.Designer.cs">
       <DependentUpon>FDMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UI\Designer\UCMain.cs">
+    <Compile Include="Views\UI\Designer\UCChild.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UI\Designer\UCMain.Designer.cs">
-      <DependentUpon>UCMain.cs</DependentUpon>
+    <Compile Include="Views\UI\Designer\UCChild.Designer.cs">
+      <DependentUpon>UCChild.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UI\Designer\UCShow.cs">
+    <Compile Include="Views\UI\Designer\UCParent.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UI\Designer\UCShow.Designer.cs">
-      <DependentUpon>UCShow.cs</DependentUpon>
+    <Compile Include="Views\UI\Designer\UCParent.Designer.cs">
+      <DependentUpon>UCParent.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UI\FHome.cs">
+    <Compile Include="Views\UI\Designer\UCTowMS.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UI\Designer\UCTowMS.Designer.cs">
+      <DependentUpon>UCTowMS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UI\Inventory\UCCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UI\Inventory\UCCategory.Designer.cs">
+      <DependentUpon>UCCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UI\Sales\FHomeSales.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\UI\FHome.Designer.cs">
-      <DependentUpon>FHome.cs</DependentUpon>
+    <Compile Include="Views\UI\Sales\FHomeSales.Designer.cs">
+      <DependentUpon>FHomeSales.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UI\Logo.cs">
+    <Compile Include="Views\UI\Purchasing\FHomePurchasing.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\UI\Logo.Designer.cs">
-      <DependentUpon>Logo.cs</DependentUpon>
+    <Compile Include="Views\UI\Purchasing\FHomePurchasing.Designer.cs">
+      <DependentUpon>FHomePurchasing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UI\FHomeAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UI\FHomeAdmin.Designer.cs">
+      <DependentUpon>FHomeAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UI\Inventory\FHomeInventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UI\Inventory\FHomeInventory.Designer.cs">
+      <DependentUpon>FHomeInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UI\Human\UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UI\Human\UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UI\Inventory\UCProduct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UI\Inventory\UCProduct.Designer.cs">
+      <DependentUpon>UCProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UI\Logo1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\UI\Logo1.Designer.cs">
       <DependentUpon>Logo1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UI\Logo2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UI\Logo2.Designer.cs">
+      <DependentUpon>Logo2.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UI\Human\UCCustomer.cs">
       <SubType>UserControl</SubType>
@@ -305,18 +357,6 @@
     <Compile Include="Views\UI\Human\UCSupplier.Designer.cs">
       <DependentUpon>UCSupplier.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UI\Inventory\UCInventory.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\UI\Inventory\UCInventory.Designer.cs">
-      <DependentUpon>UCInventory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\UI\Inventory\UCProduct.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\UI\Inventory\UCProduct.Designer.cs">
-      <DependentUpon>UCProduct.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\UI\Inventory\UCStore.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -329,28 +369,22 @@
     <Compile Include="Views\UI\Inventory\UCUnit.Designer.cs">
       <DependentUpon>UCUnit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UI\Purchasing\UCPurchasingInvoice.cs">
+    <Compile Include="Views\UI\Purchasing\UCPurchasing.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UI\Purchasing\UCPurchasingInvoice.Designer.cs">
-      <DependentUpon>UCPurchasingInvoice.cs</DependentUpon>
+    <Compile Include="Views\UI\Purchasing\UCPurchasing.Designer.cs">
+      <DependentUpon>UCPurchasing.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UI\Sales\UCSalesInvoice.cs">
+    <Compile Include="Views\UI\Sales\UCSales.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UI\Sales\UCSalesInvoice.Designer.cs">
-      <DependentUpon>UCSalesInvoice.cs</DependentUpon>
+    <Compile Include="Views\UI\Sales\UCSales.Designer.cs">
+      <DependentUpon>UCSales.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Views\UI\Access\FFrgotPassword.resx">
       <DependentUpon>FFrgotPassword.cs</DependentUpon>
     </EmbeddedResource>
@@ -360,26 +394,47 @@
     <EmbeddedResource Include="Views\UI\Designer\FDMain.resx">
       <DependentUpon>FDMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UI\Designer\UCMain.resx">
-      <DependentUpon>UCMain.cs</DependentUpon>
+    <EmbeddedResource Include="Views\UI\Designer\UCChild.resx">
+      <DependentUpon>UCChild.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UI\Designer\UCShow.resx">
-      <DependentUpon>UCShow.cs</DependentUpon>
+    <EmbeddedResource Include="Views\UI\Designer\UCParent.resx">
+      <DependentUpon>UCParent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UI\FHome.resx">
-      <DependentUpon>FHome.cs</DependentUpon>
+    <EmbeddedResource Include="Views\UI\Designer\UCTowMS.resx">
+      <DependentUpon>UCTowMS.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UI\Inventory\UCInventory.resx">
-      <DependentUpon>UCInventory.cs</DependentUpon>
+    <EmbeddedResource Include="Views\UI\Inventory\UCCategory.resx">
+      <DependentUpon>UCCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UI\Sales\FHomeSales.resx">
+      <DependentUpon>FHomeSales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UI\Purchasing\FHomePurchasing.resx">
+      <DependentUpon>FHomePurchasing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UI\FHomeAdmin.resx">
+      <DependentUpon>FHomeAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UI\Inventory\FHomeInventory.resx">
+      <DependentUpon>FHomeInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UI\Human\UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UI\Inventory\UCStore.resx">
+      <DependentUpon>UCStore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UI\Inventory\UCUnit.resx">
+      <DependentUpon>UCUnit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UI\Inventory\UCProduct.resx">
       <DependentUpon>UCProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UI\Logo.resx">
-      <DependentUpon>Logo.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\UI\Logo1.resx">
       <DependentUpon>Logo1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UI\Logo2.resx">
+      <DependentUpon>Logo2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UI\Human\UCCustomer.resx">
       <DependentUpon>UCCustomer.cs</DependentUpon>
@@ -387,11 +442,11 @@
     <EmbeddedResource Include="Views\UI\Human\UCSupplier.resx">
       <DependentUpon>UCSupplier.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UI\Purchasing\UCPurchasingInvoice.resx">
-      <DependentUpon>UCPurchasingInvoice.cs</DependentUpon>
+    <EmbeddedResource Include="Views\UI\Purchasing\UCPurchasing.resx">
+      <DependentUpon>UCPurchasing.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UI\Sales\UCSalesInvoice.resx">
-      <DependentUpon>UCSalesInvoice.cs</DependentUpon>
+    <EmbeddedResource Include="Views\UI\Sales\UCSales.resx">
+      <DependentUpon>UCSales.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -408,202 +463,44 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\administrator.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="Resources\ProductCategory.png" />
+    <None Include="Resources\Supplier.png" />
+    <None Include="Resources\User-Icon.png" />
+    <None Include="Resources\Use-Login.png" />
+    <None Include="Resources\update.png" />
+    <None Include="Resources\trash.png" />
+    <None Include="Resources\Settings.png" />
+    <None Include="Resources\Search-User.png" />
+    <None Include="Resources\Search.png" />
+    <None Include="Resources\Sale.png" />
+    <None Include="Resources\Restart.png" />
+    <None Include="Resources\report.png" />
+    <None Include="Resources\Remove_Customer.png" />
+    <None Include="Resources\Purchasing.png" />
+    <None Include="Resources\products-icon.png" />
+    <None Include="Resources\print.png" />
+    <None Include="Resources\Pay.png" />
+    <None Include="Resources\password_Login.png" />
+    <None Include="Resources\Minimiz.png" />
+    <None Include="Resources\MenuTrans.png" />
+    <None Include="Resources\Logout.png" />
+    <None Include="Resources\Logo-Logins.png" />
+    <None Include="Resources\Logo-gif.gif" />
+    <None Include="Resources\Logo.png" />
+    <None Include="Resources\Lock.png" />
+    <None Include="Resources\inventor.png" />
+    <None Include="Resources\Info.png" />
+    <None Include="Resources\Icon.ico" />
+    <None Include="Resources\Edit-User.png" />
+    <None Include="Resources\delete-User.png" />
+    <None Include="Resources\Customers.png" />
     <None Include="Resources\Close.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Discount-cuate.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Shopping bag-bro.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\about1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\about2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\add_1080px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\add_image_1080px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\add_tag_1080px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\add_trash_1080px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\add_user_group_man_man_1080px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\cancel_500px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\categories1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\categories2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\chart1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\chart2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\cost.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\cost2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\create_order_1080px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Delete_1080px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\email_open_144px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\facebook_50px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\food1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\food2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\github_50px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\grocery-products-icon-png-3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Instagram_50px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\linkedin_50px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\loginBack.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Logout_1080px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Logout1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Logout2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\male_user_1080px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\minimiz.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\monitor1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\monitor2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\name.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\password.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\password_144px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\password2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\percentage1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\percentage2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\print_1080px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\rotate_right_1080px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sellers1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sellers2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\selling1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\selling2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\settings.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\settings1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\tag_window.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\tag_window2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\twitter_50px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\update_left_rotation_1080px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\update_left_rotation_1080px1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\user_512px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\participation_rate.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\account_balances.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\box_open.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\vuser.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\vuser_delete.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\vuser_edit.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\vuseradd.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="Resources\calculator.png" />
+    <None Include="Resources\Back.png" />
+    <None Include="Resources\Add-User.png" />
+    <None Include="Resources\Add-inventor.png" />
+    <None Include="Resources\Add_Customer.png" />
     <Content Include="Logo.ico" />
-    <None Include="Resources\fbc00f81999693.5d10c08723f94.gif" />
-    <None Include="Resources\Logo.ico" />
-    <None Include="Resources\MainIcon.ico" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

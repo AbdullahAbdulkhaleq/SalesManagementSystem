@@ -29,92 +29,103 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.BExit = new Guna.UI2.WinForms.Guna2ImageButton();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FDMain));
             this.min = new System.Windows.Forms.ToolTip(this.components);
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.BtnExit = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.BtnMinimized = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.PHeader = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.PHeadController = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.PHeader.SuspendLayout();
+            this.PHeadController.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // BtnExit
             // 
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(6);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(630, 27);
-            this.panel1.TabIndex = 2;
+            this.BtnExit.BackColor = System.Drawing.Color.Transparent;
+            this.BtnExit.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.BtnExit.Dock = System.Windows.Forms.DockStyle.Right;
+            this.BtnExit.HoverState.ImageSize = new System.Drawing.Size(39, 33);
+            this.BtnExit.Image = global::SalesManagementSystem.Properties.Resources.Close;
+            this.BtnExit.ImageOffset = new System.Drawing.Point(0, 0);
+            this.BtnExit.ImageRotate = 0F;
+            this.BtnExit.ImageSize = new System.Drawing.Size(34, 27);
+            this.BtnExit.Location = new System.Drawing.Point(68, 0);
+            this.BtnExit.Name = "BtnExit";
+            this.BtnExit.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.BtnExit.Size = new System.Drawing.Size(32, 33);
+            this.BtnExit.TabIndex = 6;
+            this.min.SetToolTip(this.BtnExit, "خروج");
+            this.BtnExit.UseTransparentBackground = true;
+            this.BtnExit.Click += new System.EventHandler(this.BtnExit_Click);
+            this.BtnExit.Enter += new System.EventHandler(this.BtnExit_MouseEnter);
+            this.BtnExit.Leave += new System.EventHandler(this.BtnExit_MouseLeave);
             // 
-            // panel2
+            // BtnMinimized
             // 
-            this.panel2.Controls.Add(this.guna2ImageButton1);
-            this.panel2.Controls.Add(this.BExit);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(517, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(113, 27);
-            this.panel2.TabIndex = 3;
+            this.BtnMinimized.BackColor = System.Drawing.Color.Transparent;
+            this.BtnMinimized.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.BtnMinimized.Dock = System.Windows.Forms.DockStyle.Left;
+            this.BtnMinimized.HoverState.ImageSize = new System.Drawing.Size(30, 7);
+            this.BtnMinimized.Image = global::SalesManagementSystem.Properties.Resources.Minimiz;
+            this.BtnMinimized.ImageOffset = new System.Drawing.Point(0, 0);
+            this.BtnMinimized.ImageRotate = 0F;
+            this.BtnMinimized.ImageSize = new System.Drawing.Size(25, 5);
+            this.BtnMinimized.Location = new System.Drawing.Point(10, 0);
+            this.BtnMinimized.Name = "BtnMinimized";
+            this.BtnMinimized.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.BtnMinimized.Size = new System.Drawing.Size(27, 33);
+            this.BtnMinimized.TabIndex = 8;
+            this.min.SetToolTip(this.BtnMinimized, "تصغير");
+            this.BtnMinimized.UseTransparentBackground = true;
+            this.BtnMinimized.Click += new System.EventHandler(this.BtnMinimized_Click);
             // 
-            // guna2ImageButton1
+            // PHeader
             // 
-            this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(30, 7);
-            this.guna2ImageButton1.Image = global::SalesManagementSystem.Properties.Resources.minimiz;
-            this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton1.ImageRotate = 0F;
-            this.guna2ImageButton1.ImageSize = new System.Drawing.Size(25, 5);
-            this.guna2ImageButton1.Location = new System.Drawing.Point(13, 1);
-            this.guna2ImageButton1.Name = "guna2ImageButton1";
-            this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton1.Size = new System.Drawing.Size(27, 23);
-            this.guna2ImageButton1.TabIndex = 5;
-            this.guna2ImageButton1.Click += new System.EventHandler(this.guna2ImageButton1_Click);
+            this.PHeader.BorderRadius = 1;
+            this.PHeader.BorderThickness = 1;
+            this.PHeader.Controls.Add(this.PHeadController);
+            this.PHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PHeader.Location = new System.Drawing.Point(0, 0);
+            this.PHeader.Name = "PHeader";
+            this.PHeader.Size = new System.Drawing.Size(630, 33);
+            this.PHeader.TabIndex = 6;
             // 
-            // BExit
+            // PHeadController
             // 
-            this.BExit.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.BExit.HoverState.ImageSize = new System.Drawing.Size(39, 33);
-            this.BExit.Image = global::SalesManagementSystem.Properties.Resources.Close;
-            this.BExit.ImageOffset = new System.Drawing.Point(0, 0);
-            this.BExit.ImageRotate = 0F;
-            this.BExit.ImageSize = new System.Drawing.Size(34, 27);
-            this.BExit.Location = new System.Drawing.Point(78, 0);
-            this.BExit.Name = "BExit";
-            this.BExit.PressedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.BExit.Size = new System.Drawing.Size(32, 25);
-            this.BExit.TabIndex = 3;
-            this.BExit.Click += new System.EventHandler(this.BExit_Click);
-            this.BExit.MouseEnter += new System.EventHandler(this.BExit_MouseEnter);
-            this.BExit.MouseLeave += new System.EventHandler(this.BExit_MouseLeave);
+            this.PHeadController.Controls.Add(this.BtnMinimized);
+            this.PHeadController.Controls.Add(this.BtnExit);
+            this.PHeadController.Dock = System.Windows.Forms.DockStyle.Right;
+            this.PHeadController.Location = new System.Drawing.Point(520, 0);
+            this.PHeadController.Name = "PHeadController";
+            this.PHeadController.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.PHeadController.Size = new System.Drawing.Size(110, 33);
+            this.PHeadController.TabIndex = 7;
             // 
             // FDMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(18F, 33F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(630, 375);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.PHeader);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = global::SalesManagementSystem.Properties.Resources.Logo;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FDMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FDMain";
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
+            this.PHeader.ResumeLayout(false);
+            this.PHeadController.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolTip min;
-        private System.Windows.Forms.Panel panel2;
-        private Guna.UI2.WinForms.Guna2ImageButton BExit;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
+        private Guna.UI2.WinForms.Guna2CustomGradientPanel PHeader;
+        private Guna.UI2.WinForms.Guna2CustomGradientPanel PHeadController;
+        private Guna.UI2.WinForms.Guna2ImageButton BtnMinimized;
+        private Guna.UI2.WinForms.Guna2ImageButton BtnExit;
     }
 }

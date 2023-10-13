@@ -21,6 +21,7 @@ namespace SalesManagementSystem.Presenters.Services
             ConnectionString.IntegratedSecurity = true;
             return new SqlConnection(ConnectionString.ConnectionString);
         }
+
         //هذه الدالة تقوم بعمليات الادخال والحذف والتعديل لجميع جداول البرنامج من جميع الشاشات
         public static bool SetDate(string ProcedureName, Action tran)
         {
@@ -73,7 +74,7 @@ namespace SalesManagementSystem.Presenters.Services
             return Table;
         }
         //هذه  الداله تستقبل اسم لاجراء والمتغيرات الخاصة بهذه الاجراءو ترجع قيمة  من الجراءت المخزنة
-        public static int GetDate(string ProcedureName, string ParameterName, Action action )
+        public static int GetDate(string ProcedureName, string ParameterName, Action action)
         {
             using(SqlConnection Connection = GetConnectionString())
             {

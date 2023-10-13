@@ -39,5 +39,13 @@ namespace SalesManagementSystem.Presenters.Helper
         {
 
         }
+        public static  int GetSupplierId()
+        {
+            return DB.GetDate("P_Get_Next_Id", "@NextId", () => GetSupplierId("Supplier", DB.Command));
+        }
+        private static void GetSupplierId(string ParameterName, SqlCommand command) 
+        {
+            command.Parameters.Add("@tableName", SqlDbType.NVarChar).Value = ParameterName;
+        }
     }
 }

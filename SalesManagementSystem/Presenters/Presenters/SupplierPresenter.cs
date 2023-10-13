@@ -39,6 +39,11 @@ namespace SalesManagementSystem.Presenters.Presenters
             /*return SupplierServices.*/
             return false;
         }
-        
+        public string GetSupplierId()
+        {
+            return SupplierServices.GetSupplierId().ToString();
+        }
+
+
     }
 }

@@ -1,11 +1,6 @@
 ﻿using SalesManagementSystem.Views.UI.Designer;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+using SalesManagementSystem.Views.Functions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,6 +11,26 @@ namespace SalesManagementSystem.Views.UI.Access
         public FFrgotPassword()
         {
             InitializeComponent();
+        }
+
+        private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRecovery_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FMessage.Print(int.Parse(TAnswer.Text));
+
+                TAnswer.Text = String.Empty;
+                TUserName.Text = String.Empty;
+            }
+            catch
+            {
+                FMessage.Print();
+            }
         }
     }
 }

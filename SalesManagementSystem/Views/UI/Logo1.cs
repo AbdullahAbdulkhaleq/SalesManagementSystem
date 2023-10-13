@@ -1,4 +1,12 @@
 ﻿using SalesManagementSystem.Views.UI.Access;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SalesManagementSystem.Views.UI
@@ -10,27 +18,24 @@ namespace SalesManagementSystem.Views.UI
             InitializeComponent();
         }
 
-        private void TMain_Tick(object sender, System.EventArgs e)
+        private void TLogo_Tick(object sender, EventArgs e)
         {
-
-            if (this.Opacity < 100)
+            if (PBMain.Value != 100)
             {
-                if (PBMain.Value != 100)
+
+                PBMain.Value += 1;
+                LTimer.Text = PBMain.Value.ToString()+"%";
+                if (PBMain.Value == 75)
                 {
-
-                    PBMain.Value = PBMain.Value + 5;
+                    pictureBox1.Visible = true;
                 }
-                else
-                {
-                    PBMain.Value = 100;
-                    TMain.Stop();
-                    this.Hide();
-                    FLogin fLogin = new FLogin();
-                    fLogin.Show();
-
-                }
-
-                this.Opacity += 0.1;
+            }
+            else
+            {
+                TLogo.Stop();
+                FLogin fLogin = new FLogin();
+                fLogin.Show();
+                this.Hide();
             }
         }
     }

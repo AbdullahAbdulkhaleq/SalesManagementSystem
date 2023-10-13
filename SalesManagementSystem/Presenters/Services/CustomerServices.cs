@@ -14,16 +14,17 @@ namespace SalesManagementSystem.Presenters.Services
     static class CustomerServices
     {
 
-        public static bool CustomerInsert( string Name, string Email, string Type, string Phone)
+        public static bool CustomerInsert(CustomerModel customer)
         {
-            return DB.SetDate("P_Customer_Insert", () => CustomerInsert( Name, Email, Type, Phone, DB.Command));
+            return DB.SetDate("P_Insert", () => CustomerInsert(customer, DB.Command));
         }
-        private static void CustomerInsert( string Name, string Email, string Type, string Phone, SqlCommand command)
+        private static void CustomerInsert(CustomerModel customer, SqlCommand command)
         {
-            command.Parameters.Add("@CustomerName", SqlDbType.NVarChar).Value = Name;
-            command.Parameters.Add("@CustomerEmail", SqlDbType.NVarChar).Value = Email;
-            command.Parameters.Add("@CustomerType", SqlDbType.NVarChar).Value = Type;
-            command.Parameters.Add("@CustomerPhone", SqlDbType.NVarChar).Value = Phone;
+            command.Parameters.Add("@TableName", SqlDbType.NVarChar).Value = "";
+            command.Parameters.Add("@Name", SqlDbType.NVarChar).Value = customer.CustomerName;
+            command.Parameters.Add("@Email", SqlDbType.NVarChar).Value = customer.CustomerEmail;
+            command.Parameters.Add("@Type", SqlDbType.NVarChar).Value = customer.CustomerType;
+            command.Parameters.Add("@Phone", SqlDbType.NVarChar).Value = customer.CustomerPhone;
         }
         public static bool CustomerDeleteAll()
         {
@@ -33,33 +34,33 @@ namespace SalesManagementSystem.Presenters.Services
         {
             command.Parameters.Add("@UserNaem", SqlDbType.NVarChar).Value = UserNaem;
         }
-        public static bool CustomerDelete(int id)
+        public static bool CustomerDelete(CustomerModel customer)
         {
-            return DB.SetDate("", () => CustomerDelete(id, DB.Command));
+            return DB.SetDate("", () => CustomerDelete(customer, DB.Command));
         }
-        private static void CustomerDelete(int id, SqlCommand command)
+        private static void CustomerDelete(CustomerModel customer, SqlCommand command)
         {
-            command.Parameters.Add("@CustomerId", SqlDbType.Int).Value = id;
+            command.Parameters.Add("@CustomerId", SqlDbType.Int).Value = customer.CustomerId;
         }
-        public static bool CustomerUpdate(int Id, string Name, string Email, string Type, string Phone)
+        public static bool CustomerUpdate(CustomerModel customer)
         {
-            return DB.SetDate("P_Customer_Update", () => CustomerUpdate(Id, Name, Email, Type, Phone, DB.Command));
+            return DB.SetDate("P_Update", () => CustomerUpdate(customer, DB.Command));
         }
-        private static void CustomerUpdate(int Id, string Name, string Email, string Type, string Phone, SqlCommand command)
+        private static void CustomerUpdate(CustomerModel customer, SqlCommand command)
         {
-            command.Parameters.Add("@CustomerId", SqlDbType.Int).Value = Id;
-            command.Parameters.Add("@CustomerName", SqlDbType.NVarChar).Value = Name;
-            command.Parameters.Add("@CustomerEmail", SqlDbType.NVarChar).Value = Email;
-            command.Parameters.Add("@CustomerType", SqlDbType.NVarChar).Value = Type;
-            command.Parameters.Add("@CustomerPhone", SqlDbType.NVarChar).Value = Phone;
+            command.Parameters.Add("@CustomerId", SqlDbType.Int).Value = customer.CustomerId;
+            command.Parameters.Add("@CustomerName", SqlDbType.NVarChar).Value = customer.CustomerName;
+            command.Parameters.Add("@CustomerEmail", SqlDbType.NVarChar).Value = customer.CustomerEmail;
+            command.Parameters.Add("@CustomerType", SqlDbType.NVarChar).Value = customer.CustomerType;
+            command.Parameters.Add("@CustomerPhone", SqlDbType.NVarChar).Value = customer.CustomerPhone;
         }
-        public static DataTable CustomerSelect(int Id = -1)
+        public static DataTable CustomerSelect(CustomerModel customer)
         {
-            return DB.GetDate("a", () => CustomerSelect(Id, DB.Command));
+            return DB.GetDate("a", () => CustomerSelect(customer, DB.Command));
         }
-        private static void CustomerSelect(int Id, SqlCommand command)
+        private static void CustomerSelect(CustomerModel customer, SqlCommand command)
         {
-            command.Parameters.Add("@CustomerId", SqlDbType.Int).Value = Id;
+            command.Parameters.Add("@CustomerId", SqlDbType.Int).Value = customer.CustomerId;
         }
         public static int GetCustomerId()
         {

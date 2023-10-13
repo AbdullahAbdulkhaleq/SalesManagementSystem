@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace SalesManagementSystem.Views.UI.Inventory_FUnit_FStore_FProduct
 {
-    public partial class UCUnit : UCMain
+    public partial class UCUnit : UCParent
     {
         public UCUnit()
         {

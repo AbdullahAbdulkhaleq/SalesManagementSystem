@@ -11,30 +11,25 @@ namespace SalesManagementSystem.Views.UI.Designer
             InitializeComponent();
         }
 
-        private void BExit_MouseEnter(object sender, EventArgs e)
+        private void BtnExit_MouseEnter(object sender, EventArgs e)
         {
-            BExit.BackColor = Color.FromArgb(40,180,0,0);
+            BtnExit.BackColor = Color.FromArgb(40,180,0,0);
         }
 
-        private void BExit_MouseLeave(object sender, EventArgs e)
+        private void BtnExit_MouseLeave(object sender, EventArgs e)
         {
-            BExit.BackColor = Color.Transparent;
+            BtnExit.BackColor = Color.Transparent;
+        }
+
+        private void BtnMinimized_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
 
 
-        private void BMini_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BExit_Click(object sender, EventArgs e)
+        private void BtnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void guna2ImageButton1_Click(object sender, EventArgs e)
-        {
-            this.Size = MinimumSize;
         }
     }
 }

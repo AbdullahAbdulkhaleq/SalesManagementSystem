@@ -19,7 +19,7 @@ namespace SalesManagementSystem.Presenters.Presenters
             this.loginModel.UserName = this.ilogin.UserName;
             this.loginModel.UserPassword = this.ilogin.UserPassword;
         }
-        public bool Login()
+        public int Login()
         {
             connectedInterfaceAndModel();
             return LoginServices.Login(this.loginModel.UserName, this.loginModel.UserPassword);

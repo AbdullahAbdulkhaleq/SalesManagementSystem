@@ -29,78 +29,133 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Logo1));
-            this.TMain = new System.Windows.Forms.Timer(this.components);
-            this.LSalesManagementSystem = new System.Windows.Forms.Label();
+            this.TLogo = new System.Windows.Forms.Timer(this.components);
+            this.PBMain = new Guna.UI2.WinForms.Guna2CircleProgressBar();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.LTimer = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.PBMain = new System.Windows.Forms.ProgressBar();
+            this.PBMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // TMain
+            // TLogo
             // 
-            this.TMain.Enabled = true;
-            this.TMain.Interval = 250;
-            this.TMain.Tick += new System.EventHandler(this.TMain_Tick);
-            // 
-            // LSalesManagementSystem
-            // 
-            this.LSalesManagementSystem.AutoSize = true;
-            this.LSalesManagementSystem.Font = new System.Drawing.Font("Mongolian Baiti", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LSalesManagementSystem.Location = new System.Drawing.Point(184, 319);
-            this.LSalesManagementSystem.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.LSalesManagementSystem.Name = "LSalesManagementSystem";
-            this.LSalesManagementSystem.Size = new System.Drawing.Size(307, 29);
-            this.LSalesManagementSystem.TabIndex = 6;
-            this.LSalesManagementSystem.Text = "Sales Management System";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::SalesManagementSystem.Properties.Resources.Discount_cuate;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(650, 356);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
+            this.TLogo.Enabled = true;
+            this.TLogo.Tick += new System.EventHandler(this.TLogo_Tick);
             // 
             // PBMain
             // 
-            this.PBMain.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.PBMain.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.PBMain.Location = new System.Drawing.Point(0, 366);
-            this.PBMain.Margin = new System.Windows.Forms.Padding(5);
+            this.PBMain.BackColor = System.Drawing.Color.White;
+            this.PBMain.Controls.Add(this.guna2PictureBox1);
+            this.PBMain.Controls.Add(this.label2);
+            this.PBMain.Controls.Add(this.label1);
+            this.PBMain.Controls.Add(this.LTimer);
+            this.PBMain.Controls.Add(this.pictureBox1);
+            this.PBMain.FillColor = System.Drawing.Color.White;
+            this.PBMain.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.PBMain.ForeColor = System.Drawing.Color.White;
+            this.PBMain.Location = new System.Drawing.Point(34, -356);
+            this.PBMain.Minimum = 0;
             this.PBMain.Name = "PBMain";
-            this.PBMain.Size = new System.Drawing.Size(674, 14);
-            this.PBMain.TabIndex = 4;
-            this.PBMain.Value = 10;
+            this.PBMain.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.PBMain.ProgressColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(48)))), ((int)(((byte)(200)))));
+            this.PBMain.ProgressThickness = 500;
+            this.PBMain.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.PBMain.Size = new System.Drawing.Size(1200, 1200);
+            this.PBMain.TabIndex = 1;
+            this.PBMain.Text = "guna2CircleProgressBar1";
             // 
-            // Logo1
+            // guna2PictureBox1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.guna2PictureBox1.Image = global::SalesManagementSystem.Properties.Resources.Logo_gif;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(526, 535);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(150, 127);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.guna2PictureBox1.TabIndex = 11;
+            this.guna2PictureBox1.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(71, 751);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(189, 48);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Loding .....";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(36, 695);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(578, 60);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Sales Management System";
+            // 
+            // LTimer
+            // 
+            this.LTimer.AutoSize = true;
+            this.LTimer.BackColor = System.Drawing.Color.Transparent;
+            this.LTimer.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LTimer.ForeColor = System.Drawing.Color.Black;
+            this.LTimer.Location = new System.Drawing.Point(199, 751);
+            this.LTimer.Name = "LTimer";
+            this.LTimer.Size = new System.Drawing.Size(50, 60);
+            this.LTimer.TabIndex = 9;
+            this.LTimer.Text = "0";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::SalesManagementSystem.Properties.Resources.Logo;
+            this.pictureBox1.Location = new System.Drawing.Point(-34, 379);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(544, 356);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
+            // 
+            // Logo
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(18F, 33F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(674, 380);
-            this.Controls.Add(this.LSalesManagementSystem);
-            this.Controls.Add(this.pictureBox1);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(794, 444);
             this.Controls.Add(this.PBMain);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Logo1";
+            this.Margin = new System.Windows.Forms.Padding(6);
+            this.Name = "Logo";
+            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FMain";
-            this.TopMost = true;
+            this.Text = "Logo";
+            this.PBMain.ResumeLayout(false);
+            this.PBMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Timer TMain;
-        private System.Windows.Forms.Label LSalesManagementSystem;
+        private System.Windows.Forms.Timer TLogo;
+        private Guna.UI2.WinForms.Guna2CircleProgressBar PBMain;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ProgressBar PBMain;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label LTimer;
+        private System.Windows.Forms.Label label2;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
     }
 }

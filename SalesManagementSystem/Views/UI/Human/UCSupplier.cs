@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace SalesManagementSystem.Views.UI.Human
 {
-    public partial class UCSupplier : UCMain , ISupplier
+    public partial class UCSupplier : UCParent , ISupplier
     {
         private SupplierPresenter presenter;
 
@@ -26,9 +26,9 @@ namespace SalesManagementSystem.Views.UI.Human
         public int SupplierId { get => int.Parse(TSupplierId.Text); set => TSupplierId.Text = value.ToString(); }
         public string SupplierName { get => TSupplierName.Text; set => TSupplierName.Text = value; }
         public string SupplierEmail { get => TSupplierEmail.Text; set => TSupplierEmail.Text = value; }
-        public string SupplierType { get => TSupplierType.Text; set => TSupplierType.Text = value; }
         public string SupplierPhone { get => TSupplierPhone.Text; set => TSupplierPhone.Text = value; }
         public string SupplierBrand { get => TSupplierBrand.Text; set => TSupplierBrand.Text = value; }
+        public string SupplierType { get => TSupplierType.Text; set => TSupplierType.Text = value; }
 
         private void BInsert_Click(object sender, EventArgs e)
         {
@@ -46,11 +46,6 @@ namespace SalesManagementSystem.Views.UI.Human
         }
 
 
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void guna2PictureBox1_Click(object sender, EventArgs e)
         {
 
@@ -61,43 +56,8 @@ namespace SalesManagementSystem.Views.UI.Human
 
         }
 
-        private void TCustomerName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TCustomerId_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TSupplierType_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void BInsert_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BSelect_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BDeltete_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BDeleteAll_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BUpdate_Click_1(object sender, EventArgs e)
         {
 
         }
@@ -112,22 +72,29 @@ namespace SalesManagementSystem.Views.UI.Human
 
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+
+
+        private void panel1_MouseEnter(object sender, EventArgs e)
+        {
+        }
+
+        private void TSupplierId_MouseEnter(object sender, EventArgs e)
+        {
+        }
+
+        private void panel1_MouseEnter_1(object sender, EventArgs e)
+        {
+
+            if (TSupplierId.Text == "")
+                TSupplierId.Text = presenter.GetSupplierId().ToString();
+        }
+
+        private void guna2ImageButton1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void TCustomerType_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TSupplierName_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TSupplierId_Click(object sender, EventArgs e)
+        private void guna2ImageButton1_Click_1(object sender, EventArgs e)
         {
 
         }

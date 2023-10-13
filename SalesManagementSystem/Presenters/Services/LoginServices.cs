@@ -10,17 +10,12 @@ namespace SalesManagementSystem.Presenters.Services
 {
     static class LoginServices
     {
-        public static bool Login(string UserName, string UserPassword)
+        public static int Login(string UserName, string UserPassword)
         {
             //أسم الاجراء واسم المتغير المخرج منه مع اسماء جميع المتغيرات الازمة لتنفيذ هذه الاجراء
             //اذا كانت القيمة المرجعة ==1  اذا يوجد مستخدم بنفس اللسم وكلمة السر
 
-            if (DB.GetDate("PLogin", "exist", () => Login(UserName, UserPassword, DB.Command)) == 1) 
-            {
-                return true;
-            }
-            else
-                return false;
+            return (DB.GetDate("PLogin", "exist", () => Login(UserName, UserPassword, DB.Command)));
 
         }
         private static void Login(string UserName, string UserPassword, SqlCommand command)

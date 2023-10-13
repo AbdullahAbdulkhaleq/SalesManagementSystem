@@ -1,14 +1,11 @@
 ﻿using SalesManagementSystem.Presenters.Presenters;
+using SalesManagementSystem.Views.Functions;
+using SalesManagementSystem.Views.UI.Inventory;
+using SalesManagementSystem.Views.UI.Purchasing;
+using SalesManagementSystem.Views.UI.Sales;
 using SalesManagementSystem.Views.Interface;
 using SalesManagementSystem.Views.UI.Designer;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SalesManagementSystem.Views.UI.Access
@@ -19,6 +16,9 @@ namespace SalesManagementSystem.Views.UI.Access
 
         public string UserName { get => TUserName.Text; set => TUserName.Text = value; }
         public string UserPassword { get => TUserPassword.Text; set => TUserPassword.Text = value; }
+
+        private int LoginCount = 1;
+        private bool Logined = false;
 
         public FLogin()
         {
@@ -36,14 +36,39 @@ namespace SalesManagementSystem.Views.UI.Access
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if(Presenter.Login())
+            try
             {
-                FHome fHome = new FHome();
-                fHome.Show();
+                if(this.LoginCount <=3)
+                {
+                    int Message = Presenter.Login();
+
+                    FMessage.Print(Presenter.Login());
+                    if(Message >5)
+                    {
+
+                        if (Message == 1)
+                        {
+                            FHomePurchasing fHome = new FHomePurchasing();
+                            fHome.Show();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show($"User {UserName} is Block place ");
+                    }
+                }
+                else
+                {
+                    FMessage.Print(UserName);
+                }
             }
-            else
+             catch
             {
-                MessageBox.Show("Error");
+               
+            }
+            finally
+            {
+                this.LoginCount++;
             }
         }
     }
