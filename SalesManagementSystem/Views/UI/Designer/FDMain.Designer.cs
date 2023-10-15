@@ -35,6 +35,7 @@
             this.BtnMinimized = new Guna.UI2.WinForms.Guna2ImageButton();
             this.PHeader = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.PHeadController = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.LabWelcome = new System.Windows.Forms.Label();
             this.PHeader.SuspendLayout();
             this.PHeadController.SuspendLayout();
             this.SuspendLayout();
@@ -101,12 +102,24 @@
             this.PHeadController.Size = new System.Drawing.Size(110, 33);
             this.PHeadController.TabIndex = 7;
             // 
+            // LabWelcome
+            // 
+            this.LabWelcome.AutoSize = true;
+            this.LabWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabWelcome.Location = new System.Drawing.Point(98, 2);
+            this.LabWelcome.Name = "LabWelcome";
+            this.LabWelcome.Size = new System.Drawing.Size(207, 46);
+            this.LabWelcome.TabIndex = 18;
+            this.LabWelcome.Text = "Welcome ";
+            this.LabWelcome.Visible = false;
+            // 
             // FDMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(18F, 33F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(630, 375);
+            this.Controls.Add(this.LabWelcome);
             this.Controls.Add(this.PHeader);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -118,6 +131,7 @@
             this.PHeader.ResumeLayout(false);
             this.PHeadController.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -127,5 +141,6 @@
         private Guna.UI2.WinForms.Guna2CustomGradientPanel PHeadController;
         private Guna.UI2.WinForms.Guna2ImageButton BtnMinimized;
         private Guna.UI2.WinForms.Guna2ImageButton BtnExit;
+        public System.Windows.Forms.Label LabWelcome;
     }
 }

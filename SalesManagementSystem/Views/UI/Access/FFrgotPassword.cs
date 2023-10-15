@@ -22,15 +22,20 @@ namespace SalesManagementSystem.Views.UI.Access
         {
             try
             {
-                FMessage.Print(int.Parse(TAnswer.Text));
+                FunMessage.Print(int.Parse(TAnswer.Text));
 
                 TAnswer.Text = String.Empty;
                 TUserName.Text = String.Empty;
             }
             catch
             {
-                FMessage.Print();
             }
         }
+
+        private void FFrgotPassword_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

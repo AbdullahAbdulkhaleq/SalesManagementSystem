@@ -229,7 +229,13 @@
   <ItemGroup>
     <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\PurchasingDetailsModel.cs" />
+    <Compile Include="Models\PurchasingModel.cs" />
+    <Compile Include="Models\SalesDetailsModel.cs" />
+    <Compile Include="Models\SalesModel.cs" />
+    <Compile Include="Models\StoreModel.cs" />
     <Compile Include="Models\SupplierModel.cs" />
+    <Compile Include="Models\UnitModel.cs" />
     <Compile Include="Presenters\Services\CustomerServices.cs" />
     <Compile Include="Presenters\Services\DB.cs" />
     <Compile Include="Presenters\Services\LoginServices.cs" />
@@ -250,8 +256,10 @@
     </Compile>
     <Compile Include="Views\Enum\ELogin.cs" />
     <Compile Include="Views\Enum\EErrorMessage.cs" />
-    <Compile Include="Views\Functions\FLogin.cs" />
-    <Compile Include="Views\Functions\FMessage.cs" />
+    <Compile Include="Views\Enum\EUserControl.cs" />
+    <Compile Include="Views\Functions\FunAddUserControls.cs" />
+    <Compile Include="Views\Functions\FunLogin.cs" />
+    <Compile Include="Views\Functions\FunMessage.cs" />
     <Compile Include="Views\Interface\ICustomer.cs" />
     <Compile Include="Views\Interface\ILogin.cs" />
     <Compile Include="Views\Interface\ISupplier.cs" />
@@ -285,17 +293,17 @@
     <Compile Include="Views\UI\Designer\UCParent.Designer.cs">
       <DependentUpon>UCParent.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UI\Designer\UCTowMS.cs">
+    <Compile Include="Views\UI\Human\UCUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UI\Designer\UCTowMS.Designer.cs">
-      <DependentUpon>UCTowMS.cs</DependentUpon>
+    <Compile Include="Views\UI\Human\UCUser.Designer.cs">
+      <DependentUpon>UCUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UI\Inventory\UCCategory.cs">
+    <Compile Include="Views\UI\Inventory\UCGategory.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UI\Inventory\UCCategory.Designer.cs">
-      <DependentUpon>UCCategory.cs</DependentUpon>
+    <Compile Include="Views\UI\Inventory\UCGategory.Designer.cs">
+      <DependentUpon>UCGategory.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UI\Sales\FHomeSales.cs">
       <SubType>Form</SubType>
@@ -320,12 +328,6 @@
     </Compile>
     <Compile Include="Views\UI\Inventory\FHomeInventory.Designer.cs">
       <DependentUpon>FHomeInventory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\UI\Human\UserControl1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\UI\Human\UserControl1.Designer.cs">
-      <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UI\Inventory\UCProduct.cs">
       <SubType>UserControl</SubType>
@@ -400,11 +402,11 @@
     <EmbeddedResource Include="Views\UI\Designer\UCParent.resx">
       <DependentUpon>UCParent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UI\Designer\UCTowMS.resx">
-      <DependentUpon>UCTowMS.cs</DependentUpon>
+    <EmbeddedResource Include="Views\UI\Human\UCUser.resx">
+      <DependentUpon>UCUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UI\Inventory\UCCategory.resx">
-      <DependentUpon>UCCategory.cs</DependentUpon>
+    <EmbeddedResource Include="Views\UI\Inventory\UCGategory.resx">
+      <DependentUpon>UCGategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UI\Sales\FHomeSales.resx">
       <DependentUpon>FHomeSales.cs</DependentUpon>
@@ -417,9 +419,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UI\Inventory\FHomeInventory.resx">
       <DependentUpon>FHomeInventory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\UI\Human\UserControl1.resx">
-      <DependentUpon>UserControl1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UI\Inventory\UCStore.resx">
       <DependentUpon>UCStore.cs</DependentUpon>
@@ -463,6 +462,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Updategif.gif" />
+    <None Include="Resources\Add.png" />
     <None Include="Resources\ProductCategory.png" />
     <None Include="Resources\Supplier.png" />
     <None Include="Resources\User-Icon.png" />

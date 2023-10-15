@@ -3,12 +3,9 @@ using SalesManagementSystem.Views.Enum;
 
 namespace SalesManagementSystem.Views.Functions
 {
-    public class FMessage
+    public class FunMessage
     {
-        public static void Print(string Message ="")
-        {
-            MessageBox.Show($"Place Enter {Message}");
-        }
+    
         public static void Print(int ErrorNumber, string Message = "")
         {
             EErrorMessage Error = GetError(ErrorNumber);

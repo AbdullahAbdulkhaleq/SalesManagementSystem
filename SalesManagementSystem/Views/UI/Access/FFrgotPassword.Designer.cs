@@ -34,6 +34,9 @@
             this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.SuspendLayout();
             // 
+            // LabWelcome
+            // 
+            // 
             // TUserName
             // 
             this.TUserName.BorderRadius = 10;
@@ -126,11 +129,14 @@
             this.Name = "FFrgotPassword";
             this.Text = "FFrgotPassword";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.FFrgotPassword_Load);
+            this.Controls.SetChildIndex(this.LabWelcome, 0);
             this.Controls.SetChildIndex(this.TUserName, 0);
             this.Controls.SetChildIndex(this.BtnRecovery, 0);
             this.Controls.SetChildIndex(this.TAnswer, 0);
             this.Controls.SetChildIndex(this.guna2ComboBox1, 0);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

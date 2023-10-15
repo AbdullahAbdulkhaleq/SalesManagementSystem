@@ -1,12 +1,12 @@
 ﻿use master
 go
 
-drop database if exists SaleManagementSystem;
+drop database if exists SalesManagementSystem;
 go
 -------------------------------------------create database-----------------------------------------------
-create database SaleManagementSystem
+create database SalesManagementSystem
 on primary 
-(Name='Main' ,filename='E:\DB\SaleManagementSystem\Main.mdf' ,size =8MB ,filegrowth=1024KB),
+(Name='Main' ,filename='E:\DB\SaleManagementSystem\Main.mdf' , SIZE = 50MB ,filegrowth= 10%),
 FileGroup [Human]
 (Name='Human_M' ,filename='E:\DB\SaleManagementSystem\Human_M.ldf' ,size =8MB ,filegrowth=1024KB),
 (Name='Human_S' ,filename='E:\DB\SaleManagementSystem\Human_S.ldf' ,size =8MB ,filegrowth=1024KB),
@@ -20,11 +20,11 @@ FileGroup [Sales]
 (Name='Sales_M' ,filename='E:\DB\SaleManagementSystem\Sales_M.ldf' ,size =8MB ,filegrowth=1024KB),
 (Name='Sales_S' ,filename='E:\DB\SaleManagementSystem\Sales_S.ldf' ,size =8MB ,filegrowth=1024KB)
 LOG ON 
-(Name='Log' ,filename='E:\DB\SaleManagementSystem\Log\Log.ldf' ,size =4MB ,filegrowth=1024KB)
+(Name='Log' ,filename='E:\DB\SaleManagementSystem\Log\Log.ldf' ,SIZE =15MB ,filegrowth=5MB)
 go
 
 -------------------------------------------End create database-----------------------------------------------
-use SaleManagementSystem
+use SalesManagementSystem
 go
 
 -------------------------------------------create schema-----------------------------------------------
@@ -108,12 +108,17 @@ go
 -------------------------------------------End create DataType-----------------------------------------------
 
 -------------------------------------------create Table-----------------------------------------------
+create table Human.Department (
+DepartmentId Id identity(1,1) primary key,
+DepartmentName SName unique
 
+)
 create table Human.User_ (
 UserId Id identity(1,1) primary key,
 UserName SName unique,
 UserPassword Password_ unique,
-UserPermission tinyint default 0
+UserStatus tinyint default 0 check (UserStatus in(1,0)),
+DepartmentId Id foreign key references Human.Department(DepartmentId)
 )
 go
 
@@ -227,20 +232,28 @@ go
 
 
 -------------------------------------------create procedure-----------------------------------------------
-CREATE procedure [dbo].[PLogin]
-(@UserName nvarchar(50), @UserPassword nvarchar(50) ,@exist int out)
+create procedure [dbo].[PLogin]
+(@UserName nvarchar(50), @UserPassword nvarchar(50) ,@LoginStatus int out)
 as
 begin
 
 	begin try 
 		if exists(select * from Human.User_ where UserName = @UserName and UserPassword = @UserPassword)
-			set @exist =1 ;
+		begin
+			 declare @UserStatus int;
+			 select @UserStatus = UserStatus from Human.User_  where UserName = @UserName and UserPassword = @UserPassword;
+				if @UserStatus != 0 
+					set @LoginStatus = (select DepartmentId from Human.User_ where UserName = @UserName and UserPassword = @UserPassword);
+				else
+					set @LoginStatus = 5;
+		END
 		ELSE 
-			set @exist =0;	
-	end try 
 
+			set @LoginStatus = 404;	
+
+	end try 
 	begin catch 
-		set @exist =0;
+		set @LoginStatus = 0;
 	end catch
 
 end
@@ -1598,24 +1611,41 @@ begin
 end
 go
 
+Insert into [Human].[Department] values(N'مدراء');
+Insert into [Human].[Department] values(N'مبيعات');
+Insert into [Human].[Department] values(N'مشتريات');
+Insert into [Human].[Department] values(N'مخازن');
+go
+select * from [Human].[Department]
+go
 
- create procedure pLoginInsert 
-
-@id Id, @name Name_, @email Email
+ create procedure P_User_Insert 
+ (@name Name_ ,@password Password_, @DepartmentId Id,@UserStatus tinyint =0)
 as 
 begin
 
-INSERT INTO [dbo].[Login]
-           ([id]
-           ,[name]
-           ,[email])
+INSERT INTO [Human].[User_]
+           (UserName,
+		   UserPassword,
+		   UserStatus,
+		   DepartmentId)
      VALUES
-           (@id,
-           @name 
-           ,@email )
+           (@name,
+           @password 
+           ,@UserStatus,
+		   @DepartmentId)
 
 
 end
+go
+P_User_Insert 'Admin','Admin',1,1
+go
+P_User_Insert 'sales','sales',2,1
+go
+P_User_Insert 'Pay','Pay',3,1
+go
+
+P_User_Insert 'store','store',4,1
 go
 select * from Human.User_
 go

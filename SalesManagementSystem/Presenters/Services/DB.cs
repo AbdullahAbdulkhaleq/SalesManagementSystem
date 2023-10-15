@@ -83,14 +83,16 @@ namespace SalesManagementSystem.Presenters.Services
                     Command  = new SqlCommand(ProcedureName, Connection);
                     Command.CommandType =CommandType.StoredProcedure;
                     action.Invoke();
-                    SqlParameter ifexists = new SqlParameter();
-                    ifexists.ParameterName = ParameterName;
-                    ifexists.SqlDbType = SqlDbType.Int;
-                    ifexists.Direction = ParameterDirection.Output;
-                    Command.Parameters.Add(ifexists);
+
+                    SqlParameter ParameterNameout = new SqlParameter();
+                    ParameterNameout.ParameterName = ParameterName;
+                    ParameterNameout.SqlDbType = SqlDbType.Int;
+                    ParameterNameout.Direction = ParameterDirection.Output;
+                    Command.Parameters.Add(ParameterNameout);
+
                     Connection.Open();
                     Command.ExecuteReader();
-                    return int.Parse(ifexists.Value.ToString());
+                    return int.Parse(ParameterNameout.Value.ToString());
 
 
                 }
@@ -105,7 +107,7 @@ namespace SalesManagementSystem.Presenters.Services
             }
         }
         //هذه الدالة ترجع قيمة من  الاجراء النخزن
-        public static T GetDate<T>(string ProcedureName, string ParameterName)
+   /*     public static T GetDate<T>(string ProcedureName, string ParameterName)
         {
             using (SqlConnection Connection = GetConnectionString())
             {
@@ -134,6 +136,6 @@ namespace SalesManagementSystem.Presenters.Services
                     Connection.Close();
                 }
             }
-        }
+        }*/
     }
 }

@@ -23,7 +23,7 @@ namespace SalesManagementSystem.Views.UI.Human
             presenter = new SupplierPresenter(this);
         }
 
-        public int SupplierId { get => int.Parse(TSupplierId.Text); set => TSupplierId.Text = value.ToString(); }
+        public int SupplierId { get; set; }
         public string SupplierName { get => TSupplierName.Text; set => TSupplierName.Text = value; }
         public string SupplierEmail { get => TSupplierEmail.Text; set => TSupplierEmail.Text = value; }
         public string SupplierPhone { get => TSupplierPhone.Text; set => TSupplierPhone.Text = value; }
@@ -85,8 +85,8 @@ namespace SalesManagementSystem.Views.UI.Human
         private void panel1_MouseEnter_1(object sender, EventArgs e)
         {
 
-            if (TSupplierId.Text == "")
-                TSupplierId.Text = presenter.GetSupplierId().ToString();
+        /*    if (TSupplierId.Text == "")
+                TSupplierId.Text = presenter.GetSupplierId().ToString();*/
         }
 
         private void guna2ImageButton1_Click(object sender, EventArgs e)

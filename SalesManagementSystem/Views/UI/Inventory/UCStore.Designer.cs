@@ -28,49 +28,105 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.TStoreName = new Guna.UI2.WinForms.Guna2TextBox();
-            this.TStoreId = new Guna.UI2.WinForms.Guna2TextBox();
-            this.TStorePhone = new Guna.UI2.WinForms.Guna2TextBox();
-            this.TStoreAddress = new Guna.UI2.WinForms.Guna2TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.TxtStoreAddress = new Guna.UI2.WinForms.Guna2TextBox();
+            this.TxtStorePhone = new Guna.UI2.WinForms.Guna2TextBox();
+            this.TxtStoreName = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.LabName = new System.Windows.Forms.Label();
+            this.LabAddress = new System.Windows.Forms.Label();
+            this.LabPhone = new System.Windows.Forms.Label();
+            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
+            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.BtnMenuUser = new Guna.UI2.WinForms.Guna2ImageButton();
             this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // panel2
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.guna2PictureBox2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.guna2ImageButton1);
-            this.panel1.Controls.Add(this.TStoreName);
-            this.panel1.Controls.Add(this.TStoreId);
-            this.panel1.Controls.Add(this.TStorePhone);
-            this.panel1.Controls.Add(this.TStoreAddress);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(328, 702);
-            this.panel1.TabIndex = 7;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.guna2Button1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(325, 5);
+            this.panel2.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(960, 690);
+            this.panel2.TabIndex = 9;
             // 
-            // guna2PictureBox2
+            // TxtStoreAddress
             // 
-            this.guna2PictureBox2.Image = global::SalesManagementSystem.Properties.Resources.Info;
-            this.guna2PictureBox2.ImageRotate = 0F;
-            this.guna2PictureBox2.Location = new System.Drawing.Point(117, 50);
-            this.guna2PictureBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.guna2PictureBox2.Name = "guna2PictureBox2";
-            this.guna2PictureBox2.Size = new System.Drawing.Size(82, 76);
-            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox2.TabIndex = 2;
-            this.guna2PictureBox2.TabStop = false;
+            this.TxtStoreAddress.BorderRadius = 10;
+            this.TxtStoreAddress.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TxtStoreAddress.DefaultText = "";
+            this.TxtStoreAddress.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.TxtStoreAddress.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.TxtStoreAddress.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtStoreAddress.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtStoreAddress.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtStoreAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.TxtStoreAddress.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtStoreAddress.Location = new System.Drawing.Point(18, 250);
+            this.TxtStoreAddress.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.TxtStoreAddress.Name = "TxtStoreAddress";
+            this.TxtStoreAddress.PasswordChar = '\0';
+            this.TxtStoreAddress.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
+            this.TxtStoreAddress.PlaceholderText = "Store Address";
+            this.TxtStoreAddress.SelectedText = "";
+            this.TxtStoreAddress.Size = new System.Drawing.Size(284, 50);
+            this.TxtStoreAddress.TabIndex = 18;
+            this.TxtStoreAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // TxtStorePhone
+            // 
+            this.TxtStorePhone.BorderRadius = 10;
+            this.TxtStorePhone.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TxtStorePhone.DefaultText = "";
+            this.TxtStorePhone.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.TxtStorePhone.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.TxtStorePhone.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtStorePhone.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtStorePhone.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtStorePhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.TxtStorePhone.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtStorePhone.Location = new System.Drawing.Point(17, 342);
+            this.TxtStorePhone.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.TxtStorePhone.Name = "TxtStorePhone";
+            this.TxtStorePhone.PasswordChar = '\0';
+            this.TxtStorePhone.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
+            this.TxtStorePhone.PlaceholderText = "Store Phone";
+            this.TxtStorePhone.SelectedText = "";
+            this.TxtStorePhone.Size = new System.Drawing.Size(284, 50);
+            this.TxtStorePhone.TabIndex = 17;
+            this.TxtStorePhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // TxtStoreName
+            // 
+            this.TxtStoreName.BorderRadius = 10;
+            this.TxtStoreName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TxtStoreName.DefaultText = "";
+            this.TxtStoreName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.TxtStoreName.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.TxtStoreName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtStoreName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtStoreName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtStoreName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.TxtStoreName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtStoreName.Location = new System.Drawing.Point(18, 159);
+            this.TxtStoreName.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.TxtStoreName.Name = "TxtStoreName";
+            this.TxtStoreName.PasswordChar = '\0';
+            this.TxtStoreName.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
+            this.TxtStoreName.PlaceholderText = "Store Name";
+            this.TxtStoreName.SelectedText = "";
+            this.TxtStoreName.Size = new System.Drawing.Size(284, 50);
+            this.TxtStoreName.TabIndex = 21;
+            this.TxtStoreName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
             // 
@@ -82,120 +138,90 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Manage Products";
             // 
-            // guna2ImageButton1
+            // panel1
             // 
-            this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton1.Image = global::SalesManagementSystem.Properties.Resources.Add_Customer;
-            this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton1.ImageRotate = 0F;
-            this.guna2ImageButton1.ImageSize = new System.Drawing.Size(40, 40);
-            this.guna2ImageButton1.Location = new System.Drawing.Point(117, 441);
-            this.guna2ImageButton1.Margin = new System.Windows.Forms.Padding(4);
-            this.guna2ImageButton1.Name = "guna2ImageButton1";
-            this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton1.Size = new System.Drawing.Size(98, 91);
-            this.guna2ImageButton1.TabIndex = 2;
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.BtnMenuUser);
+            this.panel1.Controls.Add(this.guna2PictureBox2);
+            this.panel1.Controls.Add(this.LabPhone);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.LabAddress);
+            this.panel1.Controls.Add(this.LabName);
+            this.panel1.Controls.Add(this.TxtStoreName);
+            this.panel1.Controls.Add(this.TxtStorePhone);
+            this.panel1.Controls.Add(this.TxtStoreAddress);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(5, 5);
+            this.panel1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(320, 690);
+            this.panel1.TabIndex = 7;
             // 
-            // TStoreName
+            // panel3
             // 
-            this.TStoreName.BorderRadius = 10;
-            this.TStoreName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TStoreName.DefaultText = "";
-            this.TStoreName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.TStoreName.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.TStoreName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TStoreName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TStoreName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TStoreName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TStoreName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TStoreName.Location = new System.Drawing.Point(22, 213);
-            this.TStoreName.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.TStoreName.Name = "TStoreName";
-            this.TStoreName.PasswordChar = '\0';
-            this.TStoreName.PlaceholderText = "Store Name";
-            this.TStoreName.SelectedText = "";
-            this.TStoreName.Size = new System.Drawing.Size(284, 50);
-            this.TStoreName.TabIndex = 21;
-            this.TStoreName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.guna2Button2);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel3.Location = new System.Drawing.Point(325, 5);
+            this.panel3.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(960, 690);
+            this.panel3.TabIndex = 16;
             // 
-            // TStoreId
+            // LabName
             // 
-            this.TStoreId.BorderRadius = 10;
-            this.TStoreId.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TStoreId.DefaultText = "";
-            this.TStoreId.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.TStoreId.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.TStoreId.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TStoreId.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TStoreId.Enabled = false;
-            this.TStoreId.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TStoreId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TStoreId.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TStoreId.Location = new System.Drawing.Point(22, 154);
-            this.TStoreId.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.TStoreId.Name = "TStoreId";
-            this.TStoreId.PasswordChar = '\0';
-            this.TStoreId.PlaceholderText = "Store Id";
-            this.TStoreId.SelectedText = "";
-            this.TStoreId.Size = new System.Drawing.Size(284, 50);
-            this.TStoreId.TabIndex = 19;
-            this.TStoreId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.LabName.AutoSize = true;
+            this.LabName.Font = new System.Drawing.Font("Microsoft YaHei", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabName.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.LabName.Location = new System.Drawing.Point(20, 134);
+            this.LabName.Name = "LabName";
+            this.LabName.Size = new System.Drawing.Size(56, 21);
+            this.LabName.TabIndex = 29;
+            this.LabName.Text = "Name";
             // 
-            // TStorePhone
+            // LabAddress
             // 
-            this.TStorePhone.BorderRadius = 10;
-            this.TStorePhone.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TStorePhone.DefaultText = "";
-            this.TStorePhone.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.TStorePhone.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.TStorePhone.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TStorePhone.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TStorePhone.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TStorePhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TStorePhone.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TStorePhone.Location = new System.Drawing.Point(22, 329);
-            this.TStorePhone.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.TStorePhone.Name = "TStorePhone";
-            this.TStorePhone.PasswordChar = '\0';
-            this.TStorePhone.PlaceholderText = "Store Phone";
-            this.TStorePhone.SelectedText = "";
-            this.TStorePhone.Size = new System.Drawing.Size(284, 50);
-            this.TStorePhone.TabIndex = 17;
-            this.TStorePhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.LabAddress.AutoSize = true;
+            this.LabAddress.Font = new System.Drawing.Font("Microsoft YaHei", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabAddress.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.LabAddress.Location = new System.Drawing.Point(21, 223);
+            this.LabAddress.Name = "LabAddress";
+            this.LabAddress.Size = new System.Drawing.Size(70, 21);
+            this.LabAddress.TabIndex = 30;
+            this.LabAddress.Text = "Address";
             // 
-            // TStoreAddress
+            // LabPhone
             // 
-            this.TStoreAddress.BorderRadius = 10;
-            this.TStoreAddress.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TStoreAddress.DefaultText = "";
-            this.TStoreAddress.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.TStoreAddress.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.TStoreAddress.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TStoreAddress.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TStoreAddress.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TStoreAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TStoreAddress.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TStoreAddress.Location = new System.Drawing.Point(22, 271);
-            this.TStoreAddress.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.TStoreAddress.Name = "TStoreAddress";
-            this.TStoreAddress.PasswordChar = '\0';
-            this.TStoreAddress.PlaceholderText = "Store Address";
-            this.TStoreAddress.SelectedText = "";
-            this.TStoreAddress.Size = new System.Drawing.Size(284, 50);
-            this.TStoreAddress.TabIndex = 18;
-            this.TStoreAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.LabPhone.AutoSize = true;
+            this.LabPhone.Font = new System.Drawing.Font("Microsoft YaHei", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabPhone.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.LabPhone.Location = new System.Drawing.Point(20, 315);
+            this.LabPhone.Name = "LabPhone";
+            this.LabPhone.Size = new System.Drawing.Size(59, 21);
+            this.LabPhone.TabIndex = 31;
+            this.LabPhone.Text = "Phone";
             // 
-            // panel2
+            // guna2Button2
             // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.guna2Button1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(328, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(963, 702);
-            this.panel2.TabIndex = 9;
+            this.guna2Button2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2Button2.BorderRadius = 10;
+            this.guna2Button2.BorderThickness = 1;
+            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button2.FillColor = System.Drawing.Color.White;
+            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2Button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2Button2.Image = global::SalesManagementSystem.Properties.Resources.update;
+            this.guna2Button2.Location = new System.Drawing.Point(812, 10);
+            this.guna2Button2.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2Button2.Name = "guna2Button2";
+            this.guna2Button2.Size = new System.Drawing.Size(140, 33);
+            this.guna2Button2.TabIndex = 2;
+            this.guna2Button2.Text = "Research";
             // 
             // guna2Button1
             // 
@@ -214,33 +240,67 @@
             this.guna2Button1.TabIndex = 3;
             this.guna2Button1.Text = "Research";
             // 
+            // guna2PictureBox2
+            // 
+            this.guna2PictureBox2.Image = global::SalesManagementSystem.Properties.Resources.Info;
+            this.guna2PictureBox2.ImageRotate = 0F;
+            this.guna2PictureBox2.Location = new System.Drawing.Point(117, 50);
+            this.guna2PictureBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2PictureBox2.Name = "guna2PictureBox2";
+            this.guna2PictureBox2.Size = new System.Drawing.Size(82, 76);
+            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox2.TabIndex = 2;
+            this.guna2PictureBox2.TabStop = false;
+            // 
+            // BtnMenuUser
+            // 
+            this.BtnMenuUser.BackColor = System.Drawing.Color.Transparent;
+            this.BtnMenuUser.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.BtnMenuUser.HoverState.ImageSize = new System.Drawing.Size(50, 50);
+            this.BtnMenuUser.Image = global::SalesManagementSystem.Properties.Resources.Add;
+            this.BtnMenuUser.ImageOffset = new System.Drawing.Point(0, 0);
+            this.BtnMenuUser.ImageRotate = 0F;
+            this.BtnMenuUser.ImageSize = new System.Drawing.Size(42, 42);
+            this.BtnMenuUser.Location = new System.Drawing.Point(124, 451);
+            this.BtnMenuUser.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnMenuUser.Name = "BtnMenuUser";
+            this.BtnMenuUser.PressedState.ImageSize = new System.Drawing.Size(50, 50);
+            this.BtnMenuUser.Size = new System.Drawing.Size(70, 70);
+            this.BtnMenuUser.TabIndex = 41;
+            this.BtnMenuUser.UseTransparentBackground = true;
+            // 
             // UCStore
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(18F, 33F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(10, 8, 10, 8);
+            this.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
             this.Name = "UCStore";
+            this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
-            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
-        private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
-        private Guna.UI2.WinForms.Guna2TextBox TStoreName;
-        private Guna.UI2.WinForms.Guna2TextBox TStoreId;
-        private Guna.UI2.WinForms.Guna2TextBox TStorePhone;
-        private Guna.UI2.WinForms.Guna2TextBox TStoreAddress;
         private System.Windows.Forms.Panel panel2;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2TextBox TxtStoreAddress;
+        private Guna.UI2.WinForms.Guna2TextBox TxtStorePhone;
+        private Guna.UI2.WinForms.Guna2TextBox TxtStoreName;
+        private System.Windows.Forms.Label label1;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
+        private System.Windows.Forms.Panel panel1;
+        private Guna.UI2.WinForms.Guna2Button guna2Button2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label LabPhone;
+        private System.Windows.Forms.Label LabAddress;
+        private System.Windows.Forms.Label LabName;
+        private Guna.UI2.WinForms.Guna2ImageButton BtnMenuUser;
     }
 }

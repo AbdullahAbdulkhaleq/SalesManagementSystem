@@ -29,26 +29,36 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.LbUserName = new System.Windows.Forms.Label();
-            this.BUserIcon = new Bunifu.Framework.UI.BunifuImageButton();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BUserIcon)).BeginInit();
-            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.guna2PictureBox1);
             this.panel1.Controls.Add(this.LbUserName);
-            this.panel1.Controls.Add(this.BUserIcon);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(5, 5);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1291, 65);
+            this.panel1.Size = new System.Drawing.Size(1280, 65);
             this.panel1.TabIndex = 8;
+            // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2PictureBox1.Image = global::SalesManagementSystem.Properties.Resources.Purchasing;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(33, -1);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(78, 68);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox1.TabIndex = 13;
+            this.guna2PictureBox1.TabStop = false;
+            this.guna2PictureBox1.UseTransparentBackground = true;
             // 
             // LbUserName
             // 
@@ -60,60 +70,15 @@
             this.LbUserName.TabIndex = 12;
             this.LbUserName.Text = "Admin";
             // 
-            // BUserIcon
-            // 
-            this.BUserIcon.BackColor = System.Drawing.Color.Transparent;
-            this.BUserIcon.Image = global::SalesManagementSystem.Properties.Resources.Info;
-            this.BUserIcon.ImageActive = null;
-            this.BUserIcon.Location = new System.Drawing.Point(39, 0);
-            this.BUserIcon.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.BUserIcon.Name = "BUserIcon";
-            this.BUserIcon.Size = new System.Drawing.Size(75, 65);
-            this.BUserIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.BUserIcon.TabIndex = 11;
-            this.BUserIcon.TabStop = false;
-            this.BUserIcon.Zoom = 10;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.panel3);
-            this.panel4.Controls.Add(this.panel2);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1291, 702);
-            this.panel4.TabIndex = 9;
-            // 
-            // panel3
-            // 
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(964, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(327, 702);
-            this.panel3.TabIndex = 9;
-            // 
-            // panel2
-            // 
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(327, 702);
-            this.panel2.TabIndex = 6;
-            // 
             // UCPurchasing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(18F, 33F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel4);
             this.Name = "UCPurchasing";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BUserIcon)).EndInit();
-            this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -122,9 +87,6 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label LbUserName;
-        private Bunifu.Framework.UI.BunifuImageButton BUserIcon;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel2;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
     }
 }

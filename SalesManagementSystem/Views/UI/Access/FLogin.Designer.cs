@@ -33,7 +33,9 @@
             this.TUserName = new Guna.UI2.WinForms.Guna2TextBox();
             this.TUserPassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.BtnLogin = new Guna.UI2.WinForms.Guna2Button();
+            this.PBLogin = new Guna.UI2.WinForms.Guna2PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.PicBLogin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PBLogin)).BeginInit();
             this.SuspendLayout();
             // 
             // LinFrgotPassword
@@ -94,7 +96,7 @@
             this.TUserPassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.TUserPassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.TUserPassword.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TUserPassword.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TUserPassword.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.TUserPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.TUserPassword.IconLeft = global::SalesManagementSystem.Properties.Resources.password_Login;
             this.TUserPassword.Location = new System.Drawing.Point(410, 212);
@@ -110,21 +112,37 @@
             // 
             // BtnLogin
             // 
+            this.BtnLogin.BackColor = System.Drawing.Color.White;
             this.BtnLogin.BorderRadius = 20;
             this.BtnLogin.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.BtnLogin.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.BtnLogin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.BtnLogin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.BtnLogin.FillColor = System.Drawing.Color.RoyalBlue;
-            this.BtnLogin.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnLogin.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold);
             this.BtnLogin.ForeColor = System.Drawing.Color.White;
-            this.BtnLogin.Location = new System.Drawing.Point(410, 309);
+            this.BtnLogin.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.BtnLogin.ImageSize = new System.Drawing.Size(40, 40);
+            this.BtnLogin.Location = new System.Drawing.Point(410, 316);
             this.BtnLogin.Margin = new System.Windows.Forms.Padding(4);
             this.BtnLogin.Name = "BtnLogin";
             this.BtnLogin.Size = new System.Drawing.Size(324, 50);
             this.BtnLogin.TabIndex = 2;
+            this.BtnLogin.Tag = "";
             this.BtnLogin.Text = "LOGIN";
             this.BtnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // PBLogin
+            // 
+            this.PBLogin.Image = global::SalesManagementSystem.Properties.Resources.Updategif;
+            this.PBLogin.ImageRotate = 0F;
+            this.PBLogin.Location = new System.Drawing.Point(375, 224);
+            this.PBLogin.Name = "PBLogin";
+            this.PBLogin.Size = new System.Drawing.Size(392, 221);
+            this.PBLogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PBLogin.TabIndex = 19;
+            this.PBLogin.TabStop = false;
+            this.PBLogin.Visible = false;
             // 
             // FLogin
             // 
@@ -137,15 +155,20 @@
             this.Controls.Add(this.TUserName);
             this.Controls.Add(this.LinFrgotPassword);
             this.Controls.Add(this.PicBLogin);
+            this.Controls.Add(this.PBLogin);
             this.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
             this.Name = "FLogin";
             this.Text = "FLogin";
+            this.Load += new System.EventHandler(this.FFrgotPassword_Load);
+            this.Controls.SetChildIndex(this.PBLogin, 0);
             this.Controls.SetChildIndex(this.PicBLogin, 0);
             this.Controls.SetChildIndex(this.LinFrgotPassword, 0);
             this.Controls.SetChildIndex(this.TUserName, 0);
             this.Controls.SetChildIndex(this.TUserPassword, 0);
             this.Controls.SetChildIndex(this.BtnLogin, 0);
+            this.Controls.SetChildIndex(this.LabWelcome, 0);
             ((System.ComponentModel.ISupportInitialize)(this.PicBLogin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PBLogin)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,5 +181,6 @@
         private Guna.UI2.WinForms.Guna2TextBox TUserName;
         private Guna.UI2.WinForms.Guna2TextBox TUserPassword;
         private Guna.UI2.WinForms.Guna2Button BtnLogin;
+        private Guna.UI2.WinForms.Guna2PictureBox PBLogin;
     }
 }

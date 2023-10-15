@@ -9,13 +9,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SalesManagementSystem.Views.UI.Human
+namespace SalesManagementSystem.Views.UI.Inventory
 {
-    public partial class UserControl1 : UCParent
+    public partial class UCGategory : UCParent
     {
-        public UserControl1()
+        public UCGategory()
         {
             InitializeComponent();
+        }
+
+        private void guna2ImageButton2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TexCategoryName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

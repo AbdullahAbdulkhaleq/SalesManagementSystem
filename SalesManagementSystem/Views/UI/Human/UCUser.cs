@@ -14,21 +14,15 @@ using System.Windows.Forms;
 
 namespace SalesManagementSystem.Views.UI.Human
 {
-    public partial class UCCustomer : UCParent, ICustomer
+    public partial class UCUser : UCParent
     {
         CustomerPresenter presenter;
-        public UCCustomer()
+        public UCUser()
         {
             InitializeComponent();
-            presenter = new CustomerPresenter(this);
         }
+        
 
-
-        public string CustomerName { get => TCustomerName.Text; set => TCustomerName.Text = value; }
-        public string CustomerEmail { get => TCustomerEmail.Text; set => TCustomerEmail.Text = value; }
-        public string CustomerPhone { get => TCustomerPhone.Text; set => TCustomerPhone.Text = value; }
-        public string CustomerType { get => TCustomerType.Text; set => TCustomerType.Text = value; }
-        public int CustomerId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         private void BDeleteAll_Click(object sender, EventArgs e)
         {
@@ -63,7 +57,7 @@ namespace SalesManagementSystem.Views.UI.Human
         {
             try
             {
-                if(TCustomerType.Text!="" && TCustomerPhone.Text!="" && TCustomerEmail.Text!=""&& TCustomerName.Text!="" )
+                if(true)
                 {
                     if (presenter.Insert())
                     {
@@ -74,7 +68,6 @@ namespace SalesManagementSystem.Views.UI.Human
                 }
                 else
                 {
-                    erore("place Insert in all input");
                 }
             }
             catch
@@ -105,15 +98,6 @@ namespace SalesManagementSystem.Views.UI.Human
         }
         private void clear()
         {
-            TCustomerName.Clear();
-            TCustomerEmail.Clear();
-            TCustomerPhone.Clear();
-            TCustomerType.ResetText();
-        }
-
-        private void BtbMenuProduct_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

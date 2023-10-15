@@ -7,6 +7,8 @@ using SalesManagementSystem.Views.Interface;
 using SalesManagementSystem.Views.UI.Designer;
 using System;
 using System.Windows.Forms;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace SalesManagementSystem.Views.UI.Access
 {
@@ -18,7 +20,6 @@ namespace SalesManagementSystem.Views.UI.Access
         public string UserPassword { get => TUserPassword.Text; set => TUserPassword.Text = value; }
 
         private int LoginCount = 1;
-        private bool Logined = false;
 
         public FLogin()
         {
@@ -34,42 +35,108 @@ namespace SalesManagementSystem.Views.UI.Access
             frgotPassw.Show();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void FFrgotPassword_Load(object sender, EventArgs e)
         {
+
+        }
+        private void TaskLogin()
+        {
+
+
             try
             {
-                if(this.LoginCount <=3)
+                this.Invoke((MethodInvoker)(() =>
                 {
-                    int Message = Presenter.Login();
-
-                    FMessage.Print(Presenter.Login());
-                    if(Message >5)
+                    BtnLogin.Visible = false;
+                    PBLogin.Visible = true;
+                }));
+                if (TUserPassword.Text != "" && TUserName.Text != "")
+                {
+                    FDMain F = FunLogin.Login(Presenter.Login());
+                    if (F != null)
                     {
+                        F.LabWelcome.Visible = true;
+                        F.LabWelcome.Text = "Welcome :" + TUserName.Text.ToUpper();
+                        F.Show();
 
-                        if (Message == 1)
-                        {
-                            FHomePurchasing fHome = new FHomePurchasing();
-                            fHome.Show();
-                        }
+                        this.Hide();
                     }
                     else
                     {
-                        MessageBox.Show($"User {UserName} is Block place ");
+
+                        this.LoginCount++;
+                        MessageBox.Show("ERROR");
                     }
                 }
                 else
                 {
-                    FMessage.Print(UserName);
+                    MessageBox.Show("Set ALL DATA");
                 }
             }
-             catch
+            catch
             {
-               
+
             }
             finally
             {
-                this.LoginCount++;
+                this.Invoke((MethodInvoker)(() =>
+                {
+                    TUserName.Text = "";
+                    TUserPassword.Text = "";
+                    TUserName.Focus();
+                    PBLogin.Visible = false;
+                    BtnLogin.Visible = true;
+                }));
             }
+   
+          }
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            if(this.LoginCount==3)
+            {
+                MessageBox.Show($"لقد ادخلت عدت مرات من المحاولات الخطائة ");
+                Application.Exit();
+            }
+            else
+            {
+                Thread t1 = new Thread(TaskLogin);
+                t1.Start();
+
+            }
+        //    try
+        //    {
+        //        if(this.LoginCount <=3)
+        //        {
+        //            int Message = Presenter.Login();
+
+        //            FMessage.Print(Presenter.Login());
+        //            if(Message >5)
+        //            {
+
+        //                if (Message == 1)
+        //                {
+        //                    FHomePurchasing fHome = new FHomePurchasing();
+        //                    fHome.Show();
+        //                }
+        //            }
+        //            else
+        //            {
+        //                MessageBox.Show($"User {UserName} is Block place ");
+        //            }
+        //        }
+        //        else
+        //        {
+        //            FMessage.Print(UserName);
+        //        }
+        //    }
+        //     catch
+        //    {
+               
+        //    }
+        //    finally
+        //    {
+        //        this.LoginCount++;
+        //    }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Guna.UI2.WinForms;
+using SalesManagementSystem.Views.Functions;
 using SalesManagementSystem.Views.UI.Designer;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,15 @@ namespace SalesManagementSystem.Views.UI
         {
             Guna2ImageButton button = (Guna2ImageButton)sender;
             PMenuClick.Location = new Point(1, button.Location.Y);
+            AddControls(FunAddUserControls.SetControl(button.Name));
+        }
+
+        private void AddControls (UserControl U)
+        {
+            PnlMain.Controls.Clear();
+            U.Dock = DockStyle.Fill;
+            PnlMain.Controls.Add(U);
+            U.BringToFront();
         }
     }
 }

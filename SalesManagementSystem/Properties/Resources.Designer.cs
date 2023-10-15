@@ -63,6 +63,16 @@ namespace SalesManagementSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Add {
+            get {
+                object obj = ResourceManager.GetObject("Add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Add_Customer {
             get {
                 object obj = ResourceManager.GetObject("Add_Customer", resourceCulture);
@@ -406,6 +416,16 @@ namespace SalesManagementSystem.Properties {
         internal static System.Drawing.Bitmap update {
             get {
                 object obj = ResourceManager.GetObject("update", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Updategif {
+            get {
+                object obj = ResourceManager.GetObject("Updategif", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

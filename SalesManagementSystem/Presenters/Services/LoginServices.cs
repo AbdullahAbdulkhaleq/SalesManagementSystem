@@ -15,7 +15,7 @@ namespace SalesManagementSystem.Presenters.Services
             //أسم الاجراء واسم المتغير المخرج منه مع اسماء جميع المتغيرات الازمة لتنفيذ هذه الاجراء
             //اذا كانت القيمة المرجعة ==1  اذا يوجد مستخدم بنفس اللسم وكلمة السر
 
-            return (DB.GetDate("PLogin", "exist", () => Login(UserName, UserPassword, DB.Command)));
+            return (DB.GetDate("PLogin", "@LoginStatus", () => Login(UserName, UserPassword, DB.Command)));
 
         }
         private static void Login(string UserName, string UserPassword, SqlCommand command)
