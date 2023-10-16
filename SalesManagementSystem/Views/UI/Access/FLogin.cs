@@ -34,11 +34,7 @@ namespace SalesManagementSystem.Views.UI.Access
             FFrgotPassword frgotPassw = new FFrgotPassword();
             frgotPassw.Show();
         }
-
-        private void FFrgotPassword_Load(object sender, EventArgs e)
-        {
-
-        }
+/*
         private void TaskLogin()
         {
 
@@ -58,8 +54,10 @@ namespace SalesManagementSystem.Views.UI.Access
                         F.LabWelcome.Visible = true;
                         F.LabWelcome.Text = "Welcome :" + TUserName.Text.ToUpper();
                         F.Show();
-
-                        this.Hide();
+                        this.Invoke((MethodInvoker)(() =>
+                        {
+                            this.Hide();
+                        }));
                     }
                     else
                     {
@@ -89,7 +87,7 @@ namespace SalesManagementSystem.Views.UI.Access
                 }));
             }
    
-          }
+          }*/
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if(this.LoginCount==3)
@@ -99,8 +97,46 @@ namespace SalesManagementSystem.Views.UI.Access
             }
             else
             {
-                Thread t1 = new Thread(TaskLogin);
-                t1.Start();
+                /*                Thread t1 = new Thread(TaskLogin);
+                                t1.Start();*/
+                try
+                {
+                        BtnLogin.Visible = false;
+                        PBLogin.Visible = true;
+                    if (TUserPassword.Text != "" && TUserName.Text != "")
+                    {
+                        FDMain F = FunLogin.Login(Presenter.Login());
+                        if (F != null)
+                        {
+                            F.LabWelcome.Visible = true;
+                            F.LabWelcome.Text = "Welcome :" + (TUserName.Text.ToUpper());
+                            F.Show();
+                                this.Hide();
+                        }
+                        else
+                        {
+
+                            this.LoginCount++;
+                            MessageBox.Show("ERROR");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Set ALL DATA");
+                    }
+                }
+                catch
+                {
+
+                }
+                finally
+                {
+                        TUserName.Text = "";
+                        TUserPassword.Text = "";
+                        TUserName.Focus();
+                        PBLogin.Visible = false;
+                        BtnLogin.Visible = true;
+                }
 
             }
         //    try

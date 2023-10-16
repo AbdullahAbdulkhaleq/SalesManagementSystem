@@ -14,7 +14,7 @@ namespace SalesManagementSystem.Views.UI.Sales
             InitializeComponent();
         }
 
-        private void BtnMenuPur_Click(object sender, EventArgs e)
+        private void BtnMenu_Click(object sender, EventArgs e)
         {
             Guna2ImageButton button = (Guna2ImageButton)sender;
             PMenuClick.Location = new Point(1, button.Location.Y);
@@ -25,6 +25,16 @@ namespace SalesManagementSystem.Views.UI.Sales
             PnlMain.Controls.Clear();
             U.Dock = DockStyle.Fill;
             PnlMain.Controls.Add(U);
+
+        }
+
+        private void BtnMenuSettings_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2ImageButton2_Click(object sender, EventArgs e)
+        {
 
         }
     }

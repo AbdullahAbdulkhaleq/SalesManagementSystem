@@ -159,7 +159,6 @@
             this.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
             this.Name = "FLogin";
             this.Text = "FLogin";
-            this.Load += new System.EventHandler(this.FFrgotPassword_Load);
             this.Controls.SetChildIndex(this.PBLogin, 0);
             this.Controls.SetChildIndex(this.PicBLogin, 0);
             this.Controls.SetChildIndex(this.LinFrgotPassword, 0);

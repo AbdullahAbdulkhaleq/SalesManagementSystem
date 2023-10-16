@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SalesManagementSystem.Views.UI.Access;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -30,6 +31,20 @@ namespace SalesManagementSystem.Views.UI.Designer
         private void BtnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void BtnMenuUser_Click(object sender, EventArgs e)
+        {
+            FLogin fLogin = new FLogin();
+            this.Hide();
+            fLogin.Show();
+        }
+
+        private void BtnLogOut_Click(object sender, EventArgs e)
+        {
+            FLogin fLogin = new FLogin();
+            this.Hide();
+            fLogin.Show();
         }
     }
 }

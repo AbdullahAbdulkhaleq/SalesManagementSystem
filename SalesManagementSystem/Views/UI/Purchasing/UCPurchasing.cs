@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace SalesManagementSystem.Views.UI.Purchasing
 {
-    public partial class UCPurchasing : UCParent
+    public partial class UCPurchasing : UCInvoice
     {
         public UCPurchasing()
         {

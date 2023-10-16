@@ -40,5 +40,23 @@ namespace SalesManagementSystemServer.Properties {
                 return ((string)(this["DataBaseName"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("127.0.0.1")]
+        public string ServerIP {
+            get {
+                return ((string)(this["ServerIP"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("55555")]
+        public int ServerPort {
+            get {
+                return ((int)(this["ServerPort"]));
+            }
+        }
     }
 }

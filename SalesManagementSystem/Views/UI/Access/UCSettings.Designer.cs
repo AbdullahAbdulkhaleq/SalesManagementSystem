@@ -1,6 +1,6 @@
-﻿namespace SalesManagementSystem.Views.UI.Sales
+﻿namespace SalesManagementSystem.Views.UI.Designer
 {
-    partial class UCSales
+    partial class UCSettings
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,15 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // UCSales
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(18F, 33F);
+            components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "UCSales";
-            this.ResumeLayout(false);
-
         }
 
         #endregion

@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.TTPMain = new Guna.UI2.WinForms.Guna2HtmlToolTip();
-            this.BtnMenuStore = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.BtnMenuUnit = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.BtnMenuGategory = new Guna.UI2.WinForms.Guna2ImageButton();
             this.BtnMenuProduct = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.BtnMenuSales = new Guna.UI2.WinForms.Guna2ImageButton();
             this.BtnMenuPur = new Guna.UI2.WinForms.Guna2ImageButton();
             this.BtnMenuSettings = new Guna.UI2.WinForms.Guna2ImageButton();
             this.PnlMain = new Guna.UI2.WinForms.Guna2Panel();
             this.ucParent1 = new SalesManagementSystem.Views.UI.Designer.UCParent();
             this.PMenu = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.PMenuClick = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.BtnMenuInfo = new Guna.UI2.WinForms.Guna2ImageButton();
             this.PnlMain.SuspendLayout();
             this.PMenu.SuspendLayout();
             this.SuspendLayout();
@@ -47,67 +47,75 @@
             // 
             this.LabWelcome.Location = new System.Drawing.Point(95, 0);
             // 
+            // BtnExit
+            // 
+            this.BtnExit.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.BtnExit.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.BtnExit.HoverState.ImageSize = new System.Drawing.Size(39, 33);
+            this.BtnExit.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Normal;
+            this.BtnExit.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            // 
             // TTPMain
             // 
             this.TTPMain.AllowLinksHandling = true;
             this.TTPMain.MaximumSize = new System.Drawing.Size(0, 0);
             // 
-            // BtnMenuStore
+            // BtnMenuUnit
             // 
-            this.BtnMenuStore.BackColor = System.Drawing.Color.Transparent;
-            this.BtnMenuStore.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.BtnMenuStore.HoverState.ImageSize = new System.Drawing.Size(50, 50);
-            this.BtnMenuStore.Image = global::SalesManagementSystem.Properties.Resources.inventor;
-            this.BtnMenuStore.ImageOffset = new System.Drawing.Point(0, 0);
-            this.BtnMenuStore.ImageRotate = 0F;
-            this.BtnMenuStore.ImageSize = new System.Drawing.Size(42, 42);
-            this.BtnMenuStore.Location = new System.Drawing.Point(9, 524);
-            this.BtnMenuStore.Margin = new System.Windows.Forms.Padding(4);
-            this.BtnMenuStore.Name = "BtnMenuStore";
-            this.BtnMenuStore.PressedState.ImageSize = new System.Drawing.Size(50, 50);
-            this.BtnMenuStore.Size = new System.Drawing.Size(70, 70);
-            this.BtnMenuStore.TabIndex = 10;
-            this.TTPMain.SetToolTip(this.BtnMenuStore, " المخازن أدارة");
-            this.BtnMenuStore.UseTransparentBackground = true;
-            this.BtnMenuStore.Click += new System.EventHandler(this.BtnMenuPur_Click);
+            this.BtnMenuUnit.BackColor = System.Drawing.Color.Transparent;
+            this.BtnMenuUnit.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.BtnMenuUnit.HoverState.ImageSize = new System.Drawing.Size(50, 50);
+            this.BtnMenuUnit.Image = global::SalesManagementSystem.Properties.Resources.inventor;
+            this.BtnMenuUnit.ImageOffset = new System.Drawing.Point(0, 0);
+            this.BtnMenuUnit.ImageRotate = 0F;
+            this.BtnMenuUnit.ImageSize = new System.Drawing.Size(42, 42);
+            this.BtnMenuUnit.Location = new System.Drawing.Point(9, 549);
+            this.BtnMenuUnit.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnMenuUnit.Name = "BtnMenuUnit";
+            this.BtnMenuUnit.PressedState.ImageSize = new System.Drawing.Size(50, 50);
+            this.BtnMenuUnit.Size = new System.Drawing.Size(70, 70);
+            this.BtnMenuUnit.TabIndex = 10;
+            this.TTPMain.SetToolTip(this.BtnMenuUnit, " المخازن أدارة");
+            this.BtnMenuUnit.UseTransparentBackground = true;
+            this.BtnMenuUnit.Click += new System.EventHandler(this.BtnMenu_Click);
+            // 
+            // BtnMenuGategory
+            // 
+            this.BtnMenuGategory.BackColor = System.Drawing.Color.Transparent;
+            this.BtnMenuGategory.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.BtnMenuGategory.HoverState.ImageSize = new System.Drawing.Size(42, 27);
+            this.BtnMenuGategory.Image = global::SalesManagementSystem.Properties.Resources.ProductCategory;
+            this.BtnMenuGategory.ImageOffset = new System.Drawing.Point(0, 0);
+            this.BtnMenuGategory.ImageRotate = 0F;
+            this.BtnMenuGategory.ImageSize = new System.Drawing.Size(40, 25);
+            this.BtnMenuGategory.Location = new System.Drawing.Point(9, 417);
+            this.BtnMenuGategory.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnMenuGategory.Name = "BtnMenuGategory";
+            this.BtnMenuGategory.PressedState.ImageSize = new System.Drawing.Size(42, 27);
+            this.BtnMenuGategory.Size = new System.Drawing.Size(70, 70);
+            this.BtnMenuGategory.TabIndex = 9;
+            this.TTPMain.SetToolTip(this.BtnMenuGategory, "المنتجات أدارة ");
+            this.BtnMenuGategory.UseTransparentBackground = true;
+            this.BtnMenuGategory.Click += new System.EventHandler(this.BtnMenu_Click);
             // 
             // BtnMenuProduct
             // 
             this.BtnMenuProduct.BackColor = System.Drawing.Color.Transparent;
             this.BtnMenuProduct.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.BtnMenuProduct.HoverState.ImageSize = new System.Drawing.Size(50, 50);
+            this.BtnMenuProduct.HoverState.ImageSize = new System.Drawing.Size(44, 44);
             this.BtnMenuProduct.Image = global::SalesManagementSystem.Properties.Resources.products_icon;
             this.BtnMenuProduct.ImageOffset = new System.Drawing.Point(0, 0);
             this.BtnMenuProduct.ImageRotate = 0F;
             this.BtnMenuProduct.ImageSize = new System.Drawing.Size(42, 42);
-            this.BtnMenuProduct.Location = new System.Drawing.Point(9, 392);
+            this.BtnMenuProduct.Location = new System.Drawing.Point(9, 255);
             this.BtnMenuProduct.Margin = new System.Windows.Forms.Padding(4);
             this.BtnMenuProduct.Name = "BtnMenuProduct";
-            this.BtnMenuProduct.PressedState.ImageSize = new System.Drawing.Size(50, 50);
+            this.BtnMenuProduct.PressedState.ImageSize = new System.Drawing.Size(44, 44);
             this.BtnMenuProduct.Size = new System.Drawing.Size(70, 70);
-            this.BtnMenuProduct.TabIndex = 9;
-            this.TTPMain.SetToolTip(this.BtnMenuProduct, "المنتجات أدارة ");
+            this.BtnMenuProduct.TabIndex = 7;
+            this.TTPMain.SetToolTip(this.BtnMenuProduct, " المبيعات أدارة ");
             this.BtnMenuProduct.UseTransparentBackground = true;
-            this.BtnMenuProduct.Click += new System.EventHandler(this.BtnMenuPur_Click);
-            // 
-            // BtnMenuSales
-            // 
-            this.BtnMenuSales.BackColor = System.Drawing.Color.Transparent;
-            this.BtnMenuSales.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.BtnMenuSales.HoverState.ImageSize = new System.Drawing.Size(45, 30);
-            this.BtnMenuSales.Image = global::SalesManagementSystem.Properties.Resources.ProductCategory;
-            this.BtnMenuSales.ImageOffset = new System.Drawing.Point(0, 0);
-            this.BtnMenuSales.ImageRotate = 0F;
-            this.BtnMenuSales.ImageSize = new System.Drawing.Size(40, 25);
-            this.BtnMenuSales.Location = new System.Drawing.Point(9, 230);
-            this.BtnMenuSales.Margin = new System.Windows.Forms.Padding(4);
-            this.BtnMenuSales.Name = "BtnMenuSales";
-            this.BtnMenuSales.PressedState.ImageSize = new System.Drawing.Size(45, 30);
-            this.BtnMenuSales.Size = new System.Drawing.Size(70, 70);
-            this.BtnMenuSales.TabIndex = 7;
-            this.TTPMain.SetToolTip(this.BtnMenuSales, " المبيعات أدارة ");
-            this.BtnMenuSales.UseTransparentBackground = true;
-            this.BtnMenuSales.Click += new System.EventHandler(this.BtnMenuPur_Click);
+            this.BtnMenuProduct.Click += new System.EventHandler(this.BtnMenu_Click);
             // 
             // BtnMenuPur
             // 
@@ -118,7 +126,7 @@
             this.BtnMenuPur.ImageOffset = new System.Drawing.Point(0, 0);
             this.BtnMenuPur.ImageRotate = 0F;
             this.BtnMenuPur.ImageSize = new System.Drawing.Size(42, 42);
-            this.BtnMenuPur.Location = new System.Drawing.Point(9, 73);
+            this.BtnMenuPur.Location = new System.Drawing.Point(9, 98);
             this.BtnMenuPur.Margin = new System.Windows.Forms.Padding(4);
             this.BtnMenuPur.Name = "BtnMenuPur";
             this.BtnMenuPur.PressedState.ImageSize = new System.Drawing.Size(45, 45);
@@ -126,7 +134,7 @@
             this.BtnMenuPur.TabIndex = 5;
             this.TTPMain.SetToolTip(this.BtnMenuPur, "المشتريات أدارة ");
             this.BtnMenuPur.UseTransparentBackground = true;
-            this.BtnMenuPur.Click += new System.EventHandler(this.BtnMenuPur_Click);
+            this.BtnMenuPur.Click += new System.EventHandler(this.BtnMenu_Click);
             // 
             // BtnMenuSettings
             // 
@@ -137,7 +145,7 @@
             this.BtnMenuSettings.ImageOffset = new System.Drawing.Point(0, 0);
             this.BtnMenuSettings.ImageRotate = 0F;
             this.BtnMenuSettings.ImageSize = new System.Drawing.Size(40, 40);
-            this.BtnMenuSettings.Location = new System.Drawing.Point(11, 13);
+            this.BtnMenuSettings.Location = new System.Drawing.Point(12, 13);
             this.BtnMenuSettings.Margin = new System.Windows.Forms.Padding(4);
             this.BtnMenuSettings.Name = "BtnMenuSettings";
             this.BtnMenuSettings.PressedState.ImageSize = new System.Drawing.Size(42, 42);
@@ -145,6 +153,7 @@
             this.BtnMenuSettings.TabIndex = 3;
             this.TTPMain.SetToolTip(this.BtnMenuSettings, "ألاعدادات");
             this.BtnMenuSettings.UseTransparentBackground = true;
+            this.BtnMenuSettings.Click += new System.EventHandler(this.BtnMenu_Click);
             // 
             // PnlMain
             // 
@@ -172,43 +181,45 @@
             // 
             this.PMenu.BackColor = System.Drawing.Color.White;
             this.PMenu.BorderRadius = 1;
+            this.PMenu.Controls.Add(this.BtnMenuInfo);
             this.PMenu.Controls.Add(this.PMenuClick);
-            this.PMenu.Controls.Add(this.BtnMenuStore);
+            this.PMenu.Controls.Add(this.BtnMenuUnit);
+            this.PMenu.Controls.Add(this.BtnMenuGategory);
             this.PMenu.Controls.Add(this.BtnMenuProduct);
-            this.PMenu.Controls.Add(this.BtnMenuSales);
-            this.PMenu.Controls.Add(this.guna2ImageButton1);
             this.PMenu.Controls.Add(this.BtnMenuPur);
             this.PMenu.Controls.Add(this.BtnMenuSettings);
             this.PMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.PMenu.Location = new System.Drawing.Point(0, 0);
+            this.PMenu.Location = new System.Drawing.Point(0, 33);
             this.PMenu.Name = "PMenu";
-            this.PMenu.Size = new System.Drawing.Size(83, 750);
+            this.PMenu.Size = new System.Drawing.Size(83, 717);
             this.PMenu.TabIndex = 3;
             // 
             // PMenuClick
             // 
             this.PMenuClick.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.PMenuClick.Location = new System.Drawing.Point(1, 73);
+            this.PMenuClick.Location = new System.Drawing.Point(1, 98);
             this.PMenuClick.Name = "PMenuClick";
             this.PMenuClick.Size = new System.Drawing.Size(7, 70);
             this.PMenuClick.TabIndex = 0;
             // 
-            // guna2ImageButton1
+            // BtnMenuInfo
             // 
-            this.guna2ImageButton1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(45, 45);
-            this.guna2ImageButton1.Image = global::SalesManagementSystem.Properties.Resources.Info;
-            this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton1.ImageRotate = 0F;
-            this.guna2ImageButton1.ImageSize = new System.Drawing.Size(40, 40);
-            this.guna2ImageButton1.Location = new System.Drawing.Point(9, 660);
-            this.guna2ImageButton1.Margin = new System.Windows.Forms.Padding(4);
-            this.guna2ImageButton1.Name = "guna2ImageButton1";
-            this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(45, 45);
-            this.guna2ImageButton1.Size = new System.Drawing.Size(60, 60);
-            this.guna2ImageButton1.TabIndex = 4;
-            this.guna2ImageButton1.UseTransparentBackground = true;
+            this.BtnMenuInfo.BackColor = System.Drawing.Color.Transparent;
+            this.BtnMenuInfo.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.BtnMenuInfo.HoverState.ImageSize = new System.Drawing.Size(45, 45);
+            this.BtnMenuInfo.Image = global::SalesManagementSystem.Properties.Resources.Info;
+            this.BtnMenuInfo.ImageOffset = new System.Drawing.Point(0, 0);
+            this.BtnMenuInfo.ImageRotate = 0F;
+            this.BtnMenuInfo.ImageSize = new System.Drawing.Size(40, 40);
+            this.BtnMenuInfo.Location = new System.Drawing.Point(10, 644);
+            this.BtnMenuInfo.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnMenuInfo.Name = "BtnMenuInfo";
+            this.BtnMenuInfo.PressedState.ImageSize = new System.Drawing.Size(45, 45);
+            this.BtnMenuInfo.Size = new System.Drawing.Size(60, 60);
+            this.BtnMenuInfo.TabIndex = 11;
+            this.TTPMain.SetToolTip(this.BtnMenuInfo, "المساعدة [CTRL + F1]");
+            this.BtnMenuInfo.UseTransparentBackground = true;
+            this.BtnMenuInfo.Click += new System.EventHandler(this.BtnMenu_Click);
             // 
             // FHomeInventory
             // 
@@ -236,13 +247,13 @@
         private Guna.UI2.WinForms.Guna2CustomGradientPanel PMenu;
         private Guna.UI2.WinForms.Guna2ImageButton BtnMenuSettings;
         private Guna.UI2.WinForms.Guna2ImageButton BtnMenuPur;
-        private Guna.UI2.WinForms.Guna2ImageButton BtnMenuStore;
+        private Guna.UI2.WinForms.Guna2ImageButton BtnMenuUnit;
+        private Guna.UI2.WinForms.Guna2ImageButton BtnMenuGategory;
         private Guna.UI2.WinForms.Guna2ImageButton BtnMenuProduct;
-        private Guna.UI2.WinForms.Guna2ImageButton BtnMenuSales;
         private Guna.UI2.WinForms.Guna2HtmlToolTip TTPMain;
         private Guna.UI2.WinForms.Guna2Panel PMenuClick;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
         private Guna.UI2.WinForms.Guna2Panel PnlMain;
         private Designer.UCParent ucParent1;
+        private Guna.UI2.WinForms.Guna2ImageButton BtnMenuInfo;
     }
 }

@@ -34,7 +34,7 @@ namespace SalesManagementSystem.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("SalesManagementSystem1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("SalesManagementSystem")]
         public string DatabaseName {
             get {
                 return ((string)(this["DatabaseName"]));

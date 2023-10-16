@@ -37,5 +37,9 @@ namespace SalesManagementSystem.Views.UI.Access
 
         }
 
+        private void BtnExit_Click(object sender, EventArgs e)
+        {
+            FFrgotPassword.ActiveForm.Close();
+        }
     }
 }

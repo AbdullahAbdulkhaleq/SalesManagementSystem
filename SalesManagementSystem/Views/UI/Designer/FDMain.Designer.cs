@@ -36,6 +36,7 @@
             this.PHeader = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.PHeadController = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.LabWelcome = new System.Windows.Forms.Label();
+            this.BtnLogOut = new Guna.UI2.WinForms.Guna2ImageButton();
             this.PHeader.SuspendLayout();
             this.PHeadController.SuspendLayout();
             this.SuspendLayout();
@@ -50,7 +51,7 @@
             this.BtnExit.ImageOffset = new System.Drawing.Point(0, 0);
             this.BtnExit.ImageRotate = 0F;
             this.BtnExit.ImageSize = new System.Drawing.Size(34, 27);
-            this.BtnExit.Location = new System.Drawing.Point(68, 0);
+            this.BtnExit.Location = new System.Drawing.Point(116, 0);
             this.BtnExit.Name = "BtnExit";
             this.BtnExit.PressedState.ImageSize = new System.Drawing.Size(64, 64);
             this.BtnExit.Size = new System.Drawing.Size(32, 33);
@@ -93,13 +94,14 @@
             // 
             // PHeadController
             // 
+            this.PHeadController.Controls.Add(this.BtnLogOut);
             this.PHeadController.Controls.Add(this.BtnMinimized);
             this.PHeadController.Controls.Add(this.BtnExit);
             this.PHeadController.Dock = System.Windows.Forms.DockStyle.Right;
-            this.PHeadController.Location = new System.Drawing.Point(520, 0);
+            this.PHeadController.Location = new System.Drawing.Point(472, 0);
             this.PHeadController.Name = "PHeadController";
             this.PHeadController.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.PHeadController.Size = new System.Drawing.Size(110, 33);
+            this.PHeadController.Size = new System.Drawing.Size(158, 33);
             this.PHeadController.TabIndex = 7;
             // 
             // LabWelcome
@@ -112,6 +114,24 @@
             this.LabWelcome.TabIndex = 18;
             this.LabWelcome.Text = "Welcome ";
             this.LabWelcome.Visible = false;
+            // 
+            // BtnLogOut
+            // 
+            this.BtnLogOut.BackColor = System.Drawing.Color.Transparent;
+            this.BtnLogOut.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.BtnLogOut.HoverState.ImageSize = new System.Drawing.Size(33, 30);
+            this.BtnLogOut.Image = global::SalesManagementSystem.Properties.Resources.Logout;
+            this.BtnLogOut.ImageOffset = new System.Drawing.Point(0, 0);
+            this.BtnLogOut.ImageRotate = 0F;
+            this.BtnLogOut.ImageSize = new System.Drawing.Size(30, 27);
+            this.BtnLogOut.Location = new System.Drawing.Point(63, 0);
+            this.BtnLogOut.Name = "BtnLogOut";
+            this.BtnLogOut.PressedState.ImageSize = new System.Drawing.Size(33, 30);
+            this.BtnLogOut.Size = new System.Drawing.Size(32, 33);
+            this.BtnLogOut.TabIndex = 9;
+            this.min.SetToolTip(this.BtnLogOut, "تسجيل خروج");
+            this.BtnLogOut.UseTransparentBackground = true;
+            this.BtnLogOut.Click += new System.EventHandler(this.BtnLogOut_Click);
             // 
             // FDMain
             // 
@@ -140,7 +160,8 @@
         private Guna.UI2.WinForms.Guna2CustomGradientPanel PHeader;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel PHeadController;
         private Guna.UI2.WinForms.Guna2ImageButton BtnMinimized;
-        private Guna.UI2.WinForms.Guna2ImageButton BtnExit;
         public System.Windows.Forms.Label LabWelcome;
+        protected Guna.UI2.WinForms.Guna2ImageButton BtnExit;
+        protected Guna.UI2.WinForms.Guna2ImageButton BtnLogOut;
     }
 }

@@ -34,8 +34,14 @@
             this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.SuspendLayout();
             // 
-            // LabWelcome
+            // BtnExit
             // 
+            this.BtnExit.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.BtnExit.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.BtnExit.HoverState.ImageSize = new System.Drawing.Size(39, 33);
+            this.BtnExit.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Normal;
+            this.BtnExit.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.BtnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // TUserName
             // 

@@ -1,5 +1,5 @@
-﻿
-using SalesManagementSystem.Views.Enum;
+﻿using SalesManagementSystem.Views.Enum;
+using SalesManagementSystem.Views.UI.Designer;
 using SalesManagementSystem.Views.UI.Human;
 using SalesManagementSystem.Views.UI.Inventory;
 using SalesManagementSystem.Views.UI.Inventory_FUnit_FStore_FProduct;
@@ -55,6 +55,13 @@ namespace SalesManagementSystem.Views.Functions
                 case EUserControl.UCPurchasing:
                     return new UCPurchasing();
 
+                case EUserControl.UCSettings:
+                    return new UCSettings();
+
+
+                case EUserControl.BtnMenuInfo:
+                    return new UCSettings();
+
                 default: return new UserControl();
             }
         }
@@ -90,11 +97,11 @@ namespace SalesManagementSystem.Views.Functions
                 case "BtnMenuSales":
                     return EUserControl.UCSales;
 
-                case "1":
-                    return EUserControl.UCCustomer;
+                case "BtnMenuSettings":
+                    return EUserControl.UCSettings;
 
-                case "10":
-                    return EUserControl.UCCustomer;
+                case "BtnMenuInfo":
+                    return EUserControl.BtnMenuInfo;
 
                 case "11":
                     return EUserControl.UCCustomer;
@@ -108,7 +115,7 @@ namespace SalesManagementSystem.Views.Functions
                 case "14":
                     return EUserControl.UCCustomer;
 
-                default: return EUserControl.UCUser;
+                default: return EUserControl.Btn;
 
             }
         }

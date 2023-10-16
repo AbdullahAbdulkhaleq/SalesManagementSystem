@@ -12,7 +12,10 @@ namespace SalesManagementSystem.Views.Enum
         UCUnit ,
         UCStore,
         UCPurchasing ,
-        UCSales
+        UCSales,
+        UCSettings,
+        BtnMenuInfo ,
+        Btn
 
     }
 }
