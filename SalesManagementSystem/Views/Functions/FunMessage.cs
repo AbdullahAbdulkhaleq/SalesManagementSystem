@@ -1,53 +1,81 @@
 ﻿using System.Windows;
 using SalesManagementSystem.Views.Enum;
+using SalesManagementSystem.Views.UI.Designer;
 
 namespace SalesManagementSystem.Views.Functions
 {
     public class FunMessage
     {
-    
+        private static FMessage Messages = null;
+        public static void Print()
+        {
+            Print(false, "يرجاء أضافة جميع البيانات");
+
+        }
         public static void Print(int ErrorNumber, string Message = "")
         {
-            EErrorMessage Error = GetError(ErrorNumber);
+            Messages = new FMessage();
+            EErrorMessage Error = GetMessageType(ErrorNumber);
             switch (Error)
             {
                 case EErrorMessage.ThereAreNoErrors:
-                    MessageBox.Show($"Wolcom {Message}"," Wolcom ", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.OK);
+                    Messages.show($"Wolcom {Message}", $"Wolcom!", Properties.Resources.Info);
                     break;
                 case EErrorMessage.ErrorNotInsert:
-                    MessageBox.Show("ErrorNotFound", $"Error {Message} !", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
+                    Messages.show($"Error NotInsert", $"Error {Message} !", Properties.Resources.Close);
                     break;
                 case EErrorMessage.ErrorNotAvailableQuantity:
-                    MessageBox.Show("ErrorNotPresent", $"Error {Message}  !", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
+                    Messages.show($"ErrorNotPresent", $"Error {Message} !", Properties.Resources.Close);
                     break;
                 case EErrorMessage.ErrorNotFound:
-                    MessageBox.Show("ErrorInvalid", $"Error {Message} !", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
+                    Messages.show($"ErrorInvalid", $"Error {Message} !", Properties.Resources.Close);
                     break;
                 case EErrorMessage.ErrorNotDeleted:
-                    MessageBox.Show("ErrorInvalidValue!", $"Error {Message} ", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
+                    Messages.show($"ErrorInvalidValue", $"Error {Message} !", Properties.Resources.Close);
                     break;
                 case EErrorMessage.ErrorNotUpdated:
-                    MessageBox.Show("ErrorInvalidType", $"Error {Message} !", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
+                    Messages.show($"ErrorInvalidType", $"Error {Message} !", Properties.Resources.Close);
                     break;
                 case EErrorMessage.ErrorInvalidValueType:
-                    MessageBox.Show("ErrorInvalidValueType", $"Error {Message} !", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
+                    Messages.show($"ErrorInvalidValueType", $"Error {Message} !", Properties.Resources.Close);
                     break;
-/*                case EErrorMessage.ErrorBlockUser:
-                    MessageBox.Show("ErrorBlockUser", $"Error {Message} !", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
-                    break;
-                case EErrorMessage.ErrorBlockGroup:
-                    MessageBox.Show("ErrorBlockUser", $"Error {Message} !", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
-                    break;*/
+                /*                case EErrorMessage.ErrorBlockUser:
+                                    MessageBox.Show("ErrorBlockUser", $"Error {Message} !", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
+                                    break;
+                                case EErrorMessage.ErrorBlockGroup:
+                                    MessageBox.Show("ErrorBlockUser", $"Error {Message} !", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
+                                    break;*/
 
-                default: 
-                    MessageBox.Show("UnknownError", $"Error {Message} !", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
+                default:
+                    Messages.show($"UnknownError", $"Error {Message} !", Properties.Resources.Close);
                     break;
-
 
             }
+            Messages.Show();
         }
 
-        private static EErrorMessage GetError(int ErrorNumber)
+        public static void Print(bool Status, string Message)
+        {
+            Messages = new FMessage();
+            if (Status)
+            {
+                Messages.show(Message);
+            }
+            else
+            {
+                Messages.show($" {Message}", "Error", Properties.Resources.Close);
+            }
+
+            Messages.Show();
+        }
+        public static void Print(string Message, string Caption, bool status = true)
+        {
+
+            Print(false, "يرجاء أضافة جميع البيانات");
+
+        }
+
+        public static EErrorMessage GetMessageType(int ErrorNumber)
         {
             switch(ErrorNumber)
             {

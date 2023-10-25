@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace SalesManagementSystem.Views.UI.Sales
 {
-    public partial class UCSales :UCInvoice
+    public partial class UCSales : UCInvoice
     {
         public UCSales()
         {

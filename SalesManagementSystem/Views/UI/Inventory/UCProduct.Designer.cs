@@ -28,157 +28,225 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label7 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.LabPrice = new System.Windows.Forms.Label();
-            this.LabNumber = new System.Windows.Forms.Label();
-            this.LabName = new System.Windows.Forms.Label();
-            this.guna2ComboBox2 = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.TProductCategoryId = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.TxtProductName = new Guna.UI2.WinForms.Guna2TextBox();
-            this.TtxLastPrice = new Guna.UI2.WinForms.Guna2TextBox();
-            this.TxtProductNumber = new Guna.UI2.WinForms.Guna2TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.BtnMenuUser = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.ComBUnitId = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ComBStoreId = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.ComBProductCategoryId = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.BtnInsert = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.LabPhone = new System.Windows.Forms.Label();
+            this.LabManage = new System.Windows.Forms.Label();
+            this.LabAddress = new System.Windows.Forms.Label();
+            this.LabName = new System.Windows.Forms.Label();
+            this.TxtProductName = new Guna.UI2.WinForms.Guna2TextBox();
+            this.TxtLastPrice = new Guna.UI2.WinForms.Guna2TextBox();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
-            // label7
+            // BtnRefersh
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft YaHei", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label7.Location = new System.Drawing.Point(19, 439);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(97, 21);
-            this.label7.TabIndex = 30;
-            this.label7.Text = "Products Id";
+            this.BtnRefersh.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.BtnRefersh.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.BtnRefersh.HoverState.ImageSize = new System.Drawing.Size(33, 33);
+            this.BtnRefersh.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Normal;
+            this.BtnRefersh.PressedState.ImageSize = new System.Drawing.Size(33, 33);
+            this.BtnRefersh.Click += new System.EventHandler(this.BtnRefersh_Click);
             // 
-            // label5
+            // BtnPrint
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft YaHei", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label5.Location = new System.Drawing.Point(20, 368);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(97, 21);
-            this.label5.TabIndex = 29;
-            this.label5.Text = "Products Id";
+            this.BtnPrint.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.BtnPrint.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.BtnPrint.HoverState.ImageSize = new System.Drawing.Size(33, 33);
+            this.BtnPrint.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Normal;
+            this.BtnPrint.PressedState.ImageSize = new System.Drawing.Size(33, 33);
             // 
-            // label6
+            // panel1
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft YaHei", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label6.Location = new System.Drawing.Point(19, 299);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(79, 21);
-            this.label6.TabIndex = 28;
-            this.label6.Text = "Category";
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.ComBUnitId);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.ComBStoreId);
+            this.panel1.Controls.Add(this.ComBProductCategoryId);
+            this.panel1.Controls.Add(this.BtnInsert);
+            this.panel1.Controls.Add(this.guna2PictureBox2);
+            this.panel1.Controls.Add(this.LabPhone);
+            this.panel1.Controls.Add(this.LabManage);
+            this.panel1.Controls.Add(this.LabAddress);
+            this.panel1.Controls.Add(this.LabName);
+            this.panel1.Controls.Add(this.TxtProductName);
+            this.panel1.Controls.Add(this.TxtLastPrice);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(5, 5);
+            this.panel1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(320, 690);
+            this.panel1.TabIndex = 22;
             // 
-            // LabPrice
+            // label2
             // 
-            this.LabPrice.AutoSize = true;
-            this.LabPrice.Font = new System.Drawing.Font("Microsoft YaHei", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabPrice.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.LabPrice.Location = new System.Drawing.Point(20, 217);
-            this.LabPrice.Name = "LabPrice";
-            this.LabPrice.Size = new System.Drawing.Size(47, 21);
-            this.LabPrice.TabIndex = 27;
-            this.LabPrice.Text = "Price";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft YaHei", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label2.Location = new System.Drawing.Point(14, 444);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 21);
+            this.label2.TabIndex = 47;
+            this.label2.Text = "Address";
             // 
-            // LabNumber
+            // ComBUnitId
             // 
-            this.LabNumber.AutoSize = true;
-            this.LabNumber.Font = new System.Drawing.Font("Microsoft YaHei", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabNumber.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.LabNumber.Location = new System.Drawing.Point(19, 135);
-            this.LabNumber.Name = "LabNumber";
-            this.LabNumber.Size = new System.Drawing.Size(73, 21);
-            this.LabNumber.TabIndex = 26;
-            this.LabNumber.Text = "Number";
+            this.ComBUnitId.BackColor = System.Drawing.Color.Transparent;
+            this.ComBUnitId.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
+            this.ComBUnitId.BorderRadius = 10;
+            this.ComBUnitId.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ComBUnitId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComBUnitId.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.ComBUnitId.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.ComBUnitId.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComBUnitId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.ComBUnitId.ItemHeight = 30;
+            this.ComBUnitId.Items.AddRange(new object[] {
+            "خامل ",
+            "نشط"});
+            this.ComBUnitId.Location = new System.Drawing.Point(11, 468);
+            this.ComBUnitId.Name = "ComBUnitId";
+            this.ComBUnitId.Size = new System.Drawing.Size(284, 36);
+            this.ComBUnitId.TabIndex = 46;
+            this.ComBUnitId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label1.Location = new System.Drawing.Point(14, 373);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 21);
+            this.label1.TabIndex = 45;
+            this.label1.Text = "Address";
+            // 
+            // ComBStoreId
+            // 
+            this.ComBStoreId.BackColor = System.Drawing.Color.Transparent;
+            this.ComBStoreId.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
+            this.ComBStoreId.BorderRadius = 10;
+            this.ComBStoreId.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ComBStoreId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComBStoreId.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.ComBStoreId.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.ComBStoreId.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComBStoreId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.ComBStoreId.ItemHeight = 30;
+            this.ComBStoreId.Items.AddRange(new object[] {
+            "خامل ",
+            "نشط"});
+            this.ComBStoreId.Location = new System.Drawing.Point(11, 397);
+            this.ComBStoreId.Name = "ComBStoreId";
+            this.ComBStoreId.Size = new System.Drawing.Size(284, 36);
+            this.ComBStoreId.TabIndex = 44;
+            this.ComBStoreId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // ComBProductCategoryId
+            // 
+            this.ComBProductCategoryId.BackColor = System.Drawing.Color.Transparent;
+            this.ComBProductCategoryId.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
+            this.ComBProductCategoryId.BorderRadius = 10;
+            this.ComBProductCategoryId.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ComBProductCategoryId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComBProductCategoryId.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.ComBProductCategoryId.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.ComBProductCategoryId.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComBProductCategoryId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.ComBProductCategoryId.ItemHeight = 30;
+            this.ComBProductCategoryId.Items.AddRange(new object[] {
+            "خامل ",
+            "نشط"});
+            this.ComBProductCategoryId.Location = new System.Drawing.Point(11, 324);
+            this.ComBProductCategoryId.Name = "ComBProductCategoryId";
+            this.ComBProductCategoryId.Size = new System.Drawing.Size(284, 36);
+            this.ComBProductCategoryId.TabIndex = 43;
+            this.ComBProductCategoryId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // BtnInsert
+            // 
+            this.BtnInsert.BackColor = System.Drawing.Color.Transparent;
+            this.BtnInsert.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.BtnInsert.HoverState.ImageSize = new System.Drawing.Size(50, 50);
+            this.BtnInsert.Image = global::SalesManagementSystem.Properties.Resources.Add;
+            this.BtnInsert.ImageOffset = new System.Drawing.Point(0, 0);
+            this.BtnInsert.ImageRotate = 0F;
+            this.BtnInsert.ImageSize = new System.Drawing.Size(42, 42);
+            this.BtnInsert.Location = new System.Drawing.Point(117, 542);
+            this.BtnInsert.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnInsert.Name = "BtnInsert";
+            this.BtnInsert.PressedState.ImageSize = new System.Drawing.Size(50, 50);
+            this.BtnInsert.Size = new System.Drawing.Size(70, 70);
+            this.BtnInsert.TabIndex = 42;
+            this.BtnInsert.UseTransparentBackground = true;
+            this.BtnInsert.Click += new System.EventHandler(this.BtnInsert_Click);
+            // 
+            // guna2PictureBox2
+            // 
+            this.guna2PictureBox2.Image = global::SalesManagementSystem.Properties.Resources.Info;
+            this.guna2PictureBox2.ImageRotate = 0F;
+            this.guna2PictureBox2.Location = new System.Drawing.Point(117, 50);
+            this.guna2PictureBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2PictureBox2.Name = "guna2PictureBox2";
+            this.guna2PictureBox2.Size = new System.Drawing.Size(82, 76);
+            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox2.TabIndex = 2;
+            this.guna2PictureBox2.TabStop = false;
+            // 
+            // LabPhone
+            // 
+            this.LabPhone.AutoSize = true;
+            this.LabPhone.Font = new System.Drawing.Font("Microsoft YaHei", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabPhone.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.LabPhone.Location = new System.Drawing.Point(14, 211);
+            this.LabPhone.Name = "LabPhone";
+            this.LabPhone.Size = new System.Drawing.Size(59, 21);
+            this.LabPhone.TabIndex = 31;
+            this.LabPhone.Text = "Phone";
+            // 
+            // LabManage
+            // 
+            this.LabManage.AutoSize = true;
+            this.LabManage.Location = new System.Drawing.Point(34, 12);
+            this.LabManage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LabManage.Name = "LabManage";
+            this.LabManage.Size = new System.Drawing.Size(257, 33);
+            this.LabManage.TabIndex = 3;
+            this.LabManage.Text = "Manage Products";
+            // 
+            // LabAddress
+            // 
+            this.LabAddress.AutoSize = true;
+            this.LabAddress.Font = new System.Drawing.Font("Microsoft YaHei", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabAddress.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.LabAddress.Location = new System.Drawing.Point(14, 300);
+            this.LabAddress.Name = "LabAddress";
+            this.LabAddress.Size = new System.Drawing.Size(70, 21);
+            this.LabAddress.TabIndex = 30;
+            this.LabAddress.Text = "Address";
             // 
             // LabName
             // 
             this.LabName.AutoSize = true;
             this.LabName.Font = new System.Drawing.Font("Microsoft YaHei", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabName.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.LabName.Location = new System.Drawing.Point(24, 54);
+            this.LabName.Location = new System.Drawing.Point(20, 134);
             this.LabName.Name = "LabName";
             this.LabName.Size = new System.Drawing.Size(56, 21);
-            this.LabName.TabIndex = 25;
+            this.LabName.TabIndex = 29;
             this.LabName.Text = "Name";
-            // 
-            // guna2ComboBox2
-            // 
-            this.guna2ComboBox2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ComboBox2.BorderRadius = 10;
-            this.guna2ComboBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.guna2ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.guna2ComboBox2.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox2.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2ComboBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.guna2ComboBox2.ItemHeight = 30;
-            this.guna2ComboBox2.Location = new System.Drawing.Point(15, 393);
-            this.guna2ComboBox2.Name = "guna2ComboBox2";
-            this.guna2ComboBox2.Size = new System.Drawing.Size(284, 36);
-            this.guna2ComboBox2.TabIndex = 24;
-            this.guna2ComboBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // guna2ComboBox1
-            // 
-            this.guna2ComboBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ComboBox1.BorderRadius = 10;
-            this.guna2ComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.guna2ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.guna2ComboBox1.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.guna2ComboBox1.ItemHeight = 30;
-            this.guna2ComboBox1.Location = new System.Drawing.Point(15, 464);
-            this.guna2ComboBox1.Name = "guna2ComboBox1";
-            this.guna2ComboBox1.Size = new System.Drawing.Size(284, 36);
-            this.guna2ComboBox1.TabIndex = 23;
-            this.guna2ComboBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(18, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(283, 37);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Manage Products";
-            // 
-            // TProductCategoryId
-            // 
-            this.TProductCategoryId.BackColor = System.Drawing.Color.Transparent;
-            this.TProductCategoryId.BorderRadius = 10;
-            this.TProductCategoryId.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.TProductCategoryId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.TProductCategoryId.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TProductCategoryId.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TProductCategoryId.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TProductCategoryId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.TProductCategoryId.ItemHeight = 30;
-            this.TProductCategoryId.Location = new System.Drawing.Point(15, 325);
-            this.TProductCategoryId.Name = "TProductCategoryId";
-            this.TProductCategoryId.Size = new System.Drawing.Size(284, 36);
-            this.TProductCategoryId.TabIndex = 22;
-            this.TProductCategoryId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // TxtProductName
             // 
-            this.TxtProductName.BackColor = System.Drawing.Color.Transparent;
             this.TxtProductName.BorderRadius = 10;
             this.TxtProductName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.TxtProductName.DefaultText = "";
@@ -187,169 +255,73 @@
             this.TxtProductName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.TxtProductName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.TxtProductName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TxtProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.TxtProductName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TxtProductName.Location = new System.Drawing.Point(15, 78);
-            this.TxtProductName.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtProductName.Location = new System.Drawing.Point(11, 161);
+            this.TxtProductName.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.TxtProductName.Name = "TxtProductName";
             this.TxtProductName.PasswordChar = '\0';
+            this.TxtProductName.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
             this.TxtProductName.PlaceholderText = "Product Name";
             this.TxtProductName.SelectedText = "";
             this.TxtProductName.Size = new System.Drawing.Size(284, 50);
             this.TxtProductName.TabIndex = 21;
             this.TxtProductName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // TtxLastPrice
+            // TxtLastPrice
             // 
-            this.TtxLastPrice.BorderRadius = 10;
-            this.TtxLastPrice.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TtxLastPrice.DefaultText = "";
-            this.TtxLastPrice.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.TtxLastPrice.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.TtxLastPrice.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TtxLastPrice.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TtxLastPrice.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TtxLastPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TtxLastPrice.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TtxLastPrice.Location = new System.Drawing.Point(15, 242);
-            this.TtxLastPrice.Margin = new System.Windows.Forms.Padding(4);
-            this.TtxLastPrice.Name = "TtxLastPrice";
-            this.TtxLastPrice.PasswordChar = '\0';
-            this.TtxLastPrice.PlaceholderText = "Last Price";
-            this.TtxLastPrice.SelectedText = "";
-            this.TtxLastPrice.Size = new System.Drawing.Size(284, 50);
-            this.TtxLastPrice.TabIndex = 17;
-            this.TtxLastPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // TxtProductNumber
-            // 
-            this.TxtProductNumber.BorderRadius = 10;
-            this.TxtProductNumber.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TxtProductNumber.DefaultText = "";
-            this.TxtProductNumber.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.TxtProductNumber.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.TxtProductNumber.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TxtProductNumber.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TxtProductNumber.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TxtProductNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtProductNumber.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TxtProductNumber.Location = new System.Drawing.Point(15, 160);
-            this.TxtProductNumber.Margin = new System.Windows.Forms.Padding(4);
-            this.TxtProductNumber.Name = "TxtProductNumber";
-            this.TxtProductNumber.PasswordChar = '\0';
-            this.TxtProductNumber.PlaceholderText = "Product Number";
-            this.TxtProductNumber.SelectedText = "";
-            this.TxtProductNumber.Size = new System.Drawing.Size(284, 50);
-            this.TxtProductNumber.TabIndex = 18;
-            this.TxtProductNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.BtnMenuUser);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.LabPrice);
-            this.panel1.Controls.Add(this.LabNumber);
-            this.panel1.Controls.Add(this.LabName);
-            this.panel1.Controls.Add(this.guna2ComboBox2);
-            this.panel1.Controls.Add(this.guna2ComboBox1);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.TProductCategoryId);
-            this.panel1.Controls.Add(this.TxtProductName);
-            this.panel1.Controls.Add(this.TtxLastPrice);
-            this.panel1.Controls.Add(this.TxtProductNumber);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(5, 5);
-            this.panel1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(320, 690);
-            this.panel1.TabIndex = 14;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.guna2Button1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(325, 5);
-            this.panel2.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(960, 690);
-            this.panel2.TabIndex = 17;
-            // 
-            // guna2Button1
-            // 
-            this.guna2Button1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2Button1.BorderRadius = 10;
-            this.guna2Button1.BorderThickness = 1;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.White;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.guna2Button1.Image = global::SalesManagementSystem.Properties.Resources.update;
-            this.guna2Button1.Location = new System.Drawing.Point(810, 10);
-            this.guna2Button1.Margin = new System.Windows.Forms.Padding(4);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(140, 33);
-            this.guna2Button1.TabIndex = 2;
-            this.guna2Button1.Text = "Research";
-            // 
-            // BtnMenuUser
-            // 
-            this.BtnMenuUser.BackColor = System.Drawing.Color.Transparent;
-            this.BtnMenuUser.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.BtnMenuUser.HoverState.ImageSize = new System.Drawing.Size(50, 50);
-            this.BtnMenuUser.Image = global::SalesManagementSystem.Properties.Resources.Add;
-            this.BtnMenuUser.ImageOffset = new System.Drawing.Point(0, 0);
-            this.BtnMenuUser.ImageRotate = 0F;
-            this.BtnMenuUser.ImageSize = new System.Drawing.Size(42, 42);
-            this.BtnMenuUser.Location = new System.Drawing.Point(124, 528);
-            this.BtnMenuUser.Margin = new System.Windows.Forms.Padding(4);
-            this.BtnMenuUser.Name = "BtnMenuUser";
-            this.BtnMenuUser.PressedState.ImageSize = new System.Drawing.Size(50, 50);
-            this.BtnMenuUser.Size = new System.Drawing.Size(70, 70);
-            this.BtnMenuUser.TabIndex = 41;
-            this.BtnMenuUser.UseTransparentBackground = true;
+            this.TxtLastPrice.BorderRadius = 10;
+            this.TxtLastPrice.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TxtLastPrice.DefaultText = "";
+            this.TxtLastPrice.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.TxtLastPrice.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.TxtLastPrice.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtLastPrice.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtLastPrice.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtLastPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.TxtLastPrice.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtLastPrice.Location = new System.Drawing.Point(11, 238);
+            this.TxtLastPrice.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.TxtLastPrice.Name = "TxtLastPrice";
+            this.TxtLastPrice.PasswordChar = '\0';
+            this.TxtLastPrice.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
+            this.TxtLastPrice.PlaceholderText = "Store Phone";
+            this.TxtLastPrice.SelectedText = "";
+            this.TxtLastPrice.Size = new System.Drawing.Size(284, 50);
+            this.TxtLastPrice.TabIndex = 17;
+            this.TxtLastPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // UCProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(18F, 33F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
             this.Name = "UCProduct";
+            this.Controls.SetChildIndex(this.PnlMain, 0);
+            this.Controls.SetChildIndex(this.panel1, 0);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label LabPrice;
-        private System.Windows.Forms.Label LabNumber;
-        private System.Windows.Forms.Label LabName;
-        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox2;
-        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
-        private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2ComboBox TProductCategoryId;
-        private Guna.UI2.WinForms.Guna2TextBox TxtProductName;
-        private Guna.UI2.WinForms.Guna2TextBox TtxLastPrice;
-        private Guna.UI2.WinForms.Guna2TextBox TxtProductNumber;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
-        private Guna.UI2.WinForms.Guna2ImageButton BtnMenuUser;
+        private Guna.UI2.WinForms.Guna2ImageButton BtnInsert;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
+        private System.Windows.Forms.Label LabPhone;
+        private System.Windows.Forms.Label LabManage;
+        private System.Windows.Forms.Label LabAddress;
+        private System.Windows.Forms.Label LabName;
+        private Guna.UI2.WinForms.Guna2TextBox TxtProductName;
+        private Guna.UI2.WinForms.Guna2TextBox TxtLastPrice;
+        private Guna.UI2.WinForms.Guna2ComboBox ComBStoreId;
+        private Guna.UI2.WinForms.Guna2ComboBox ComBProductCategoryId;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private Guna.UI2.WinForms.Guna2ComboBox ComBUnitId;
     }
 }

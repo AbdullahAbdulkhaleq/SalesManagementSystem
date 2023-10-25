@@ -30,18 +30,18 @@ namespace SalesManagementSystem.Views.UI
         private void AddControl(UserControl U)
         {
             PnlMain.Controls.Clear();
-            U.Dock = DockStyle.Fill;
-            PnlMain.Controls.Add(U);
-        }
+            try
+            {
+                UCChild u = (UCChild)U;
+                u.Dock = DockStyle.Fill;
+                PnlMain.Controls.Add(u);
+            }
+            catch
+            {
+                U.Dock = DockStyle.Fill;
+                PnlMain.Controls.Add(U);
 
-        private void BtnMenuSettings_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BtnMenuInfo_Click(object sender, EventArgs e)
-        {
-
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using SalesManagementSystem.Views.Enum;
 using SalesManagementSystem.Views.UI;
+using SalesManagementSystem.Views.UI.Access;
 using SalesManagementSystem.Views.UI.Designer;
 using SalesManagementSystem.Views.UI.Purchasing;
 using SalesManagementSystem.Views.UI.Sales;
@@ -41,6 +42,9 @@ namespace SalesManagementSystem.Views.Functions
                 case 5:
                     return ELogin.LoginBlock;
 
+                case 40404:
+                    return ELogin.LoginErrorInLog;
+
                 default:
                     return ELogin.LoginNotFound;
             }
@@ -63,10 +67,13 @@ namespace SalesManagementSystem.Views.Functions
                     return new FHomePurchasing();
 
                 case ELogin.LoginInventory:
-                    return new FHomePurchasing();
+                    return new FHomeInventory();
 
                 case ELogin.LoginBlock:
-                    return new FHomeAdmin();
+                    return new FError("المعذرة هذه المستخدم محظور");
+
+                case ELogin.LoginErrorInLog:
+                    return new FError("يوجد خطاء في تسجيل الدخول يرجاء  التأكد من الاتصال ");
 
                 default:
                     return null;

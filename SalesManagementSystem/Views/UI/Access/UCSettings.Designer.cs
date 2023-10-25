@@ -28,8 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // UCSettings
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(18F, 33F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Name = "UCSettings";
+            this.ResumeLayout(false);
+
         }
 
         #endregion

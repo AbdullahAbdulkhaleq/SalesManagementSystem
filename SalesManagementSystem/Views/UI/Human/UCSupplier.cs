@@ -1,4 +1,5 @@
 ﻿using SalesManagementSystem.Presenters.Presenters;
+using SalesManagementSystem.Views.Functions;
 using SalesManagementSystem.Views.Interface;
 using SalesManagementSystem.Views.UI.Designer;
 using System;
@@ -13,9 +14,16 @@ using System.Windows.Forms;
 
 namespace SalesManagementSystem.Views.UI.Human
 {
-    public partial class UCSupplier : UCParent , ISupplier
+    public partial class UCSupplier : UCChild , ISupplier
     {
-        private SupplierPresenter presenter;
+        private SupplierPresenter presenter = null;
+
+        public int SupplierId { get; set; }
+        public string SupplierName { get => TxtSupplierName.Text; set => TxtSupplierName.Text = value; }
+        public string SupplierEmail { get => TxtSupplierEmail.Text; set => TxtSupplierEmail.Text = value; }
+        public string SupplierPhone { get => TxtSupplierPhone.Text; set => TxtSupplierPhone.Text = value; }
+        public string SupplierBrand { get => TxtSupplierBrand.Text; set => TxtSupplierBrand.Text = value; }
+        public string SupplierType { get => ComBSupplierType.Text; set => ComBSupplierType.Text = value; }
 
         public UCSupplier()
         {
@@ -23,80 +31,40 @@ namespace SalesManagementSystem.Views.UI.Human
             presenter = new SupplierPresenter(this);
         }
 
-        public int SupplierId { get; set; }
-        public string SupplierName { get => TSupplierName.Text; set => TSupplierName.Text = value; }
-        public string SupplierEmail { get => TSupplierEmail.Text; set => TSupplierEmail.Text = value; }
-        public string SupplierPhone { get => TSupplierPhone.Text; set => TSupplierPhone.Text = value; }
-        public string SupplierBrand { get => TSupplierBrand.Text; set => TSupplierBrand.Text = value; }
-        public string SupplierType { get => TSupplierType.Text; set => TSupplierType.Text = value; }
-
-        private void BInsert_Click(object sender, EventArgs e)
+        private void BtnInsert_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (TxtSupplierName.Text != string.Empty && TxtSupplierEmail.Text != string.Empty && TxtSupplierPhone.Text != string.Empty && TxtSupplierBrand.Text != string.Empty)
+                {
+                    FunMessage.Print(presenter.Insert(), "Insert");
+                }
+                else
+                {
+                    FunMessage.Print();
+                }
+            }
+            catch
+            {
+                FunMessage.Print();
+            }
+            finally
+            {
+                Clear();
+            }
+        }
+        void Clear()
+        {
+            TxtSupplierName.Text = string.Empty;
+            TxtSupplierPhone.Text = string.Empty;
+            TxtSupplierName.Text = string.Empty;
+            TxtSupplierBrand.Text = string.Empty;
         }
 
-        private void UCSupplier_Load(object sender, EventArgs e)
+        private void BtnRefersh_Click(object sender, EventArgs e)
         {
 
-        }
-
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-
-        private void guna2PictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TCustomerPhone_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void BInsert_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TCustomerEmail_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LbManageProducts_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-        private void panel1_MouseEnter(object sender, EventArgs e)
-        {
-        }
-
-        private void TSupplierId_MouseEnter(object sender, EventArgs e)
-        {
-        }
-
-        private void panel1_MouseEnter_1(object sender, EventArgs e)
-        {
-
-        /*    if (TSupplierId.Text == "")
-                TSupplierId.Text = presenter.GetSupplierId().ToString();*/
-        }
-
-        private void guna2ImageButton1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2ImageButton1_Click_1(object sender, EventArgs e)
-        {
-
+            DGV.DataSource = presenter.s();
         }
     }
 }

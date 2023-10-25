@@ -18,13 +18,26 @@ namespace SalesManagementSystem.Views.UI.Sales
         {
             Guna2ImageButton button = (Guna2ImageButton)sender;
             PMenuClick.Location = new Point(1, button.Location.Y);
-            AddControl(FunAddUserControls.SetControl(button.Name));
+            AddControl((FunAddUserControls.SetControl(button.Name)));
         }
         private void AddControl(UserControl U)
         {
             PnlMain.Controls.Clear();
-            U.Dock = DockStyle.Fill;
-            PnlMain.Controls.Add(U);
+            try
+            {
+                UCChild u = (UCChild)U;
+                u.Dock = DockStyle.Fill;
+                PnlMain.Controls.Add(u);
+            }
+            catch
+            {
+                U.Dock = DockStyle.Fill;
+                PnlMain.Controls.Add(U);
+            }
+            finally
+            {
+
+            }
 
         }
 

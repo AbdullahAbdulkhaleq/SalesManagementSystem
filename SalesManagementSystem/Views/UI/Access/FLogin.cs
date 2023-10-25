@@ -31,7 +31,7 @@ namespace SalesManagementSystem.Views.UI.Access
 
         private void LinFrgotPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            FFrgotPassword frgotPassw = new FFrgotPassword();
+            FRecoveryPassword frgotPassw = new FRecoveryPassword();
             frgotPassw.Show();
         }
 /*
@@ -101,8 +101,8 @@ namespace SalesManagementSystem.Views.UI.Access
                                 t1.Start();*/
                 try
                 {
-                        BtnLogin.Visible = false;
-                        PBLogin.Visible = true;
+                    BtnLogin.Visible = false;
+                    PBLogin.Visible = true;
                     if (TUserPassword.Text != "" && TUserName.Text != "")
                     {
                         FDMain F = FunLogin.Login(Presenter.Login());
@@ -111,18 +111,17 @@ namespace SalesManagementSystem.Views.UI.Access
                             F.LabWelcome.Visible = true;
                             F.LabWelcome.Text = "Welcome :" + (TUserName.Text.ToUpper());
                             F.Show();
-                                this.Hide();
+                            this.Hide();
                         }
                         else
                         {
-
                             this.LoginCount++;
-                            MessageBox.Show("ERROR");
+                            MessageBox.Show("خطاء في كلمة المرور او اسم المستخدم","خطاء",MessageBoxButtons.OK,MessageBoxIcon.Error);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Set ALL DATA");
+                        FunMessage.Print("يرجاء ادخال اسم المستخدم وكلمة المرور", "تنبيه");
                     }
                 }
                 catch

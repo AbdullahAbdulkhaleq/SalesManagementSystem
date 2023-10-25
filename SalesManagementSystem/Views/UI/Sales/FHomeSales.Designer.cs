@@ -171,7 +171,7 @@
             this.PnlMain.Controls.Add(this.ucParent1);
             this.PnlMain.Location = new System.Drawing.Point(91, 46);
             this.PnlMain.Name = "PnlMain";
-            this.PnlMain.Size = new System.Drawing.Size(1290, 700);
+            this.PnlMain.Size = new System.Drawing.Size(1296, 718);
             this.PnlMain.TabIndex = 13;
             // 
             // ucParent1
@@ -183,7 +183,7 @@
             this.ucParent1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.ucParent1.Name = "ucParent1";
             this.ucParent1.Padding = new System.Windows.Forms.Padding(5);
-            this.ucParent1.Size = new System.Drawing.Size(1290, 700);
+            this.ucParent1.Size = new System.Drawing.Size(1296, 718);
             this.ucParent1.TabIndex = 14;
             // 
             // FHomeSales

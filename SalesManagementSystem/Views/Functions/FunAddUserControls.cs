@@ -12,19 +12,12 @@ namespace SalesManagementSystem.Views.Functions
     public class FunAddUserControls
     {
 
-        public  static UserControl SetControl(string UserCont)
+        public  static UCParent SetControl(string UserCont)
         {
             return (SetControl(GetControl(UserCont)));
         }
-        /*        public static Panel SetControlToPanel(string UserCont)
-        {
-            Panel p = new Panel();
-            UserControl con = (SetControl(GetControl(UserCont)));
-            con.Dock = DockStyle.Fill;
-            p.Controls.Add(con);
-           return p ;
-        }*/
-        private static UserControl SetControl(EUserControl U)
+
+        private static UCParent SetControl(EUserControl U)
         {
             switch (U)
             {
@@ -41,7 +34,7 @@ namespace SalesManagementSystem.Views.Functions
                     return new UCProduct();
 
                 case EUserControl.UCGategory:
-                    return new UCGategory();
+                    return new UCCategory();
 
                 case EUserControl.UCUnit:
                     return new UCUnit();
@@ -62,7 +55,7 @@ namespace SalesManagementSystem.Views.Functions
                 case EUserControl.BtnMenuInfo:
                     return new UCSettings();
 
-                default: return new UserControl();
+                default: return new UCChild();
             }
         }
 

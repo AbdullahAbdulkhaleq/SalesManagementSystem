@@ -9,23 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SalesManagementSystem.Views.UI.Inventory
+namespace SalesManagementSystem.Views.UI.Access
 {
-    public partial class UCGategory : UCParent
+    public partial class FError : FDMain
     {
-        public UCGategory()
+        public FError(string Message)
         {
             InitializeComponent();
-        }
-
-        private void guna2ImageButton2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TexCategoryName_TextChanged(object sender, EventArgs e)
-        {
-
+            LabMessage.Text = Message;
         }
     }
 }

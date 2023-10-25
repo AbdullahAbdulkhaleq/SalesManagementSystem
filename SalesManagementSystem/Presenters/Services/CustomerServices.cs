@@ -14,21 +14,21 @@ namespace SalesManagementSystem.Presenters.Services
     static class CustomerServices
     {
 
-        public static bool CustomerInsert(CustomerModel customer)
+        public static int CustomerInsert(CustomerModel customer)
         {
-            return DB.SetDate("P_Insert", () => CustomerInsert(customer, DB.Command));
+            return DB.SetDate("P_Insert", "@Sccessfully", () => CustomerInsert(customer, DB.Command));
         }
         private static void CustomerInsert(CustomerModel customer, SqlCommand command)
         {
-            command.Parameters.Add("@TableName", SqlDbType.NVarChar).Value = "";
+            command.Parameters.Add("@TableName", SqlDbType.NVarChar).Value = "Customer";
             command.Parameters.Add("@Name", SqlDbType.NVarChar).Value = customer.CustomerName;
             command.Parameters.Add("@Email", SqlDbType.NVarChar).Value = customer.CustomerEmail;
             command.Parameters.Add("@Type", SqlDbType.NVarChar).Value = customer.CustomerType;
             command.Parameters.Add("@Phone", SqlDbType.NVarChar).Value = customer.CustomerPhone;
         }
-        public static bool CustomerDeleteAll()
+        public static int CustomerDeleteAll()
         {
-            return DB.SetDate("", () => CustomerDeleteAll("", DB.Command));
+            return DB.SetDate("P_DeleteAll", "@Sccessfully", () => CustomerDeleteAll("", DB.Command));
         }
         private static void CustomerDeleteAll(string UserNaem, SqlCommand command)
         {
@@ -56,11 +56,11 @@ namespace SalesManagementSystem.Presenters.Services
         }
         public static DataTable CustomerSelect(CustomerModel customer)
         {
-            return DB.GetDate("a", () => CustomerSelect(customer, DB.Command));
+            return DB.GetDate("P_Select_All", () => CustomerSelect( DB.Command));
         }
-        private static void CustomerSelect(CustomerModel customer, SqlCommand command)
+        private static void CustomerSelect( SqlCommand command)
         {
-            command.Parameters.Add("@CustomerId", SqlDbType.Int).Value = customer.CustomerId;
+            command.Parameters.Add("@TableName", SqlDbType.NVarChar).Value = "Customer";
         }
         public static int GetCustomerId()
         {

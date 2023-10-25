@@ -8,7 +8,7 @@ namespace SalesManagementSystem.Models
 {
     public class UnitModel
     {
-        public int MyProperty { get; set; }
+        public int UnitId { get; set; }
         public string UnitCode { get; set; }
         public string UnitDesc { get; set; }
     }

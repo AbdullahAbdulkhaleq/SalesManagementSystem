@@ -1,21 +1,63 @@
-﻿using SalesManagementSystem.Views.UI.Designer;
+﻿using SalesManagementSystem.Presenters.Presenters;
+using SalesManagementSystem.Views.Functions;
+using SalesManagementSystem.Views.Interface;
+using SalesManagementSystem.Views.UI.Designer;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace SalesManagementSystem.Views.UI.Inventory_FUnit_FStore_FProduct
 {
-    public partial class UCUnit : UCParent
+    public partial class UCUnit : UCChild, IUnit
     {
+        private UnitPresenter presenter = null;
         public UCUnit()
         {
             InitializeComponent();
+            presenter = new UnitPresenter(this);
         }
+
+        public int UnitId { get => 0; set => throw new NotImplementedException(); }
+        public string UnitCode { get => TxtUnitName.Text; set => TxtUnitName.Text = value; }
+        public string UnitDesc { get => TxtUnitDescription.Text; set => TxtUnitDescription.Text = value; }
+
+        private void UCUnit_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnInsert_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (TxtUnitName.Text != string.Empty && TxtUnitDescription.Text != string.Empty)
+                {
+                    FunMessage.Print(presenter.Insert(), "Insert");
+                }
+                else
+                {
+                    FunMessage.Print();
+                }
+            }
+            catch
+            {
+                FunMessage.Print();
+            }
+            finally
+            {
+                Clear();
+            }
+        }
+
+        void Clear()
+        {
+            TxtUnitName.Text = string.Empty;
+            TxtUnitDescription.Text = string.Empty;
+        }
+
+        private void BtnRefersh_Click(object sender, EventArgs e)
+        {
+
+            DGV.DataSource = presenter.Select();
+        }
+
     }
 }

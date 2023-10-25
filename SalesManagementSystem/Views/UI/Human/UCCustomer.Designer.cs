@@ -29,70 +29,85 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.BtnMenuUser = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.LabCategory = new System.Windows.Forms.Label();
+            this.BtnInsert = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.LabType = new System.Windows.Forms.Label();
             this.LabEmail = new System.Windows.Forms.Label();
             this.LabPhone = new System.Windows.Forms.Label();
             this.LabName = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.TCustomerType = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.TCustomerName = new Guna.UI2.WinForms.Guna2TextBox();
-            this.TCustomerEmail = new Guna.UI2.WinForms.Guna2TextBox();
-            this.TCustomerPhone = new Guna.UI2.WinForms.Guna2TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.LabManage = new System.Windows.Forms.Label();
+            this.ComBCustomerType = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.TxtCustomerName = new Guna.UI2.WinForms.Guna2TextBox();
+            this.TxtCustomerEmail = new Guna.UI2.WinForms.Guna2TextBox();
+            this.TxtCustomerPhone = new Guna.UI2.WinForms.Guna2TextBox();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // BtnRefersh
+            // 
+            this.BtnRefersh.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.BtnRefersh.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.BtnRefersh.HoverState.ImageSize = new System.Drawing.Size(33, 33);
+            this.BtnRefersh.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Normal;
+            this.BtnRefersh.PressedState.ImageSize = new System.Drawing.Size(33, 33);
+            this.BtnRefersh.Click += new System.EventHandler(this.BtnRefersh_Click);
+            // 
+            // BtnPrint
+            // 
+            this.BtnPrint.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.BtnPrint.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.BtnPrint.HoverState.ImageSize = new System.Drawing.Size(33, 33);
+            this.BtnPrint.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Normal;
+            this.BtnPrint.PressedState.ImageSize = new System.Drawing.Size(33, 33);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.BtnMenuUser);
-            this.panel1.Controls.Add(this.LabCategory);
+            this.panel1.Controls.Add(this.BtnInsert);
+            this.panel1.Controls.Add(this.LabType);
             this.panel1.Controls.Add(this.LabEmail);
             this.panel1.Controls.Add(this.LabPhone);
             this.panel1.Controls.Add(this.LabName);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.TCustomerType);
-            this.panel1.Controls.Add(this.TCustomerName);
-            this.panel1.Controls.Add(this.TCustomerEmail);
-            this.panel1.Controls.Add(this.TCustomerPhone);
+            this.panel1.Controls.Add(this.LabManage);
+            this.panel1.Controls.Add(this.ComBCustomerType);
+            this.panel1.Controls.Add(this.TxtCustomerName);
+            this.panel1.Controls.Add(this.TxtCustomerEmail);
+            this.panel1.Controls.Add(this.TxtCustomerPhone);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(5, 5);
             this.panel1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(320, 690);
-            this.panel1.TabIndex = 16;
+            this.panel1.TabIndex = 20;
             // 
-            // BtnMenuUser
+            // BtnInsert
             // 
-            this.BtnMenuUser.BackColor = System.Drawing.Color.Transparent;
-            this.BtnMenuUser.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.BtnMenuUser.HoverState.ImageSize = new System.Drawing.Size(50, 50);
-            this.BtnMenuUser.Image = global::SalesManagementSystem.Properties.Resources.Add;
-            this.BtnMenuUser.ImageOffset = new System.Drawing.Point(0, 0);
-            this.BtnMenuUser.ImageRotate = 0F;
-            this.BtnMenuUser.ImageSize = new System.Drawing.Size(42, 42);
-            this.BtnMenuUser.Location = new System.Drawing.Point(124, 462);
-            this.BtnMenuUser.Margin = new System.Windows.Forms.Padding(4);
-            this.BtnMenuUser.Name = "BtnMenuUser";
-            this.BtnMenuUser.PressedState.ImageSize = new System.Drawing.Size(50, 50);
-            this.BtnMenuUser.Size = new System.Drawing.Size(70, 70);
-            this.BtnMenuUser.TabIndex = 41;
-            this.BtnMenuUser.UseTransparentBackground = true;
+            this.BtnInsert.BackColor = System.Drawing.Color.Transparent;
+            this.BtnInsert.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.BtnInsert.HoverState.ImageSize = new System.Drawing.Size(50, 50);
+            this.BtnInsert.Image = global::SalesManagementSystem.Properties.Resources.Add;
+            this.BtnInsert.ImageOffset = new System.Drawing.Point(0, 0);
+            this.BtnInsert.ImageRotate = 0F;
+            this.BtnInsert.ImageSize = new System.Drawing.Size(42, 42);
+            this.BtnInsert.Location = new System.Drawing.Point(124, 462);
+            this.BtnInsert.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnInsert.Name = "BtnInsert";
+            this.BtnInsert.PressedState.ImageSize = new System.Drawing.Size(50, 50);
+            this.BtnInsert.Size = new System.Drawing.Size(70, 70);
+            this.BtnInsert.TabIndex = 41;
+            this.BtnInsert.UseTransparentBackground = true;
+            this.BtnInsert.Click += new System.EventHandler(this.BtnInsert_Click);
             // 
-            // LabCategory
+            // LabType
             // 
-            this.LabCategory.AutoSize = true;
-            this.LabCategory.Font = new System.Drawing.Font("Microsoft YaHei", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabCategory.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.LabCategory.Location = new System.Drawing.Point(15, 376);
-            this.LabCategory.Name = "LabCategory";
-            this.LabCategory.Size = new System.Drawing.Size(79, 21);
-            this.LabCategory.TabIndex = 34;
-            this.LabCategory.Text = "Category";
+            this.LabType.AutoSize = true;
+            this.LabType.Font = new System.Drawing.Font("Microsoft YaHei", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabType.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.LabType.Location = new System.Drawing.Point(15, 376);
+            this.LabType.Name = "LabType";
+            this.LabType.Size = new System.Drawing.Size(46, 21);
+            this.LabType.TabIndex = 34;
+            this.LabType.Text = "Type";
             // 
             // LabEmail
             // 
@@ -127,164 +142,134 @@
             this.LabName.TabIndex = 31;
             this.LabName.Text = "Name";
             // 
-            // label1
+            // LabManage
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(34, 12);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(257, 33);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Manage Products";
+            this.LabManage.AutoSize = true;
+            this.LabManage.Location = new System.Drawing.Point(31, 12);
+            this.LabManage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LabManage.Name = "LabManage";
+            this.LabManage.Size = new System.Drawing.Size(269, 33);
+            this.LabManage.TabIndex = 3;
+            this.LabManage.Text = "Manage Customer";
             // 
-            // TCustomerType
+            // ComBCustomerType
             // 
-            this.TCustomerType.BackColor = System.Drawing.Color.Transparent;
-            this.TCustomerType.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
-            this.TCustomerType.BorderRadius = 10;
-            this.TCustomerType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.TCustomerType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.TCustomerType.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TCustomerType.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TCustomerType.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TCustomerType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.TCustomerType.ItemHeight = 30;
-            this.TCustomerType.Location = new System.Drawing.Point(8, 401);
-            this.TCustomerType.Margin = new System.Windows.Forms.Padding(4);
-            this.TCustomerType.Name = "TCustomerType";
-            this.TCustomerType.Size = new System.Drawing.Size(303, 36);
-            this.TCustomerType.TabIndex = 22;
-            this.TCustomerType.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ComBCustomerType.BackColor = System.Drawing.Color.Transparent;
+            this.ComBCustomerType.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
+            this.ComBCustomerType.BorderRadius = 10;
+            this.ComBCustomerType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ComBCustomerType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComBCustomerType.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.ComBCustomerType.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.ComBCustomerType.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComBCustomerType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.ComBCustomerType.ItemHeight = 30;
+            this.ComBCustomerType.Items.AddRange(new object[] {
+            "محلي",
+            "خارجي"});
+            this.ComBCustomerType.Location = new System.Drawing.Point(8, 401);
+            this.ComBCustomerType.Margin = new System.Windows.Forms.Padding(4);
+            this.ComBCustomerType.Name = "ComBCustomerType";
+            this.ComBCustomerType.Size = new System.Drawing.Size(303, 36);
+            this.ComBCustomerType.TabIndex = 22;
+            this.ComBCustomerType.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // TCustomerName
+            // TxtCustomerName
             // 
-            this.TCustomerName.BorderRadius = 10;
-            this.TCustomerName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TCustomerName.DefaultText = "";
-            this.TCustomerName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.TCustomerName.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.TCustomerName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TCustomerName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TCustomerName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TCustomerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TCustomerName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TCustomerName.Location = new System.Drawing.Point(8, 115);
-            this.TCustomerName.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.TCustomerName.Name = "TCustomerName";
-            this.TCustomerName.PasswordChar = '\0';
-            this.TCustomerName.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
-            this.TCustomerName.PlaceholderText = "Customer Name";
-            this.TCustomerName.SelectedText = "";
-            this.TCustomerName.Size = new System.Drawing.Size(303, 55);
-            this.TCustomerName.TabIndex = 21;
-            this.TCustomerName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TxtCustomerName.BorderRadius = 10;
+            this.TxtCustomerName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TxtCustomerName.DefaultText = "";
+            this.TxtCustomerName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.TxtCustomerName.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.TxtCustomerName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtCustomerName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtCustomerName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtCustomerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtCustomerName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtCustomerName.Location = new System.Drawing.Point(8, 115);
+            this.TxtCustomerName.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.TxtCustomerName.Name = "TxtCustomerName";
+            this.TxtCustomerName.PasswordChar = '\0';
+            this.TxtCustomerName.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
+            this.TxtCustomerName.PlaceholderText = "Customer Name";
+            this.TxtCustomerName.SelectedText = "";
+            this.TxtCustomerName.Size = new System.Drawing.Size(303, 55);
+            this.TxtCustomerName.TabIndex = 21;
+            this.TxtCustomerName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // TCustomerEmail
+            // TxtCustomerEmail
             // 
-            this.TCustomerEmail.BorderRadius = 10;
-            this.TCustomerEmail.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TCustomerEmail.DefaultText = "";
-            this.TCustomerEmail.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.TCustomerEmail.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.TCustomerEmail.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TCustomerEmail.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TCustomerEmail.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TCustomerEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TCustomerEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TCustomerEmail.Location = new System.Drawing.Point(8, 310);
-            this.TCustomerEmail.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.TCustomerEmail.Name = "TCustomerEmail";
-            this.TCustomerEmail.PasswordChar = '\0';
-            this.TCustomerEmail.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
-            this.TCustomerEmail.PlaceholderText = "Customer Email";
-            this.TCustomerEmail.SelectedText = "";
-            this.TCustomerEmail.Size = new System.Drawing.Size(303, 55);
-            this.TCustomerEmail.TabIndex = 17;
-            this.TCustomerEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TxtCustomerEmail.BorderRadius = 10;
+            this.TxtCustomerEmail.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TxtCustomerEmail.DefaultText = "";
+            this.TxtCustomerEmail.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.TxtCustomerEmail.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.TxtCustomerEmail.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtCustomerEmail.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtCustomerEmail.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtCustomerEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtCustomerEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtCustomerEmail.Location = new System.Drawing.Point(8, 310);
+            this.TxtCustomerEmail.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.TxtCustomerEmail.Name = "TxtCustomerEmail";
+            this.TxtCustomerEmail.PasswordChar = '\0';
+            this.TxtCustomerEmail.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
+            this.TxtCustomerEmail.PlaceholderText = "Customer Email";
+            this.TxtCustomerEmail.SelectedText = "";
+            this.TxtCustomerEmail.Size = new System.Drawing.Size(303, 55);
+            this.TxtCustomerEmail.TabIndex = 17;
+            this.TxtCustomerEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // TCustomerPhone
+            // TxtCustomerPhone
             // 
-            this.TCustomerPhone.BorderRadius = 10;
-            this.TCustomerPhone.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TCustomerPhone.DefaultText = "";
-            this.TCustomerPhone.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.TCustomerPhone.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.TCustomerPhone.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TCustomerPhone.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TCustomerPhone.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TCustomerPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TCustomerPhone.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TCustomerPhone.Location = new System.Drawing.Point(7, 211);
-            this.TCustomerPhone.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.TCustomerPhone.Name = "TCustomerPhone";
-            this.TCustomerPhone.PasswordChar = '\0';
-            this.TCustomerPhone.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
-            this.TCustomerPhone.PlaceholderText = "Customer Phone";
-            this.TCustomerPhone.SelectedText = "";
-            this.TCustomerPhone.Size = new System.Drawing.Size(303, 55);
-            this.TCustomerPhone.TabIndex = 18;
-            this.TCustomerPhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.guna2Button1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(325, 5);
-            this.panel2.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(960, 690);
-            this.panel2.TabIndex = 17;
-            // 
-            // guna2Button1
-            // 
-            this.guna2Button1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2Button1.BorderRadius = 10;
-            this.guna2Button1.BorderThickness = 1;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.White;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.guna2Button1.Image = global::SalesManagementSystem.Properties.Resources.update;
-            this.guna2Button1.Location = new System.Drawing.Point(810, 10);
-            this.guna2Button1.Margin = new System.Windows.Forms.Padding(4);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(140, 33);
-            this.guna2Button1.TabIndex = 2;
-            this.guna2Button1.Text = "Research";
+            this.TxtCustomerPhone.BorderRadius = 10;
+            this.TxtCustomerPhone.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TxtCustomerPhone.DefaultText = "";
+            this.TxtCustomerPhone.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.TxtCustomerPhone.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.TxtCustomerPhone.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtCustomerPhone.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtCustomerPhone.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtCustomerPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtCustomerPhone.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtCustomerPhone.Location = new System.Drawing.Point(7, 211);
+            this.TxtCustomerPhone.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.TxtCustomerPhone.Name = "TxtCustomerPhone";
+            this.TxtCustomerPhone.PasswordChar = '\0';
+            this.TxtCustomerPhone.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
+            this.TxtCustomerPhone.PlaceholderText = "Customer Phone";
+            this.TxtCustomerPhone.SelectedText = "";
+            this.TxtCustomerPhone.Size = new System.Drawing.Size(303, 55);
+            this.TxtCustomerPhone.TabIndex = 18;
+            this.TxtCustomerPhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // UCCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(18F, 33F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "UCCustomer";
+            this.Controls.SetChildIndex(this.PnlMain, 0);
+            this.Controls.SetChildIndex(this.panel1, 0);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2ComboBox TCustomerType;
-        private Guna.UI2.WinForms.Guna2TextBox TCustomerName;
-        private Guna.UI2.WinForms.Guna2TextBox TCustomerEmail;
-        private Guna.UI2.WinForms.Guna2TextBox TCustomerPhone;
-        private System.Windows.Forms.Panel panel2;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
-        private System.Windows.Forms.Label LabCategory;
+        private Guna.UI2.WinForms.Guna2ImageButton BtnInsert;
+        private System.Windows.Forms.Label LabType;
         private System.Windows.Forms.Label LabEmail;
         private System.Windows.Forms.Label LabPhone;
         private System.Windows.Forms.Label LabName;
-        private Guna.UI2.WinForms.Guna2ImageButton BtnMenuUser;
+        private System.Windows.Forms.Label LabManage;
+        private Guna.UI2.WinForms.Guna2ComboBox ComBCustomerType;
+        private Guna.UI2.WinForms.Guna2TextBox TxtCustomerName;
+        private Guna.UI2.WinForms.Guna2TextBox TxtCustomerEmail;
+        private Guna.UI2.WinForms.Guna2TextBox TxtCustomerPhone;
     }
 }

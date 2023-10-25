@@ -1,44 +1,48 @@
 ﻿use master
 go
-
 drop database if exists SalesManagementSystem;
 go
 -------------------------------------------create database-----------------------------------------------
 create database SalesManagementSystem
 on primary 
-(Name='Main' ,filename='E:\DB\SaleManagementSystem\Main.mdf' , SIZE = 50MB ,filegrowth= 10%),
-FileGroup [Human]
-(Name='Human_M' ,filename='E:\DB\SaleManagementSystem\Human_M.ldf' ,size =8MB ,filegrowth=1024KB),
-(Name='Human_S' ,filename='E:\DB\SaleManagementSystem\Human_S.ldf' ,size =8MB ,filegrowth=1024KB),
-FileGroup [Inventory]
-(Name='Inventory_M' ,filename='E:\DB\SaleManagementSystem\Inventory_M.ldf' ,size =8MB ,filegrowth=1024KB),
-(Name='Inventory_S' ,filename='E:\DB\SaleManagementSystem\Inventory_S.ldf' ,size =8MB ,filegrowth=1024KB),
-FileGroup [Purchasing]
-(Name='Purchasing_M' ,filename='E:\DB\SaleManagementSystem\Purchasing_M.ldf' ,size =8MB ,filegrowth=1024KB),
-(Name='Purchasing_S' ,filename='E:\DB\SaleManagementSystem\Purchasing_S.ldf' ,size =8MB ,filegrowth=1024KB),
-FileGroup [Sales]
-(Name='Sales_M' ,filename='E:\DB\SaleManagementSystem\Sales_M.ldf' ,size =8MB ,filegrowth=1024KB),
-(Name='Sales_S' ,filename='E:\DB\SaleManagementSystem\Sales_S.ldf' ,size =8MB ,filegrowth=1024KB)
+(Name='primary' ,filename='E:\DB\SaleManagementSystem\primary.mdf' , SIZE = 8MB ,filegrowth= 10%),
+Filegroup [Main]
+(Name='Main' ,filename='E:\DB\SaleManagementSystem\Main.ndf' ,size =50MB ,filegrowth=10%),
+FileGroup Human
+(Name='Human_M' ,filename='E:\DB\SaleManagementSystem\Human_M.ndf' ,size =8MB ,filegrowth=102404KB),
+(Name='Human_S' ,filename='E:\DB\SaleManagementSystem\Human_S.ndf' ,size =8MB ,filegrowth=102404KB),
+FileGroup Inventory
+(Name='Inventory_M' ,filename='E:\DB\SaleManagementSystem\Inventory_M.ndf' ,size =8MB ,filegrowth=102404KB),
+(Name='Inventory_S' ,filename='E:\DB\SaleManagementSystem\Inventory_S.ndf' ,size =8MB ,filegrowth=102404KB),
+FileGroup Purchasing
+(Name='Purchasing_M' ,filename='E:\DB\SaleManagementSystem\Purchasing_M.ndf' ,size =8MB ,filegrowth=102404KB),
+(Name='Purchasing_S' ,filename='E:\DB\SaleManagementSystem\Purchasing_S.ndf' ,size =8MB ,filegrowth=102404KB),
+FileGroup Sales
+(Name='Sales_M' ,filename='E:\DB\SaleManagementSystem\Sales_M.ndf' ,size =8MB ,filegrowth=102404KB),
+(Name='Sales_S' ,filename='E:\DB\SaleManagementSystem\Sales_S.ndf' ,size =8MB ,filegrowth=102404KB)
 LOG ON 
 (Name='Log' ,filename='E:\DB\SaleManagementSystem\Log\Log.ldf' ,SIZE =15MB ,filegrowth=5MB)
 go
 
+alter database SalesManagementSystem modify filegroup Main default
 -------------------------------------------End create database-----------------------------------------------
 use SalesManagementSystem
 go
+------------------------------------------------------------------------------------------------------
+-------------------------------------------create Login and User -----------------------------------------------
+
+-------------------------------------------End create Login and User -----------------------------------------------
+
 
 -------------------------------------------create schema-----------------------------------------------
 CREATE schema Human;
 GO
-
-create schema [Inventory];
+create schema Inventory;
 go
-create schema [Purchasing];
+create schema Purchasing;
 go
-
-create schema [Sales];
+create schema Sales;
 go
-
 
 -------------------------------------------End create schema-----------------------------------------------
 
@@ -72,12 +76,10 @@ from nvarchar(30)
 not null
 go
 
-
 create TYPE Phone
 from nvarchar(20)
 not null
 go
-
 
 create TYPE Description_
 from nvarchar(max)
@@ -89,12 +91,10 @@ from nvarchar(20)
 not null
 go
 
-
 create TYPE Address_
 from nvarchar(100)
 not null
 go
-
 
 create TYPE Quantity
 from int
@@ -107,52 +107,70 @@ not null
 go
 -------------------------------------------End create DataType-----------------------------------------------
 
+
+
 -------------------------------------------create Table-----------------------------------------------
+create table Log_ 
+(
+Name_ Name_,
+Date_ Datetime2
+)
+go
+
 create table Human.Department (
 DepartmentId Id identity(1,1) primary key,
 DepartmentName SName unique
+)on Human
+GO
 
-)
+
 create table Human.User_ (
 UserId Id identity(1,1) primary key,
 UserName SName unique,
 UserPassword Password_ unique,
 UserStatus tinyint default 0 check (UserStatus in(1,0)),
-DepartmentId Id foreign key references Human.Department(DepartmentId)
-)
+DepartmentId Id foreign key references Human.Department(DepartmentId),
+) on Human
 go
-
+create table Human.RecoveryPassword (
+RecoveryId Id identity(1,1) primary key,
+WhatsYourFavoriteAnimal Name_,
+WhatsIsayourBestCity Name_,
+WhatsYourFavoriteHobby Name_,
+UserId Id foreign key references Human.User_(UserId)
+)on Human
+go
 create table Inventory.Unit (
 UnitId Id identity(1,1) primary key ,
 UnitCode nvarchar(30) not null unique ,
 UnitDesc description_ 
-)
+) on Inventory
 go
 
 create table Inventory.ProductCategory (
 ProductCategoryId Id identity(1,1) primary key ,
 ProductCategoryName SName unique ,
 ModifiedDate datetime default SYSDATETIME()
-)
+)on Inventory
 go
 
 create table Human.Customer (
 CustomerId Id primary key identity(1,1),
 CustomerName Name_,
 CustomerEmail Email,
-CustomerType nvarchar(max) not null default 'Local' ,
-customerPhone Phone
-)
+CustomerType SName not null default N'محلي' ,
+customerPhone Phone 
+)on Human
 go
 
 create table Human.Supplier (
 SupplierId Id primary key identity(1,1),
 SupplierName Name_,
-SupplierEmail Email,
-SupplierType nvarchar(max) not null default 'Local' ,
+SupplierEmail EmaiL ,
+SupplierType SName not null default N'محلي' ,
 SupplierPhone Phone ,
 SupplierBrand Brand
-)
+)on Human
 go
 
 
@@ -161,18 +179,17 @@ StoreId Id primary key identity(1,1),
 StoreName Name_,
 StoreAddress Address_,
 StorePhone Phone ,
-)
+)on Inventory
 go
 
 create table Inventory.Product (
 ProductId Id primary key identity(1,1),
-ProductName Name_,
-ProductNumber nvarchar(max) not null,
+ProductName SName unique,
 LastPrice money not null,
 StoreId Id foreign key references Inventory.Store(StoreId) ,
 UnitId Id foreign key references Inventory.Unit (UnitId) ,
 ProductCategoryId Id foreign key references Inventory.ProductCategory (ProductCategoryId)
-)
+)on Inventory
 go
 
 
@@ -185,7 +202,7 @@ UnitPrice money not null,
 QuantityPlus Quantity,
 QuantityMinus Quantity,
 ProductId Id foreign key references Inventory.Product(ProductId)
-)
+)on Inventory
 go
 
 create table Purchasing.PurchasingInvoice (
@@ -195,7 +212,7 @@ PurchasingTotal money not null,
 SupplierId Id foreign key references  Human.Supplier(SupplierId),
 UserId Id foreign key references Human.User_(UserId),
 StoreId Id foreign key references Inventory.Store(StoreId)
-)
+)on Purchasing
 go
 
 create table Purchasing.PurchasingDetails (
@@ -204,7 +221,7 @@ Quantity Quantity default 1,
 UnitPrice money not null ,
 ProductId Id foreign key references  Inventory.Product(ProductId),
 PurchasingId Id foreign key references Purchasing.PurchasingInvoice(PurchasingId)
-)
+)on Purchasing
 go
 
 create table Sales.SalesInvoice (
@@ -214,7 +231,7 @@ SalesTotal money not null,
 CustomerId Id foreign key references  Human.Customer(CustomerId),
 UserId Id foreign key references Human.User_(UserId),
 StoreId Id foreign key references Inventory.Store(StoreId)
-)
+)on Sales
 go
 
 create table Sales.SalesDetails (
@@ -223,15 +240,180 @@ Quantity Quantity default 1,
 UnitPrice money not null ,
 ProductId Id foreign key references  Inventory.Product(ProductId),
 SalesId Id foreign key references Sales.SalesInvoice(SalesId)
-)
+)on Sales
+go
+-------------------------------------------End create Table-----------------------------------------------
+---------------------------------------------------------------------------------------------------------------
+
+----------------------------------------index---------------------------------------------------------
+create clustered index CILog_ on dbo.Log_(Date_)
+go
+create nonclustered index NCIPurchasingDate on Purchasing.PurchasingInvoice(PurchasingDate)
+go
+create nonclustered index NCISalesDate on Sales.SalesInvoice(SalesDate)
+go
+alter index CILog_ on dbo.Log_ rebuild with (data_compression = page)
+
+go
+exec sp_helpindex 'dbo.Log_' --TableName 
 go
 
--------------------------------------------End create Table-----------------------------------------------
+select  i.name AS IndesName,
+        o.name AS TableName,
+		P.partition_Number AS partitionNumber,
+		f.name AS filegroup_Name
+		from sys.indexes i
+		inner join sys.objects o on
+		i.object_id=o.object_id
+		inner join sys.partitions p on
+		i.object_id=p.object_id AND 
+		i.index_id=p.index_id
+		inner join sys.allocation_units au  on
+		p.partition_id =au.container_id
+		inner join sys.filegroups f on
+		au.data_space_id=f.data_space_id where 
+		o.name='Log' AND i.name='CILog_';
+go
+----------------------------------------End index---------------------------------------------------------
+
+-------------------------------------------------------------------------------------------------
+--ALTER  database SalesManagementSystem set recovery simple
+--go
+
+--SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+--go
+--BEGIN TRANSACTION;
+--SELECT * FROM Sales.SalesOrderDetail WHERE SalesOrderID = 43659;
+--COMMIT;
+
+--go
+----b--
+--SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+--BEGIN TRANSACTION;
+--SELECT * FROM Sales.SalesOrderDetail WHERE SalesOrderID = 43659;
+--COMMIT;
+
+--go
+----c--
+--SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+--BEGIN TRANSACTION;
+--SELECT * FROM Sales.SalesOrderDetail WHERE SalesOrderID = 43659;
+--COMMIT;
+
+--go
+----6.1.a--
+
+BACKUP DATABASE SalesManagementSystem
+TO DISK = 'E:\DB\backup\backup1.bak'
+WITH FORMAT, MEDIANAME = 'E_SQLServerBackups',
+NAME = 'Full Backup of SalesManagementSystem';
+go
+--6.1.b--
+BACKUP DATABASE SalesManagementSystem
+TO DISK = 'E:\DB\backup\backup2.bak'
+WITH DIFFERENTIAL, MEDIANAME = 'E_SQLServerBackups',
+NAME = 'Differential Backup of SalesManagementSystem';
+go
+--6.1.c--
+BACKUP LOG SalesManagementSystem
+TO DISK = 'E:\DB\backup\backup3.bak'
+WITH FORMAT, MEDIANAME = 'E_SQLServerBackups',
+NAME = 'Log Backup of SalesManagementSystem';
+go
+--6.1.d--
+BACKUP DATABASE SalesManagementSystem 
+TO DISK = 'E:\DB\backup\backup4.bak' 
+WITH COMPRESSION, FORMAT;
+go
+---------------------------------------------------------------------------------------------------------------
+
+-------------------------------------------create View-----------------------------------------------
+create view Customer
+as
+Select CustomerId as Id,  CustomerName as Name ,CustomerType as Type ,CustomerEmail as Email ,CustomerPhone as Phone from Human.Customer
+GO
+create view Supplier
+as
+Select SupplierId as Id,  SupplierName as Name ,SupplierType as Type ,SupplierEmail as Email ,SupplierPhone as Phone,SupplierBrand as Brand from [Human].[Supplier]
+GO
+create view User_
+as
+Select u.UserId as Id,  u.UserName as Name ,u.UserPassword as Password , case u.UserStatus when 1 then N'نشط' Else N'خامل'end as Status ,d.DepartmentName as Department from [Human].[User_] u , [Human].[Department] d
+where u.DepartmentId =d.DepartmentId 
+GO
+create view Product
+as
+Select  p.ProductId as Id,  
+		p.ProductName as Name ,
+		p.LastPrice as Price  , 
+		s.StoreName as Store ,
+		u.UnitCode as Unit ,
+		c.ProductCategoryName as Category 
+from [Inventory].[Product] p, [Inventory].[ProductCategory] c, [Inventory].[Store] s ,[Inventory].[Unit] u
+where p.StoreId =s.StoreId and p.UnitId =  u.UnitId and p.ProductCategoryId = c.ProductCategoryId
+GO
+create view Department
+as
+Select DepartmentId as Id,  DepartmentName as Name  from [Human].[Department]
+GO
+create view ProductCategory
+as
+Select ProductCategoryId as Id,  ProductCategoryName as Name,ModifiedDate as Date  from [Inventory].[ProductCategory]
+GO
+
+create view Store
+as
+Select StoreId as Id,  StoreName as Name,StoreAddress Address,StorePhone as Phone  from [Inventory].[Store]
+GO
+
+create view Unit
+as
+Select UnitId as Id,  UnitCode as Code,UnitDesc as Description  from [Inventory].[Unit]
+GO
+
+select * from Unit
+GO
+-------------------------------------------End create View-------------------------------------------
 
 
+-------------------------------------------Insert Data procedure-----------------------------------------------
+insert into [Human].[Customer] (CustomerName,CustomerEmail,customerPhone)
+Select distinct FullName, cast(EmailAddress as nvarchar(20)) , PhoneNumber 
+from   WideWorldImporters.[Application].People 
+where EmailAddress is not null and PhoneNumber is not null
+go
+insert into Human.Supplier (SupplierName,SupplierEmail,SupplierPhone,SupplierBrand)
+Select distinct e.SupplierName,cast(p.EmailAddress as nvarchar(20)) , e.PhoneNumber,PreferredName
+from   WideWorldImporters.[Purchasing].[Suppliers] e,
+ WideWorldImporters.[Application].People p
+ where p.EmailAddress is not null
+go
+Select * into Invoices from WideWorldImporters.[Sales].[Invoices]
+go
+Select * into Orders from WideWorldImporters.[Sales].[Orders]
+go
+-------------------------------------------End Insert Data procedure-----------------------------------------------
 
 
 -------------------------------------------create procedure-----------------------------------------------
+CREATE PROCEDURE GetFileAndFilegroupInfo
+    @DatabaseName NVARCHAR(128)
+AS
+BEGIN
+    
+    SELECT 
+        f.name AS [File Name],
+        fg.name AS [Filegroup Name],
+        f.size/128.0 AS [File Size (MB)],
+        f.physical_name AS [Physical Path]
+    FROM sys.master_files f
+    INNER JOIN sys.filegroups fg ON f.data_space_id = fg.data_space_id
+    WHERE DB_NAME(database_id) = @DatabaseName
+    ORDER BY fg.name, f.name;
+END
+go 
+EXEC GetFileAndFilegroupInfo @DatabaseName = 'SalesManagementSystem'
+go
 create procedure [dbo].[PLogin]
 (@UserName nvarchar(50), @UserPassword nvarchar(50) ,@LoginStatus int out)
 as
@@ -540,7 +722,7 @@ begin
 					set @Sccessfully =1;
 				end
 				else
-					set @Sccessfully =4;
+					set @Sccessfully =404;
 			commit Transaction
 		end try 
 
@@ -561,7 +743,7 @@ begin
 					set @Sccessfully =1;
 				end
 				else
-					set @Sccessfully =4;
+					set @Sccessfully =404;
 			commit Transaction
 		end try 
 
@@ -582,7 +764,7 @@ begin
 					set @Sccessfully =1;
 				end
 				else
-					set @Sccessfully =4;
+					set @Sccessfully =404;
 			commit Transaction
 		end try 
 
@@ -602,7 +784,7 @@ begin
 					set @Sccessfully =1;
 				end
 				else
-					set @Sccessfully =4;
+					set @Sccessfully =404;
 			commit Transaction
 		end try 
 
@@ -622,7 +804,7 @@ begin
 					set @Sccessfully =1;
 				end
 				else
-					set @Sccessfully =4;
+					set @Sccessfully =404;
 			commit Transaction
 		end try 
 
@@ -642,7 +824,7 @@ begin
 					set @Sccessfully =1;
 				end
 				else
-					set @Sccessfully =4;
+					set @Sccessfully =404;
 			commit Transaction
 		end try 
 
@@ -662,7 +844,7 @@ begin
 					set @Sccessfully =1;
 				end
 				else
-					set @Sccessfully =4;
+					set @Sccessfully =404;
 			commit Transaction
 		end try 
 
@@ -682,7 +864,7 @@ begin
 					set @Sccessfully =1;
 				end
 				else
-					set @Sccessfully =4;
+					set @Sccessfully =404;
 			commit Transaction
 		end try 
 
@@ -702,7 +884,7 @@ begin
 					set @Sccessfully =1;
 				end
 				else
-					set @Sccessfully =4;
+					set @Sccessfully =404;
 			commit Transaction
 		end try 
 
@@ -722,7 +904,7 @@ begin
 					set @Sccessfully =1;
 				end
 				else
-					set @Sccessfully =4;
+					set @Sccessfully =404;
 			commit Transaction
 		end try 
 
@@ -753,7 +935,7 @@ begin
 					set @Sccessfully =3;
 				end
 				else
-					set @Sccessfully =4;
+					set @Sccessfully =404;
 			commit Transaction
 		end try 
 
@@ -774,7 +956,7 @@ begin
 					set @Sccessfully =1;
 				end
 				else
-					set @Sccessfully =4;
+					set @Sccessfully =404;
 			commit Transaction
 		end try 
 
@@ -795,7 +977,7 @@ begin
 					set @Sccessfully =1;
 				end
 				else
-					set @Sccessfully =4;
+					set @Sccessfully =404;
 			commit Transaction
 		end try 
 
@@ -815,7 +997,7 @@ begin
 					set @Sccessfully =1;
 				end
 				else
-					set @Sccessfully =4;
+					set @Sccessfully =404;
 			commit Transaction
 		end try 
 
@@ -835,7 +1017,7 @@ begin
 					set @Sccessfully =1;
 				end
 				else
-					set @Sccessfully =4;
+					set @Sccessfully =404;
 			commit Transaction
 		end try 
 
@@ -855,7 +1037,7 @@ begin
 					set @Sccessfully =1;
 				end
 				else
-					set @Sccessfully =4;
+					set @Sccessfully =404;
 			commit Transaction
 		end try 
 
@@ -875,7 +1057,7 @@ begin
 					set @Sccessfully =1;
 				end
 				else
-					set @Sccessfully =4;
+					set @Sccessfully =404;
 			commit Transaction
 		end try 
 
@@ -895,7 +1077,7 @@ begin
 					set @Sccessfully =1;
 				end
 				else
-					set @Sccessfully =4;
+					set @Sccessfully =404;
 			commit Transaction
 		end try 
 
@@ -915,7 +1097,7 @@ begin
 					set @Sccessfully =1;
 				end
 				else
-					set @Sccessfully =4;
+					set @Sccessfully =404;
 			commit Transaction
 		end try 
 
@@ -935,7 +1117,7 @@ begin
 					set @Sccessfully =1;
 				end
 				else
-					set @Sccessfully =4;
+					set @Sccessfully =404;
 			commit Transaction
 		end try 
 
@@ -995,7 +1177,7 @@ begin
 					set @Sccessfully =1;
 				end
 			else 
-				set @Sccessfully =4;
+				set @Sccessfully =404;
 			commit transaction
 		end try
 
@@ -1020,7 +1202,7 @@ begin
 					set @Sccessfully =1;
 				end
 			else 
-				set @Sccessfully =4;
+				set @Sccessfully =404;
 			commit transaction
 		end try
 
@@ -1046,7 +1228,7 @@ begin
 					   set @Sccessfully =1;
 				end
 			else 
-				set @Sccessfully =4;
+				set @Sccessfully =404;
 			commit transaction
 		end try
 
@@ -1068,7 +1250,7 @@ begin
 						   set @Sccessfully =1;
 					end
 				else 
-					set @Sccessfully =4;
+					set @Sccessfully =404;
 			commit transaction
 		end try
 
@@ -1092,7 +1274,7 @@ begin
 					   set @Sccessfully =1;
 				end
 			else 
-				set @Sccessfully =4;
+				set @Sccessfully =404;
 			commit transaction
 		end try
 
@@ -1116,7 +1298,7 @@ begin
 					   set @Sccessfully =1;
 				end
 			else 
-				set @Sccessfully =4;
+				set @Sccessfully =404;
 			commit transaction
 		end try
 
@@ -1141,7 +1323,7 @@ begin
 					   set @Sccessfully =1;
 				end
 			else 
-				set @Sccessfully =4;
+				set @Sccessfully =404;
 			commit transaction
 		end try
 
@@ -1167,7 +1349,7 @@ begin
 					   
 				end
 			else 
-				set @Sccessfully =4;
+				set @Sccessfully =404;
 			rollback transaction
 			set @Sccessfully =6;
 		end try
@@ -1196,7 +1378,7 @@ begin
 				   
 				end
 			else 
-				set @Sccessfully =4;
+				set @Sccessfully =404;
 		end try
 
 		begin catch 
@@ -1232,7 +1414,7 @@ begin
 					--end
 				end
 			else 
-				set @Sccessfully =4;
+				set @Sccessfully =404;
 			COMMIT TRANSACTION
 		--End transaction
 		end try
@@ -1261,13 +1443,12 @@ begin
 	if(@TableName  like 'Customer')
 	begin
 		begin try 
-			if exists (select * from [Human].[Customer] WHERE CustomerId =@Id)
+			if exists (select * from [Customer] WHERE Id =@Id)
 				begin
-				select * from [Human].[Customer] WHERE CustomerId =@Id;
-				set @Sccessfully =1;
+				select * from [Customer] WHERE Id =@Id;
 				end
 			else 
-				set @Sccessfully =4;
+				set @Sccessfully =404;
 		end try
 
 		begin catch 
@@ -1278,13 +1459,12 @@ begin
 	else if(@TableName  like 'Supplier')
 	begin
 		begin try 
-			if exists (select * from [Human].[Supplier] WHERE SupplierId =@Id)
+			if exists (select * from [Supplier] WHERE Id =@Id)
 				begin
-				select * from [Human].[Supplier] WHERE SupplierId =@Id;
-				set @Sccessfully =1;
+				select * from [Supplier] WHERE Id =@Id;
 				end
 			else 
-				set @Sccessfully =4;
+				set @Sccessfully =404;
 		end try
 
 		begin catch 
@@ -1295,13 +1475,12 @@ begin
 	else if(@TableName  like 'Product')
 	begin
 		begin try 
-			if exists (select * from [Inventory].[Product] WHERE ProductId =@Id)
+			if exists (select * from [Product] WHERE Id =@Id)
 				begin
-				SELECT * FROM [Inventory].[Product] WHERE ProductId =@Id;
-				set @Sccessfully =1;
+				SELECT * FROM [Product] WHERE Id =@Id;
 				end
 			else 
-				set @Sccessfully =4;
+				set @Sccessfully =404;
 		end try
 
 		begin catch 
@@ -1312,13 +1491,12 @@ begin
 	else if(@TableName  like 'ProductCategory')
 	begin
 		begin try 
-			if exists (select * from [Inventory].[ProductCategory] WHERE ProductCategoryId =@Id)
+			if exists (select * from [ProductCategory]WHERE Id =@Id)
 				begin
-				SELECT * FROM [Inventory].[ProductCategory] WHERE ProductCategoryId =@Id;
-				set @Sccessfully =1;
+				SELECT * FROM [ProductCategory] WHERE Id =@Id;
 				end
 			else 
-				set @Sccessfully =4;
+				set @Sccessfully =404;
 		end try
 
 		begin catch 
@@ -1329,13 +1507,13 @@ begin
 	else if(@TableName  like 'Store')
 	begin
 		begin try 
-			if exists (select * from [Inventory].[Store] WHERE StoreId =@Id)
+			if exists (select * from [Store] WHERE Id =@Id)
 				begin
-				SELECT * FROM [Inventory].[Store] WHERE StoreId =@Id;
+				SELECT * FROM [Store] WHERE Id =@Id;
 				set @Sccessfully =1;
 				end
 			else 
-				set @Sccessfully =4;
+				set @Sccessfully =404;
 		end try
 
 		begin catch 
@@ -1346,13 +1524,13 @@ begin
 	else if(@TableName  like 'Unit')
 	begin
 		begin try 
-			if exists (select * from [Inventory].[Unit] WHERE UnitId =@Id)
+			if exists (select * from [Unit] WHERE Id =@Id)
 				begin
-				SELECT * FROM [Inventory].[Unit] WHERE UnitId =@Id;
+				SELECT * FROM [Unit] WHERE Id =@Id;
 				set @Sccessfully =1;
 				end
 			else 
-				set @Sccessfully =4;
+				set @Sccessfully =404;
 		end try
 
 		begin catch 
@@ -1369,7 +1547,7 @@ begin
 				set @Sccessfully =1;
 				end
 			else 
-				set @Sccessfully =4;
+				set @Sccessfully =404;
 		end try
 
 		begin catch 
@@ -1386,7 +1564,7 @@ begin
 				set @Sccessfully =1;
 				end
 			else 
-				set @Sccessfully =4;
+				set @Sccessfully =404;
 		end try
 
 		begin catch 
@@ -1403,7 +1581,7 @@ begin
 				set @Sccessfully =1;
 				end
 			else 
-				set @Sccessfully =4;
+				set @Sccessfully =404;
 		end try
 
 		begin catch 
@@ -1420,7 +1598,7 @@ begin
 				set @Sccessfully =1;
 				end
 			else 
-				set @Sccessfully =4;
+				set @Sccessfully =404;
 		end try
 
 		begin catch 
@@ -1434,21 +1612,66 @@ go
 create procedure [dbo].[P_Select_All] 
 (
 	@TableName Table_,
-	@Sccessfully int out
+	@Sccessfully bit out
 )
 as
 begin
-
-	if(@TableName  like 'Customer')
+	
+	if(@TableName  like 'User_')
 	begin
 		begin try 
-			if (select count(CustomerId) from [Human].[Customer]) >0
+			if (select count(Id) from User_)  >0
 				begin
-				select * from [Human].[Customer];
-				set @Sccessfully =1;
+				SELECT * FROM User_;
 				end
 			else 
-				set @Sccessfully =4;
+				set @Sccessfully =404;
+		end try
+
+		begin catch 
+			set @Sccessfully =10;
+		end catch
+	end
+	else if(@TableName  like 'Orders')
+	begin
+		begin try 
+			if (select count(OrderID) from Orders) >0
+				begin
+				select * from Orders;
+				end
+			else 
+				set @Sccessfully =404;
+		end try
+
+		begin catch 
+			set @Sccessfully =10;
+		end catch
+	end
+	else if(@TableName  like 'Invoices')
+	begin
+		begin try 
+			if (select count(InvoiceID) from Invoices) >0
+				begin
+				select * from Invoices;
+				end
+			else 
+				set @Sccessfully =404;
+		end try
+
+		begin catch 
+			set @Sccessfully =10;
+		end catch
+	end
+	
+	else if(@TableName  like 'Customer')
+	begin
+		begin try 
+			if (select count(Id) from Customer) >0
+				begin
+				select * from Customer;
+				end
+			else 
+				set @Sccessfully =404;
 		end try
 
 		begin catch 
@@ -1459,13 +1682,12 @@ begin
 	else if(@TableName  like 'Supplier')
 	begin
 		begin try 
-			if (select count(SupplierId) from [Human].[Supplier]) > 0
+			if (select count(Id) from Supplier) > 0
 				begin
-				select * from [Human].[Supplier];
-				set @Sccessfully =1;
+				select * from Supplier;
 				end
 			else 
-				set @Sccessfully =4;
+				set @Sccessfully =404;
 		end try
 
 		begin catch 
@@ -1476,13 +1698,12 @@ begin
 	else if(@TableName  like 'Product')
 	begin
 		begin try 
-			if (select count(ProductId) from [Inventory].[Product]) >0
+			if (select count(Id) from Product) >0
 				begin
-				SELECT * FROM [Inventory].[Product];
-				set @Sccessfully =1;
+				SELECT * FROM Product;
 				end
 			else 
-				set @Sccessfully =4;
+				set @Sccessfully =404;
 		end try
 
 		begin catch 
@@ -1493,13 +1714,12 @@ begin
 	else if(@TableName  like 'ProductCategory')
 	begin
 		begin try 
-			if (select count(ProductCategoryId) from [Inventory].[ProductCategory]) >0
+			if (select count(Id) from ProductCategory) >0
 				begin
-				SELECT * FROM [Inventory].[ProductCategory];
-				set @Sccessfully =1;
+				SELECT * FROM ProductCategory;
 				end
 			else 
-				set @Sccessfully =4;
+				set @Sccessfully =404;
 		end try
 
 		begin catch 
@@ -1510,13 +1730,12 @@ begin
 	else if(@TableName  like 'Store')
 	begin
 		begin try 
-			if (select count(StoreId) from [Inventory].[Store]) >0
+			if (select count(Id) from Store) >0
 				begin
-				SELECT * FROM [Inventory].[Store];
-				set @Sccessfully =1;
+				SELECT * FROM Store;
 				end
 			else 
-				set @Sccessfully =4;
+				set @Sccessfully =404;
 		end try
 
 		begin catch 
@@ -1527,13 +1746,12 @@ begin
 	else if(@TableName  like 'Unit')
 	begin
 		begin try 
-			if (select count(UnitId) from [Inventory].[Unit])  >0
+			if (select count(Id) from Unit)  >0
 				begin
-				SELECT * FROM [Inventory].[Unit];
-				set @Sccessfully =1;
+				SELECT * FROM Unit;
 				end
 			else 
-				set @Sccessfully =4;
+				set @Sccessfully =404;
 		end try
 
 		begin catch 
@@ -1547,10 +1765,9 @@ begin
 			if (select count(PurchasingId) from [Purchasing].[PurchasingInvoice]) >0
 				begin
 				SELECT * FROM [Purchasing].[PurchasingInvoice];
-				set @Sccessfully =1;
 				end
 			else 
-				set @Sccessfully =4;
+				set @Sccessfully =404;
 		end try
 
 		begin catch 
@@ -1564,10 +1781,9 @@ begin
 			if (select count(PurchasingDetailsId) from [Purchasing].[PurchasingDetails]) >0
 				begin
 				SELECT * FROM [Purchasing].[PurchasingDetails];
-				set @Sccessfully =1;
 				end
 			else 
-				set @Sccessfully =4;
+				set @Sccessfully =404;
 		end try
 
 		begin catch 
@@ -1581,10 +1797,9 @@ begin
 			if (select count(SalesId) from [Sales].[SalesInvoice] ) >0
 				begin
 				SELECT * FROM [Sales].[SalesInvoice] ;
-				set @Sccessfully =1;
 				end
 			else 
-				set @Sccessfully =4;
+				set @Sccessfully =404;
 		end try
 
 		begin catch 
@@ -1592,16 +1807,30 @@ begin
 		end catch
 	end
 	
+	else if(@TableName  like 'Transaction')
+	begin
+		begin try 
+			if ( select count(TransactionId) from  [Inventory].[Transactions] ) >0
+				begin
+				SELECT * FROM [Inventory].[Transactions] ;
+				end
+			else 
+				set @Sccessfully =404;
+		end try
+
+		begin catch 
+			set @Sccessfully =10;
+		end catch
+	end 
 	else if(@TableName  like 'SalesDetails')
 	begin
 		begin try 
 			if ( select count(SalesDetailsId) from  [Sales].[SalesDetails] ) >0
 				begin
 				SELECT * FROM [Sales].[SalesDetails] ;
-				set @Sccessfully =1;
 				end
 			else 
-				set @Sccessfully =4;
+				set @Sccessfully =404;
 		end try
 
 		begin catch 
@@ -1620,34 +1849,171 @@ select * from [Human].[Department]
 go
 
  create procedure P_User_Insert 
- (@name Name_ ,@password Password_, @DepartmentId Id,@UserStatus tinyint =0)
+ (@Name Name_ ,@Password Password_, @DepartmentId Id, @UserStatus tinyint =0,@Sccessfully bit output)
 as 
 begin
+	begin try 
+		begin transaction
+			INSERT INTO [Human].[User_](UserName, UserPassword,UserStatus,DepartmentId) VALUES(@Name, @Password ,@UserStatus,@DepartmentId);
+				set @Sccessfully =1;
+		commit transaction
+	end try
 
-INSERT INTO [Human].[User_]
-           (UserName,
-		   UserPassword,
-		   UserStatus,
-		   DepartmentId)
-     VALUES
-           (@name,
-           @password 
-           ,@UserStatus,
-		   @DepartmentId)
-
-
+	begin catch 
+		rollback transaction
+			set @Sccessfully =2;
+	end catch
 end
 go
-P_User_Insert 'Admin','Admin',1,1
+P_User_Insert 'Admin','Admin',1,1,1
 go
-P_User_Insert 'sales','sales',2,1
+P_User_Insert 'sales','sales',2,1,1
 go
-P_User_Insert 'Pay','Pay',3,1
+P_User_Insert 'Pay','Pay',3,1,1
 go
-
-P_User_Insert 'store','store',4,1
+P_User_Insert 'store','store',4,1,1
 go
-select * from Human.User_
+P_User_Insert 'Abdullah','Abdullah',1,0,1
+go
+select * from User_
 go
 
 -------------------------------------------End create procedure-----------------------------------------------
+
+alter database salesManagementSystem set Query_store =on
+go
+alter database salesManagementSystem set query_store 
+(OPERATION_MODE= REad_Write ,DATA_FLUSH_INTERVAL_SECONDS=60,
+INTERVAL_LENGTH_MINUTES=1)
+GO
+
+-------------------------------------------------------------------------------
+create Login [Admin]  with password ='Admin'
+go
+create role Role_Admin 
+go
+create user [User_Admin] for login [Admin]
+go
+grant insert,update,delete on schema ::Human TO Role_Admin
+go
+grant insert,update,delete on schema ::Sales TO Role_Admin
+go
+grant insert,update,delete on schema ::Inventory TO Role_Admin
+go
+grant insert,update,delete on schema ::Purchasing TO Role_Admin
+go
+alter role Role_Admin add MEMBER User_Admin
+go
+-------
+CREATE LOGIN [Sales] WITH PASSWORD='Sales'
+go
+create role Role_Sales
+go
+create user User_Sales for login Sales
+go
+grant select on Schema ::Sales To Role_Sales
+go
+alter role Role_Sales add MEMBER User_Sales 
+go
+------
+CREATE LOGIN Admin2 WITH PASSWORD=N'Admin2'
+go
+create user User_Admin2 for login Admin2
+go
+create role Role_Admin2
+go
+grant insert,update,delete on schema ::Human TO Role_Admin2
+go
+grant insert,update,delete on schema ::Sales TO Role_Admin2
+go
+grant insert,update,delete on schema ::Inventory TO Role_Admin2
+go
+grant insert,update,delete on schema ::Purchasing TO Role_Admin2
+go
+alter role Role_Admin2 add MEMBER User_Admin2 --يضيف رول للمستخدم 
+--------------------------------------------
+--------------------------------------------
+CREATE LOGIN Human WITH PASSWORD=N'Human'
+go
+create user User_Human for login Human
+go
+create role Role_Human
+go
+grant Select on Schema ::Human TO role_Human
+go
+grant Select on Schema ::Sales TO role_Human
+go
+grant Select on Schema ::Purchasing TO role_Human
+go
+alter role Role_Human add MEMBER User_Human 
+go
+--
+SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+BEGIN TRANSACTION;
+SELECT * FROM Sales.SalesOrderDetail WHERE SalesOrderID = 43659;
+COMMIT;
+
+--b--
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+BEGIN TRANSACTION;
+SELECT * FROM Sales.SalesOrderDetail WHERE SalesOrderID = 43659;
+COMMIT;
+
+--c--
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+BEGIN TRANSACTION;
+SELECT * FROM Sales.SalesOrderDetail WHERE SalesOrderID = 43659;
+
+COMMIT;
+go
+
+BACKUP DATABASE [SalesManagementSystem] TO DISK = N'E:\DB\backup\main.bak' WITH NOFORMAT, NOINIT,  NAME = N'COMPANYS-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+GO
+
+
+
+BACKUP DATABASE [SalesManagementSystem] TO  DISK = N'E:\DB\backup\Main.bak' WITH  DIFFERENTIAL , NOFORMAT, NOINIT,  NAME = N'COMPANYS-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10 
+GO
+
+
+alter DATABASE SalesManagementSystem set recovery Full
+
+
+    BACKUP LOG [SalesManagementSystem] TO  DISK = N'E:\DB\backup\main.bak' WITH NOFORMAT,    NOINIT,  NAME = N'COMPANYS-Full Database Backup', SKIP, NOREWIND, NOUNLOAD, 
+    STATS = 10
+GO
+    backup log [SalesManagementSystem] TO  DISK = N' E:\DB\backup\main.df'  
+
+
+    BACKUP LOG [SalesManagementSystem] TO  DISK = N'E:\DB\backup\main.bak' WITH NOFORMAT,    NOINIT,  NAME = N'COMPANYS-Full Database Backup', SKIP, NOREWIND, NOUNLOAD, 
+    STATS = 10
+GO
+backup database [SalesManagementSystem] TO disk= N' E:\DB\backup\Weekly.bak' WITH init 
+go
+
+backup log SalesManagementSystem to disk= N' E:\DB\backup\horely.trn'
+go
+
+backup database SalesManagementSystem TO disk= N' E:\DB\backup\compertion.bak'
+ with differential, compression
+
+ Restore database SalesManagementSystem from disk=N' E:\DB\backup\comprtitions.bak' with replace,recovery
+
+
+ --a--
+SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+BEGIN TRANSACTION;
+SELECT * FROM Sales.SalesOrderDetail WHERE SalesOrderID = 43659;
+COMMIT;
+
+--b--
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+BEGIN TRANSACTION;
+SELECT * FROM Sales.SalesOrderDetail WHERE SalesOrderID = 43659;
+COMMIT;
+
+--c--
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+BEGIN TRANSACTION;
+SELECT * FROM Sales.SalesOrderDetail WHERE SalesOrderID = 43659;
+COMMIT;

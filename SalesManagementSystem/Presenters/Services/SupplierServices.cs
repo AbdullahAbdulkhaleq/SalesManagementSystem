@@ -5,27 +5,27 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SalesManagementSystem.Presenters.Services;
+using SalesManagementSystem.Models;
 
-namespace SalesManagementSystem.Presenters.Helper
+namespace SalesManagementSystem.Presenters.Services
 {
     public static class SupplierServices
     {
-        public static bool SupplierInsert(string Name, string Email, string Type, string Phone, string Brand)
+        public static int SupplierInsert(SupplierModel supplier)
         {
-            return DB.SetDate("P_Supplier_Insert", () => SupplierSetData( Name, Email, Type, Phone, Brand, DB.Command));
+            return DB.SetDate("P_Supplier_Insert", "@Sccessfully", () => SupplierSetData(supplier, DB.Command));
         }
-        private static void SupplierSetData(string Name, string Email, string Type, string Phone, string Brand, SqlCommand Command)
+        private static void SupplierSetData(SupplierModel supplier, SqlCommand Command)
         {
-            Command.Parameters.Add("@SupplierName", SqlDbType.NVarChar).Value = Name;
-            Command.Parameters.Add("@SupplierEmail", SqlDbType.NVarChar).Value = Email;
-            Command.Parameters.Add("@SupplierType",SqlDbType.NVarChar).Value = Type;
-            Command.Parameters.Add("SupplierPhone",SqlDbType.NVarChar).Value = Phone;
-            Command.Parameters.Add("@SupplierBrand",SqlDbType.NVarChar).Value = Brand;
+            Command.Parameters.Add("@SupplierName", SqlDbType.NVarChar).Value = supplier.SupplierName;
+            Command.Parameters.Add("@SupplierEmail", SqlDbType.NVarChar).Value = supplier.SupplierEmail;
+            Command.Parameters.Add("@SupplierType",SqlDbType.NVarChar).Value = supplier.SupplierType;
+            Command.Parameters.Add("SupplierPhone",SqlDbType.NVarChar).Value = supplier.SupplierPhone;
+            Command.Parameters.Add("@SupplierBrand",SqlDbType.NVarChar).Value = supplier.SupplierBrand;
         } 
-        public static bool SupplierDelete(int Id)
+        public static int SupplierDelete(int Id)
         {
-            return DB.SetDate("", () => SupplierDelete(Id, DB.Command));
+            return DB.SetDate("", "@Sccessfully", () => SupplierDelete(Id, DB.Command));
         }
         private static void SupplierDelete(int Id ,SqlCommand command)
         {

@@ -57,6 +57,12 @@
             // 
             // BtnLogOut
             // 
+            this.BtnLogOut.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.BtnLogOut.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.BtnLogOut.HoverState.ImageSize = new System.Drawing.Size(33, 30);
+            this.BtnLogOut.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Normal;
+            this.BtnLogOut.PressedState.ImageSize = new System.Drawing.Size(33, 30);
+            // 
             // PMenu
             // 
             this.PMenu.BackColor = System.Drawing.Color.White;
@@ -74,7 +80,7 @@
             this.PMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.PMenu.Location = new System.Drawing.Point(0, 33);
             this.PMenu.Name = "PMenu";
-            this.PMenu.Size = new System.Drawing.Size(83, 667);
+            this.PMenu.Size = new System.Drawing.Size(83, 717);
             this.PMenu.TabIndex = 3;
             // 
             // PMenuClick
@@ -309,6 +315,8 @@
             this.ClientSize = new System.Drawing.Size(1390, 750);
             this.Controls.Add(this.PnlMain);
             this.Controls.Add(this.PMenu);
+            this.MaximumSize = new System.Drawing.Size(1390, 750);
+            this.MinimumSize = new System.Drawing.Size(1390, 750);
             this.Name = "FHomeAdmin";
             this.Text = "FHomeAdmin";
             this.Controls.SetChildIndex(this.PMenu, 0);

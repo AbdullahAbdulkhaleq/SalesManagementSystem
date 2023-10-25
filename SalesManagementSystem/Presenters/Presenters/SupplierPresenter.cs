@@ -1,5 +1,4 @@
 ﻿using SalesManagementSystem.Models;
-using SalesManagementSystem.Presenters.Helper;
 using SalesManagementSystem.Presenters.Services;
 using SalesManagementSystem.Views.Interface;
 
@@ -27,17 +26,11 @@ namespace SalesManagementSystem.Presenters.Presenters
         public bool Insert()
         {
             connectedInterfaceAndModel();
-            return SupplierServices.SupplierInsert(
-                                                    this.supplierModel.SupplierName,
-                                                    this.supplierModel.SupplierEmail,
-                                                    this.supplierModel.SupplierType,
-                                                    this.supplierModel.SupplierPhone,
-                                                    this.supplierModel.SupplierBrand);
+            return SupplierServices.SupplierInsert(this.supplierModel);
         }
         public bool Delete()
         {
-            /*return SupplierServices.*/
-            return false;
+            return SupplierServices.SupplierDelete(this.supplierModel);
         }
         public string GetSupplierId()
         {

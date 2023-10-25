@@ -39,8 +39,8 @@
             this.PanMainInvoice = new Guna.UI2.WinForms.Guna2Panel();
             this.PanFooterInvoice = new Guna.UI2.WinForms.Guna2Panel();
             this.PanFooterInvoiceFooter = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2ImageButton2 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.BtnInsert = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.BtnPrint = new Guna.UI2.WinForms.Guna2ImageButton();
             this.PanHeaderInvoice.SuspendLayout();
             this.PanMainInvoice.SuspendLayout();
             this.PanFooterInvoice.SuspendLayout();
@@ -103,9 +103,9 @@
             this.guna2Panel1.BorderColor = System.Drawing.Color.Black;
             this.guna2Panel1.BorderThickness = 1;
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel1.Location = new System.Drawing.Point(5, 198);
+            this.guna2Panel1.Location = new System.Drawing.Point(5, 192);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(1280, 497);
+            this.guna2Panel1.Size = new System.Drawing.Size(1280, 503);
             this.guna2Panel1.TabIndex = 4;
             // 
             // InvoiceDate
@@ -118,7 +118,7 @@
             this.InvoiceDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.InvoiceDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.InvoiceDate.IndicateFocus = true;
-            this.InvoiceDate.Location = new System.Drawing.Point(552, 34);
+            this.InvoiceDate.Location = new System.Drawing.Point(503, 34);
             this.InvoiceDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.InvoiceDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.InvoiceDate.Name = "InvoiceDate";
@@ -164,7 +164,7 @@
             this.PanMainInvoice.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanMainInvoice.Location = new System.Drawing.Point(5, 93);
             this.PanMainInvoice.Name = "PanMainInvoice";
-            this.PanMainInvoice.Size = new System.Drawing.Size(1280, 105);
+            this.PanMainInvoice.Size = new System.Drawing.Size(1280, 99);
             this.PanMainInvoice.TabIndex = 2;
             // 
             // PanFooterInvoice
@@ -177,54 +177,54 @@
             this.PanFooterInvoice.Location = new System.Drawing.Point(5, 188);
             this.PanFooterInvoice.Name = "PanFooterInvoice";
             this.PanFooterInvoice.Size = new System.Drawing.Size(1280, 507);
-            this.PanFooterInvoice.TabIndex = 5;
+            this.PanFooterInvoice.TabIndex = 6;
             // 
             // PanFooterInvoiceFooter
             // 
             this.PanFooterInvoiceFooter.BackColor = System.Drawing.Color.White;
             this.PanFooterInvoiceFooter.BorderColor = System.Drawing.Color.Black;
             this.PanFooterInvoiceFooter.BorderThickness = 1;
-            this.PanFooterInvoiceFooter.Controls.Add(this.guna2ImageButton2);
-            this.PanFooterInvoiceFooter.Controls.Add(this.guna2ImageButton1);
+            this.PanFooterInvoiceFooter.Controls.Add(this.BtnInsert);
+            this.PanFooterInvoiceFooter.Controls.Add(this.BtnPrint);
             this.PanFooterInvoiceFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.PanFooterInvoiceFooter.Location = new System.Drawing.Point(0, 449);
             this.PanFooterInvoiceFooter.Name = "PanFooterInvoiceFooter";
             this.PanFooterInvoiceFooter.Size = new System.Drawing.Size(1280, 58);
             this.PanFooterInvoiceFooter.TabIndex = 3;
             // 
-            // guna2ImageButton1
+            // BtnInsert
             // 
-            this.guna2ImageButton1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(42, 42);
-            this.guna2ImageButton1.Image = global::SalesManagementSystem.Properties.Resources.print;
-            this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton1.ImageRotate = 0F;
-            this.guna2ImageButton1.ImageSize = new System.Drawing.Size(40, 40);
-            this.guna2ImageButton1.Location = new System.Drawing.Point(605, -6);
-            this.guna2ImageButton1.Margin = new System.Windows.Forms.Padding(4);
-            this.guna2ImageButton1.Name = "guna2ImageButton1";
-            this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(42, 42);
-            this.guna2ImageButton1.Size = new System.Drawing.Size(70, 70);
-            this.guna2ImageButton1.TabIndex = 42;
-            this.guna2ImageButton1.UseTransparentBackground = true;
+            this.BtnInsert.BackColor = System.Drawing.Color.Transparent;
+            this.BtnInsert.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.BtnInsert.HoverState.ImageSize = new System.Drawing.Size(42, 42);
+            this.BtnInsert.Image = global::SalesManagementSystem.Properties.Resources.Add;
+            this.BtnInsert.ImageOffset = new System.Drawing.Point(0, 0);
+            this.BtnInsert.ImageRotate = 0F;
+            this.BtnInsert.ImageSize = new System.Drawing.Size(40, 40);
+            this.BtnInsert.Location = new System.Drawing.Point(25, -6);
+            this.BtnInsert.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnInsert.Name = "BtnInsert";
+            this.BtnInsert.PressedState.ImageSize = new System.Drawing.Size(42, 42);
+            this.BtnInsert.Size = new System.Drawing.Size(70, 70);
+            this.BtnInsert.TabIndex = 43;
+            this.BtnInsert.UseTransparentBackground = true;
             // 
-            // guna2ImageButton2
+            // BtnPrint
             // 
-            this.guna2ImageButton2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ImageButton2.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton2.HoverState.ImageSize = new System.Drawing.Size(42, 42);
-            this.guna2ImageButton2.Image = global::SalesManagementSystem.Properties.Resources.Add;
-            this.guna2ImageButton2.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton2.ImageRotate = 0F;
-            this.guna2ImageButton2.ImageSize = new System.Drawing.Size(40, 40);
-            this.guna2ImageButton2.Location = new System.Drawing.Point(25, -6);
-            this.guna2ImageButton2.Margin = new System.Windows.Forms.Padding(4);
-            this.guna2ImageButton2.Name = "guna2ImageButton2";
-            this.guna2ImageButton2.PressedState.ImageSize = new System.Drawing.Size(42, 42);
-            this.guna2ImageButton2.Size = new System.Drawing.Size(70, 70);
-            this.guna2ImageButton2.TabIndex = 43;
-            this.guna2ImageButton2.UseTransparentBackground = true;
+            this.BtnPrint.BackColor = System.Drawing.Color.Transparent;
+            this.BtnPrint.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.BtnPrint.HoverState.ImageSize = new System.Drawing.Size(42, 42);
+            this.BtnPrint.Image = global::SalesManagementSystem.Properties.Resources.print;
+            this.BtnPrint.ImageOffset = new System.Drawing.Point(0, 0);
+            this.BtnPrint.ImageRotate = 0F;
+            this.BtnPrint.ImageSize = new System.Drawing.Size(40, 40);
+            this.BtnPrint.Location = new System.Drawing.Point(605, -6);
+            this.BtnPrint.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnPrint.Name = "BtnPrint";
+            this.BtnPrint.PressedState.ImageSize = new System.Drawing.Size(42, 42);
+            this.BtnPrint.Size = new System.Drawing.Size(70, 70);
+            this.BtnPrint.TabIndex = 42;
+            this.BtnPrint.UseTransparentBackground = true;
             // 
             // UCInvoice
             // 
@@ -247,18 +247,18 @@
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2Panel PanHeaderInvoice;
-        private Guna.UI2.WinForms.Guna2ComboBox CMBStore;
-        private System.Windows.Forms.Label LabTranType;
-        private System.Windows.Forms.Label LabUserName;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2DateTimePicker InvoiceDate;
-        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox2;
-        private System.Windows.Forms.Label LavoiceNumber;
-        private Guna.UI2.WinForms.Guna2Panel PanMainInvoice;
-        private Guna.UI2.WinForms.Guna2Panel PanFooterInvoice;
-        private Guna.UI2.WinForms.Guna2Panel PanFooterInvoiceFooter;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton2;
+        public Guna.UI2.WinForms.Guna2Panel PanHeaderInvoice;
+        public Guna.UI2.WinForms.Guna2ComboBox CMBStore;
+        public System.Windows.Forms.Label LabTranType;
+        public System.Windows.Forms.Label LabUserName;
+        public Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        public Guna.UI2.WinForms.Guna2DateTimePicker InvoiceDate;
+        public Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox2;
+        public System.Windows.Forms.Label LavoiceNumber;
+        public Guna.UI2.WinForms.Guna2Panel PanMainInvoice;
+        public Guna.UI2.WinForms.Guna2Panel PanFooterInvoice;
+        public Guna.UI2.WinForms.Guna2Panel PanFooterInvoiceFooter;
+        public Guna.UI2.WinForms.Guna2ImageButton BtnInsert;
+        public Guna.UI2.WinForms.Guna2ImageButton BtnPrint;
     }
 }

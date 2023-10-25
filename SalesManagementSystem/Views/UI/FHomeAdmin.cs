@@ -35,14 +35,6 @@ namespace SalesManagementSystem.Views.UI
             U.BringToFront();
         }
 
-        private void BtnMenuInfo_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void BtnMenuSettings_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

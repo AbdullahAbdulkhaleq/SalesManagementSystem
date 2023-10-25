@@ -1,12 +1,7 @@
 ﻿using SalesManagementSystem.Models;
 using SalesManagementSystem.Presenters.Services;
 using SalesManagementSystem.Views.Interface;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SalesManagementSystem.Presenters.Presenters
 {
@@ -28,7 +23,7 @@ namespace SalesManagementSystem.Presenters.Presenters
             this.customermodel.CustomerType = this.icustomer.CustomerType;
             this.customermodel.CustomerPhone = this.icustomer.CustomerPhone;
         }
-        public bool Insert()
+        public int Insert()
         {
             connectedInterfaceAndModel();
             return CustomerServices.CustomerInsert(this.customermodel);
@@ -37,7 +32,7 @@ namespace SalesManagementSystem.Presenters.Presenters
         {connectedInterfaceAndModel();
             return CustomerServices.CustomerDelete(this.customermodel);
         }
-        public bool DeleteAll()
+        public int DeleteAll()
         {
             connectedInterfaceAndModel();
             return CustomerServices.CustomerDeleteAll();
@@ -52,7 +47,6 @@ namespace SalesManagementSystem.Presenters.Presenters
             connectedInterfaceAndModel();
             return CustomerServices.CustomerSelect(this.customermodel);
         }
-
         public string  GetCustomerId()
         {
             return CustomerServices.GetCustomerId().ToString();

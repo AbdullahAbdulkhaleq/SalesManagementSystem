@@ -1,5 +1,6 @@
 ﻿using SalesManagementSystem.Presenters.Presenters;
 using SalesManagementSystem.Presenters.Services;
+using SalesManagementSystem.Views.Functions;
 using SalesManagementSystem.Views.Interface;
 using SalesManagementSystem.Views.UI.Designer;
 using System;
@@ -14,106 +15,54 @@ using System.Windows.Forms;
 
 namespace SalesManagementSystem.Views.UI.Human
 {
-    public partial class UCCustomer : UCParent, ICustomer
+    public partial class UCCustomer : UCChild,ICustomer
     {
-        CustomerPresenter presenter;
+        CustomerPresenter presenter = null;
+
+        public int CustomerId { get => 0; set =>TxtCustomerName.Text = value.ToString(); }
+        public string CustomerName { get => TxtCustomerName.Text; set => TxtCustomerName.Text = value; }
+        public string CustomerEmail { get => TxtCustomerEmail.Text; set => TxtCustomerEmail.Text = value; }
+        public string CustomerPhone { get => TxtCustomerPhone.Text; set => TxtCustomerPhone.Text = value; }
+        public string CustomerType { get => ComBCustomerType.Text; set => ComBCustomerType.Text = value; }
+
         public UCCustomer()
         {
             InitializeComponent();
-            presenter = new CustomerPresenter(this);
+            this.presenter = new CustomerPresenter(this);
         }
 
-
-        public string CustomerName { get => TCustomerName.Text; set => TCustomerName.Text = value; }
-        public string CustomerEmail { get => TCustomerEmail.Text; set => TCustomerEmail.Text = value; }
-        public string CustomerPhone { get => TCustomerPhone.Text; set => TCustomerPhone.Text = value; }
-        public string CustomerType { get => TCustomerType.Text; set => TCustomerType.Text = value; }
-        public int CustomerId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-        private void BDeleteAll_Click(object sender, EventArgs e)
-        {
-            presenter.DeleteAll();
-        }
-
-        private void BSelect_Click(object sender, EventArgs e)
-        {
-            presenter.Select();
-        }
-
-        private void BDeltete_Click(object sender, EventArgs e)
-        {
-            presenter.Delete();
-        }
-
-        private void BInsert_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void BUpdate_Click(object sender, EventArgs e)
-        {
-            presenter.Update();
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void guna2ImageButton1_Click(object sender, EventArgs e)
+        private void BtnInsert_Click(object sender, EventArgs e)
         {
             try
             {
-                if(TCustomerType.Text!="" && TCustomerPhone.Text!="" && TCustomerEmail.Text!=""&& TCustomerName.Text!="" )
+                if (TxtCustomerName.Text != string.Empty && TxtCustomerEmail.Text != string.Empty && TxtCustomerPhone.Text != string.Empty)
                 {
-                    if (presenter.Insert())
-                    {
-                        MessageBox.Show("OK");
-                    }
-
-                    clear();
+                    FunMessage.Print(presenter.Insert(), "Insert");
                 }
                 else
                 {
-                    erore("place Insert in all input");
+                    FunMessage.Print();
                 }
             }
             catch
             {
-                erore();
-                clear();
+                FunMessage.Print();
+            }
+            finally
+            {
+                Clear();
             }
         }
-
-
-        private void guna2Button1_Click(object sender, EventArgs e)
+        void Clear()
         {
-
+            TxtCustomerName.Text = string.Empty;
+            TxtCustomerEmail.Text = string.Empty;
+            TxtCustomerPhone.Text = string.Empty;
         }
 
-        private void panel1_MouseEnter(object sender, MouseEventArgs e)
+        private void BtnRefersh_Click(object sender, EventArgs e)
         {
-        }
-
-        private void panel2_Paint_1(object sender, PaintEventArgs e)
-        {
-
-        }
-        private void erore(string Error="Error")
-        {
-
-            MessageBox.Show($"Can't do Process {Error} !");
-        }
-        private void clear()
-        {
-            TCustomerName.Clear();
-            TCustomerEmail.Clear();
-            TCustomerPhone.Clear();
-            TCustomerType.ResetText();
-        }
-
-        private void BtbMenuProduct_Click(object sender, EventArgs e)
-        {
-
+            DGV.DataSource = presenter.Select();
         }
     }
 }

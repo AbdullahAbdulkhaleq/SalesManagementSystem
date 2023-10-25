@@ -10,7 +10,7 @@ using System.Windows.Documents;
 
 namespace SalesManagementSystem.Presenters.Services
 {
-    public static class DB
+    internal static class DB
     {
         public static SqlCommand Command;
         public static SqlConnection GetConnectionString()
@@ -21,7 +21,39 @@ namespace SalesManagementSystem.Presenters.Services
             ConnectionString.IntegratedSecurity = true;
             return new SqlConnection(ConnectionString.ConnectionString);
         }
+        //هذه  الداله تستقبل اسم لاجراء والمتغيرات الخاصة بهذه الاجراءو ترجع قيمة  من الجراءت المخزنة
+        public static int SetDate(string ProcedureName, string ParameterName, Action action)
+        {
+            using (SqlConnection Connection = GetConnectionString())
+            {
+                try
+                {
+                    Command = new SqlCommand(ProcedureName, Connection);
+                    Command.CommandType = CommandType.StoredProcedure;
+                    action.Invoke();
 
+                    SqlParameter ParameterNameout = new SqlParameter();
+                    ParameterNameout.ParameterName = ParameterName;
+                    ParameterNameout.SqlDbType = SqlDbType.Int;
+                    ParameterNameout.Direction = ParameterDirection.Output;
+                    Command.Parameters.Add(ParameterNameout);
+
+                    Connection.Open();
+                    Command.ExecuteReader();
+                    return int.Parse(ParameterNameout.Value.ToString());
+
+
+                }
+                catch
+                {
+                    return 0;
+                }
+                finally
+                {
+                    Connection.Close();
+                }
+            }
+        }
         //هذه الدالة تقوم بعمليات الادخال والحذف والتعديل لجميع جداول البرنامج من جميع الشاشات
         public static bool SetDate(string ProcedureName, Action tran)
         {
@@ -57,6 +89,11 @@ namespace SalesManagementSystem.Presenters.Services
                     Command = new SqlCommand(ProcedureName, Connection);
                     Command.CommandType= CommandType.StoredProcedure;
                     tran.Invoke();
+                    SqlParameter ParameterNameout = new SqlParameter();
+                    ParameterNameout.ParameterName = "@Sccessfully";
+                    ParameterNameout.SqlDbType = SqlDbType.Bit;
+                    ParameterNameout.Direction = ParameterDirection.Output;
+                    Command.Parameters.Add(ParameterNameout);
                     Connection.Open();
                     Table.Load( Command.ExecuteReader());
 

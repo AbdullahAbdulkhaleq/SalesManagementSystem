@@ -231,20 +231,41 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\CustomerModel.cs" />
+    <Compile Include="Models\DepartmentModel.cs" />
+    <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\PurchasingDetailsModel.cs" />
     <Compile Include="Models\PurchasingModel.cs" />
+    <Compile Include="Models\RecoveryPasswordModel.cs" />
     <Compile Include="Models\SalesDetailsModel.cs" />
     <Compile Include="Models\SalesModel.cs" />
     <Compile Include="Models\StoreModel.cs" />
     <Compile Include="Models\SupplierModel.cs" />
     <Compile Include="Models\UnitModel.cs" />
-    <Compile Include="Presenters\Client\Clints.cs" />
-    <Compile Include="Presenters\Client\Enum\RequestType.cs" />
+    <Compile Include="Models\UserModle.cs" />
+    <Compile Include="Presenters\Presenters\DepartmentPresenter.cs" />
+    <Compile Include="Presenters\Presenters\CategoryPresenter.cs" />
+    <Compile Include="Presenters\Presenters\ProductPresenter.cs" />
+    <Compile Include="Presenters\Presenters\PurchasingDetailPresenters.cs" />
+    <Compile Include="Presenters\Presenters\PurchasingPresenter.cs" />
+    <Compile Include="Presenters\Presenters\RecoveryPasswordPresenter.cs" />
+    <Compile Include="Presenters\Presenters\SalesDetailsPresenter.cs" />
+    <Compile Include="Presenters\Presenters\SalesPresenter.cs" />
+    <Compile Include="Presenters\Presenters\StorePresenter.cs" />
+    <Compile Include="Presenters\Presenters\UnitPresenter.cs" />
+    <Compile Include="Presenters\Presenters\UserPresenter.cs" />
     <Compile Include="Presenters\Services\CustomerServices.cs" />
     <Compile Include="Presenters\Services\DB.cs" />
+    <Compile Include="Presenters\Services\DepartmentServices.cs" />
+    <Compile Include="Presenters\Services\CategoryServices.cs" />
     <Compile Include="Presenters\Services\LoginServices.cs" />
     <Compile Include="Presenters\Services\ProductServices.cs" />
+    <Compile Include="Presenters\Services\PurchasingDetailsServices.cs" />
+    <Compile Include="Presenters\Services\PurchasingServices..cs" />
+    <Compile Include="Presenters\Services\RecoveryPasswordServices.cs" />
+    <Compile Include="Presenters\Services\SalesDetailsServices.cs" />
+    <Compile Include="Presenters\Services\SalesServices.cs" />
     <Compile Include="Presenters\Services\StoreServices.cs" />
     <Compile Include="Presenters\Services\SupplierServices.cs" />
     <Compile Include="Presenters\Services\UnitServices.cs" />
@@ -266,19 +287,36 @@
     <Compile Include="Views\Functions\FunLogin.cs" />
     <Compile Include="Views\Functions\FunMessage.cs" />
     <Compile Include="Views\Interface\ICustomer.cs" />
+    <Compile Include="Views\Interface\IDepartment.cs" />
+    <Compile Include="Views\Interface\ICategory.cs" />
     <Compile Include="Views\Interface\ILogin.cs" />
+    <Compile Include="Views\Interface\IProduct.cs" />
+    <Compile Include="Views\Interface\IPurchasing.cs" />
+    <Compile Include="Views\Interface\IPurchasingDetails.cs" />
+    <Compile Include="Views\Interface\iRecoveryPassword.cs" />
+    <Compile Include="Views\Interface\ISales.cs" />
+    <Compile Include="Views\Interface\ISalesDetails.cs" />
+    <Compile Include="Views\Interface\IStore.cs" />
     <Compile Include="Views\Interface\ISupplier.cs" />
-    <Compile Include="Views\UI\Access\FFrgotPassword.cs">
+    <Compile Include="Views\Interface\IUnit.cs" />
+    <Compile Include="Views\Interface\IUser.cs" />
+    <Compile Include="Views\UI\Access\FRecoveryPassword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\UI\Access\FFrgotPassword.Designer.cs">
-      <DependentUpon>FFrgotPassword.cs</DependentUpon>
+    <Compile Include="Views\UI\Access\FRecoveryPassword.Designer.cs">
+      <DependentUpon>FRecoveryPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UI\Access\FLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\UI\Access\FLogin.Designer.cs">
       <DependentUpon>FLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UI\Access\FError.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UI\Access\FError.Designer.cs">
+      <DependentUpon>FError.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UI\Access\UCInfo.cs">
       <SubType>UserControl</SubType>
@@ -292,17 +330,23 @@
     <Compile Include="Views\UI\Designer\FDMain.Designer.cs">
       <DependentUpon>FDMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UI\Designer\UCInvoice.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Views\UI\Designer\FMessage.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\UI\Designer\UCInvoice.Designer.cs">
-      <DependentUpon>UCInvoice.cs</DependentUpon>
+    <Compile Include="Views\UI\Designer\FMessage.Designer.cs">
+      <DependentUpon>FMessage.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UI\Designer\UCChild.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Views\UI\Designer\UCChild.Designer.cs">
       <DependentUpon>UCChild.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UI\Designer\UCInvoice.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UI\Designer\UCInvoice.Designer.cs">
+      <DependentUpon>UCInvoice.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UI\Designer\UCParent.cs">
       <SubType>UserControl</SubType>
@@ -316,17 +360,23 @@
     <Compile Include="Views\UI\Access\UCSettings.Designer.cs">
       <DependentUpon>UCSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\UI\Designer\UCItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UI\Designer\UCItem.Designer.cs">
+      <DependentUpon>UCItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UI\Human\UCUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Views\UI\Human\UCUser.Designer.cs">
       <DependentUpon>UCUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UI\Inventory\UCGategory.cs">
+    <Compile Include="Views\UI\Inventory\UCCategory.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UI\Inventory\UCGategory.Designer.cs">
-      <DependentUpon>UCGategory.cs</DependentUpon>
+    <Compile Include="Views\UI\Inventory\UCCategory.Designer.cs">
+      <DependentUpon>UCCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UI\Sales\FHomeSales.cs">
       <SubType>Form</SubType>
@@ -410,14 +460,23 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UI\Access\FFrgotPassword.resx">
-      <DependentUpon>FFrgotPassword.cs</DependentUpon>
+    <EmbeddedResource Include="Views\UI\Access\FRecoveryPassword.resx">
+      <DependentUpon>FRecoveryPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UI\Access\FLogin.resx">
       <DependentUpon>FLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\UI\Access\FError.resx">
+      <DependentUpon>FError.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UI\Access\UCSettings.resx">
+      <DependentUpon>UCSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\UI\Designer\FDMain.resx">
       <DependentUpon>FDMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UI\Designer\FMessage.resx">
+      <DependentUpon>FMessage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UI\Designer\UCChild.resx">
       <DependentUpon>UCChild.cs</DependentUpon>
@@ -428,11 +487,14 @@
     <EmbeddedResource Include="Views\UI\Designer\UCParent.resx">
       <DependentUpon>UCParent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\UI\Designer\UCItem.resx">
+      <DependentUpon>UCItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\UI\Human\UCUser.resx">
       <DependentUpon>UCUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UI\Inventory\UCGategory.resx">
-      <DependentUpon>UCGategory.cs</DependentUpon>
+    <EmbeddedResource Include="Views\UI\Inventory\UCCategory.resx">
+      <DependentUpon>UCCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UI\Sales\FHomeSales.resx">
       <DependentUpon>FHomeSales.cs</DependentUpon>
@@ -529,10 +591,7 @@
     <None Include="Resources\Add_Customer.png" />
     <Content Include="Logo.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Presenters\Client\r - Copy\" />
-    <Folder Include="Presenters\Client\r\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.4.0.2\build\Fody.targets" Condition="Exists('..\packages\Fody.4.0.2\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

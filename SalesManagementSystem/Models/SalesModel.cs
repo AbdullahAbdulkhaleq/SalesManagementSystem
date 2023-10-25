@@ -8,10 +8,10 @@ namespace SalesManagementSystem.Models
 {
     public class SalesModel
     {
-        public int PurchasingId { get; set; }
-        public DateTime PurchasingDate { get; set; }
-        public decimal PurchasingTotal { get; set; }
-        public int SupplierId { get; set; }
+        public int PSalesId { get; set; }
+        public DateTime SalesDate { get; set; }
+        public decimal SalesTotal { get; set; }
+        public int CustomerId { get; set; }
         public int UserId { get; set; }
         public int StoreId { get; set; }
     }

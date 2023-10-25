@@ -9,6 +9,7 @@ namespace SalesManagementSystem.Views.Enum
         LoginPurchasing = 3,
         LoginInventory = 4,
         LoginBlock = 5 ,
-        LoginNotFound = 404
+        LoginNotFound = 404,
+        LoginErrorInLog = 40404
     }
 }

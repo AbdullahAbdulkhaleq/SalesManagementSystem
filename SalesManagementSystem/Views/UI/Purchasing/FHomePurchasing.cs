@@ -29,9 +29,23 @@ namespace SalesManagementSystem.Views.UI.Purchasing
 
         private void AddControal(UserControl U)
         {
+
             PnlMain.Controls.Clear();
-            U.Dock = DockStyle.Fill;
-            PnlMain.Controls.Add(U);
+            try
+            {
+                UCChild u = (UCChild)U;
+                u.Dock = DockStyle.Fill;
+                PnlMain.Controls.Add(u);
+            }
+            catch
+            {
+                U.Dock = DockStyle.Fill;
+                PnlMain.Controls.Add(U);
+            }
+            finally
+            {
+
+            }
         }
     }
 }

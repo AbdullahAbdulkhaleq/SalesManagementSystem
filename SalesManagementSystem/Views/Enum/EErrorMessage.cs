@@ -5,7 +5,7 @@
         ThereAreNoErrors = 1,
         ErrorNotInsert = 2,
         ErrorNotAvailableQuantity = 3,
-        ErrorNotFound = 4,
+        ErrorNotFound = 404,
         ErrorNotDeleted = 5,
         ErrorNotUpdated = 6,
         ErrorInvalidValueType = 7,
