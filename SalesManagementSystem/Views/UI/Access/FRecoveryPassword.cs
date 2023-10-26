@@ -24,10 +24,11 @@ namespace SalesManagementSystem.Views.UI.Access
             }
         }
 
-        private void BtnExit_Click(object sender, EventArgs e)
+        public override void BtnExit_Click(object sender, EventArgs e)
         {
             FRecoveryPassword.ActiveForm.Close();
         }
+
 
         private void FFrgotPassword_Load(object sender, EventArgs e)
         {

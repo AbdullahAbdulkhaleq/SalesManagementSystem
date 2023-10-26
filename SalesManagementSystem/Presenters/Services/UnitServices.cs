@@ -13,13 +13,13 @@ namespace SalesManagementSystem.Presenters.Services
     {
         public static int Insert(UnitModel model)
         {
-            return DB.GetDate("P_Insert", "@Sccessfully", () => Insert(model, DB.Command));
+            return DB.SetDate("P_Insert", "@Sccessfully", () => Insert(model, DB.Command));
         }
         private static void Insert(UnitModel model, SqlCommand command)
         {
-            command.Parameters.Add("@TableName", SqlDbType.NVarChar).Value = "Customer";
-            command.Parameters.Add("@Name", SqlDbType.NVarChar).Value = model.UnitCode;
-            command.Parameters.Add("@Email", SqlDbType.NVarChar).Value = model.UnitDesc;
+            command.Parameters.Add("@TableName", SqlDbType.NVarChar).Value = "Unit";
+            command.Parameters.Add("@UnitCode", SqlDbType.NVarChar).Value = model.UnitCode;
+            command.Parameters.Add("@UnitDesc", SqlDbType.NVarChar).Value = model.UnitDesc;
         }
         public static DataTable Select(UnitModel customer)
         {
@@ -27,7 +27,11 @@ namespace SalesManagementSystem.Presenters.Services
         }
         private static void Select(SqlCommand command)
         {
-            command.Parameters.Add("@TableName", SqlDbType.NVarChar).Value = "Customer";
+            command.Parameters.Add("@TableName", SqlDbType.NVarChar).Value = "Unit";
+        }
+        public static int Delete(UnitModel model)
+        {
+            return DB.SetDate("","",()=>Delete(model));
         }
     }
 }

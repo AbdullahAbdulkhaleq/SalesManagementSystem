@@ -63,8 +63,8 @@ namespace SalesManagementSystem.Views.UI.Human
 
         private void BtnRefersh_Click(object sender, EventArgs e)
         {
-
-            DGV.DataSource = presenter.s();
+            DGV.DataSource = presenter.Select();
         }
+
     }
 }

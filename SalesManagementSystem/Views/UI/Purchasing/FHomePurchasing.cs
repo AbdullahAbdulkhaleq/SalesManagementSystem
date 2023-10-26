@@ -34,6 +34,7 @@ namespace SalesManagementSystem.Views.UI.Purchasing
             try
             {
                 UCChild u = (UCChild)U;
+                u.PnlMain.Enabled = false;
                 u.Dock = DockStyle.Fill;
                 PnlMain.Controls.Add(u);
             }

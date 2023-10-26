@@ -23,7 +23,25 @@ namespace SalesManagementSystem.Views.UI.Inventory
 
         private void BtnInsert_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (TxtProductName.Text != string.Empty && TxtLastPrice.Text != string.Empty)
+                {
+                    FunMessage.Print(presenter.Insert(), "Insert");
+                }
+                else
+                {
+                    FunMessage.Print();
+                }
+            }
+            catch
+            {
+                FunMessage.Print();
+            }
+            finally
+            {
+                Clear();
+            }
         }
         void Clear()
         {
@@ -33,7 +51,15 @@ namespace SalesManagementSystem.Views.UI.Inventory
 
         private void BtnRefersh_Click(object sender, EventArgs e)
         {
-            DGV.DataSource = presenter.Select();
+            try
+            {
+                DGV.DataSource = presenter.Select();
+                LabCountRow.Text = (DGV.RowCount-1).ToString();
+            }
+            catch
+            {
+                FunMessage.Print();
+            }
         }
 
     }

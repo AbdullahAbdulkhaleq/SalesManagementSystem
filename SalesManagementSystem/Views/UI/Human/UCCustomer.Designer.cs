@@ -78,7 +78,7 @@
             this.panel1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(320, 690);
-            this.panel1.TabIndex = 20;
+            this.panel1.TabIndex = 22;
             // 
             // BtnInsert
             // 

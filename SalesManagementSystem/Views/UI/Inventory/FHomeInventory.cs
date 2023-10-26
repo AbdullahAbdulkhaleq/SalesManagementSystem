@@ -34,6 +34,7 @@ namespace SalesManagementSystem.Views.UI
             {
                 UCChild u = (UCChild)U;
                 u.Dock = DockStyle.Fill;
+                u.PnlMain.Enabled = false;
                 PnlMain.Controls.Add(u);
             }
             catch

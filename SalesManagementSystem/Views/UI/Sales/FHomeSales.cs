@@ -26,6 +26,7 @@ namespace SalesManagementSystem.Views.UI.Sales
             try
             {
                 UCChild u = (UCChild)U;
+                u.PnlMain.Enabled = false;
                 u.Dock = DockStyle.Fill;
                 PnlMain.Controls.Add(u);
             }

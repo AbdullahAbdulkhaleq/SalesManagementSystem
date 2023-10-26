@@ -18,5 +18,6 @@ namespace SalesManagementSystem.Views.UI.Access
             InitializeComponent();
             LabMessage.Text = Message;
         }
+        
     }
 }

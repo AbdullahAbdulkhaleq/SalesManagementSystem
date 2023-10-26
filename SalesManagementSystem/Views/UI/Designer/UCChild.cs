@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SalesManagementSystem.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,22 +18,23 @@ namespace SalesManagementSystem.Views.UI.Designer
             InitializeComponent();
         }
         #region
-        public event EventHandler Print;
-        public event EventHandler Refrech;
+        public event EventHandler ClickItems;
         #endregion
 
-        private void BtnPrint_Click_1(object sender, EventArgs e)
+        private void DGV_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            CustomerModel Customer =new CustomerModel();
+            Customer.CustomerId = e.RowIndex;
+            Customer.CustomerName = "Abdullah";
+            Customer.CustomerEmail = "AbdullahAbdullah";
+            Customer.CustomerPhone = "Abdullah";
+            Customer.CustomerType = "Abdullah";
 
-            if (Print != null)
-                Print.Invoke(this, e);
-        }
-
-        private void BtnResearch_Click(object sender, EventArgs e)
-        {
-
-            if (Refrech != null)
-                Print.Invoke(this, e);
+            if (e.RowIndex >= 0 && e != null)
+            {
+                FUpdateDelete fUpdateDelete = new FUpdateDelete("Customer", Customer);
+                fUpdateDelete.ShowDialog();
+            }
         }
     }
 }

@@ -12,7 +12,7 @@ namespace SalesManagementSystem.Presenters.Services
     {
         public static int Insert(SalesDetailsModel model)
         {
-            return DB.GetDate("", "", () => Insert(model, DB.Command));
+            return DB.SetDate("", "", () => Insert(model, DB.Command));
         }
         private static void Insert(SalesDetailsModel model, SqlCommand command)
         {

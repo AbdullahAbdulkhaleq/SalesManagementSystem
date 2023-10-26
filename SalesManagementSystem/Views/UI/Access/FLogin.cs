@@ -27,7 +27,10 @@ namespace SalesManagementSystem.Views.UI.Access
             Presenter = new LoginPresenter(this);
 
         }
-
+        public override void BtnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
 
         private void LinFrgotPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {

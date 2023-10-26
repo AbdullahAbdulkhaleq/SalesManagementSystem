@@ -26,30 +26,13 @@ namespace SalesManagementSystem.Presenters.Presenters
         public int Insert()
         {
             connectedInterfaceAndModel();
-            return CustomerServices.CustomerInsert(this.customermodel);
+            return CustomerServices.Insert(this.customermodel);
         }
-        public bool Delete()
-        {connectedInterfaceAndModel();
-            return CustomerServices.CustomerDelete(this.customermodel);
-        }
-        public int DeleteAll()
-        {
-            connectedInterfaceAndModel();
-            return CustomerServices.CustomerDeleteAll();
-        }
-        public bool Update()
-        {
-            connectedInterfaceAndModel();
-            return CustomerServices.CustomerUpdate(this.customermodel);
-        }
+
         public DataTable Select()
         {
             connectedInterfaceAndModel();
-            return CustomerServices.CustomerSelect(this.customermodel);
-        }
-        public string  GetCustomerId()
-        {
-            return CustomerServices.GetCustomerId().ToString();
+            return CustomerServices.Select();
         }
     }
 }

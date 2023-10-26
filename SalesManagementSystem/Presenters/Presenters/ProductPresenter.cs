@@ -36,7 +36,7 @@ namespace SalesManagementSystem.Presenters.Presenters
         public DataTable Select()
         {
             connectedInterfaceAndModel();
-            return ProductServices.Select(this.productModel);
+            return ProductServices.Select();
         }
     }
 }

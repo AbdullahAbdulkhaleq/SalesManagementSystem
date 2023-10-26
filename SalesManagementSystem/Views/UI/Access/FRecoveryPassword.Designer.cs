@@ -45,7 +45,6 @@
             this.BtnExit.HoverState.ImageSize = new System.Drawing.Size(39, 33);
             this.BtnExit.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Normal;
             this.BtnExit.PressedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.BtnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // BtnLogOut
             // 

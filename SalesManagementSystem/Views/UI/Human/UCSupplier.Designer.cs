@@ -81,7 +81,7 @@
             this.PanInsert.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.PanInsert.Name = "PanInsert";
             this.PanInsert.Size = new System.Drawing.Size(320, 690);
-            this.PanInsert.TabIndex = 20;
+            this.PanInsert.TabIndex = 22;
             // 
             // LabCategory
             // 

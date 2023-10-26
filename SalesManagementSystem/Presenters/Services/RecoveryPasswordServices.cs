@@ -13,7 +13,7 @@ namespace SalesManagementSystem.Presenters.Services
     {
         public static int Insert(RecoveryPasswordModel model)
         {
-            return DB.GetDate("P_Insert", "@Sccessfully", () => Insert(model, DB.Command));
+            return DB.SetDate("P_Insert", "@Sccessfully", () => Insert(model, DB.Command));
         }
         private static void Insert(RecoveryPasswordModel model, SqlCommand command)
         {
@@ -24,13 +24,5 @@ namespace SalesManagementSystem.Presenters.Services
             command.Parameters.Add("@Phone", SqlDbType.NVarChar).Value = model.WhatsIsayourBestCity;
         }
 
-        public static DataTable Select(RecoveryPasswordModel customer)
-        {
-            return DB.GetDate("P_Select_All", () => Select(DB.Command));
-        }
-        private static void Select(SqlCommand command)
-        {
-            command.Parameters.Add("@TableName", SqlDbType.NVarChar).Value = "Customer";
-        }
     }
 }

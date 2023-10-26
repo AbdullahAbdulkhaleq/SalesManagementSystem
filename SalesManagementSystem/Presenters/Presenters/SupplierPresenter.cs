@@ -1,6 +1,7 @@
 ﻿using SalesManagementSystem.Models;
 using SalesManagementSystem.Presenters.Services;
 using SalesManagementSystem.Views.Interface;
+using System.Data;
 
 namespace SalesManagementSystem.Presenters.Presenters
 {
@@ -13,7 +14,6 @@ namespace SalesManagementSystem.Presenters.Presenters
             this.isupplier = isupplier;
             this.supplierModel = new SupplierModel();
         }
-
         private void connectedInterfaceAndModel()
         {
             this.supplierModel.SupplierId = isupplier.SupplierId;
@@ -23,20 +23,15 @@ namespace SalesManagementSystem.Presenters.Presenters
             this.supplierModel.SupplierEmail = isupplier.SupplierEmail;
             this.supplierModel.SupplierBrand = isupplier.SupplierBrand;
         }
-        public bool Insert()
+        public int Insert()
         {
             connectedInterfaceAndModel();
-            return SupplierServices.SupplierInsert(this.supplierModel);
+            return SupplierServices.Insert(this.supplierModel);
         }
-        public bool Delete()
+        public DataTable Select()
         {
-            return SupplierServices.SupplierDelete(this.supplierModel);
+            return SupplierServices.Select();
         }
-        public string GetSupplierId()
-        {
-            return SupplierServices.GetSupplierId().ToString();
-        }
-
 
     }
 }

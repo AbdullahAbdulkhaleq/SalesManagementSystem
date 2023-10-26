@@ -43,7 +43,16 @@ namespace SalesManagementSystem.Views.UI.Inventory
         }
         private void BtnRefersh_Click(object sender, EventArgs e)
         {
-            DGV.DataSource = presenter.Select();
+            try
+            {
+                DGV.DataSource = presenter.Select();
+                LabCountRow.Text = (DGV.RowCount - 1).ToString();
+
+            }
+            catch
+            {
+                FunMessage.Print();
+            }
         }
 
         void Clear()

@@ -34,7 +34,17 @@ namespace SalesManagementSystem.Presenters.Presenters
         public DataTable Select()
         {
             connectedInterfaceAndModel();
-            return StoreServices.Select(this.storeModel);
+            return StoreServices.Select();
+        }
+        public int Delete()
+        {
+            connectedInterfaceAndModel();
+            return StoreServices.Delete(this.storeModel);
+        }
+        public int Update()
+        {
+            connectedInterfaceAndModel();
+            return StoreServices.Update(this.storeModel);
         }
     }
 }

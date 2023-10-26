@@ -33,5 +33,15 @@ namespace SalesManagementSystem.Presenters.Presenters
         {
             return UserServices.Select();
         }
+        public int Delete()
+        {
+            ConnectInterfaceToModle();
+            return UserServices.Delete(this.userModle);
+        }
+        public int Update()
+        {
+            ConnectInterfaceToModle();
+            return UserServices.Update(this.userModle);
+        }
     }
 }

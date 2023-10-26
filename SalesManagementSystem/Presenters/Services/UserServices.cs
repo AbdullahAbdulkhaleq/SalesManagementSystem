@@ -7,16 +7,16 @@ namespace SalesManagementSystem.Presenters.Services
     //هذه الكلاس بيكون ينفذ جميع اومر قواعد البيانات الخاصة للمستخدمين
     public static class UserServices
     {
-        public static  int Insert(UserModle user)
+        public static  int Insert(UserModle modle)
         {
-            return DB.SetDate("P_User_Insert","@Sccessfully", () => Insert(user, DB.Command));
+            return DB.SetDate("P_User_Insert","@Sccessfully", () => Insert(modle, DB.Command));
         }
-        private static void Insert(UserModle user, SqlCommand command)
+        private static void Insert(UserModle modle, SqlCommand command)
         {
-            command.Parameters.Add("@Name", SqlDbType.NVarChar).Value = user.UserName;
-            command.Parameters.Add("@Password", SqlDbType.NVarChar).Value = user.UserPassword;
-            command.Parameters.Add("@DepartmentId", SqlDbType.Int).Value = user.DepartmentId;
-            command.Parameters.Add("@UserStatus", SqlDbType.Int).Value = user.UserStatus;
+            command.Parameters.Add("@Name", SqlDbType.NVarChar).Value = modle.UserName;
+            command.Parameters.Add("@Password", SqlDbType.NVarChar).Value = modle.UserPassword;
+            command.Parameters.Add("@DepartmentId", SqlDbType.Int).Value = modle.DepartmentId;
+            command.Parameters.Add("@UserStatus", SqlDbType.Int).Value = modle.UserStatus;
         }
         public static DataTable Select()
         {
@@ -26,5 +26,25 @@ namespace SalesManagementSystem.Presenters.Services
         {
             command.Parameters.Add("@TableName", SqlDbType.NVarChar).Value = "User_";
         }
+        public static int Delete(UserModle modle)
+        {
+            return DB.SetDate("","",()=>Delete(modle,DB.Command));
+        }
+        private static void Delete(UserModle modle ,SqlCommand command)
+        {
+            command.Parameters.Add("@Id", SqlDbType.NVarChar).Value = modle.UserId;
+        }
+        public static int Update(UserModle modle)
+        {
+            return DB.SetDate("", "", () => Update(modle, DB.Command));
+        }
+        private static void Update(UserModle modle,SqlCommand command)
+        {
+            command.Parameters.Add("@Id", SqlDbType.NVarChar).Value = modle.UserId;
+            command.Parameters.Add("@Name", SqlDbType.NVarChar).Value = modle.UserName;
+            command.Parameters.Add("@Password", SqlDbType.NVarChar).Value = modle.UserPassword;
+            command.Parameters.Add("@DepartmentId", SqlDbType.Int).Value = modle.DepartmentId;
+            command.Parameters.Add("@UserStatus", SqlDbType.Int).Value = modle.UserStatus;
+        }
     }
-}
+ }

@@ -33,7 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PnlMain = new System.Windows.Forms.Panel();
             this.DGV = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.PnaleMainHeader = new Guna.UI2.WinForms.Guna2Panel();
             this.BtnRefersh = new Guna.UI2.WinForms.Guna2ImageButton();
             this.BtnPrint = new Guna.UI2.WinForms.Guna2ImageButton();
@@ -61,6 +60,8 @@
             // 
             // DGV
             // 
+            this.DGV.AllowUserToAddRows = false;
+            this.DGV.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(223)))), ((int)(((byte)(251)))));
             this.DGV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -73,8 +74,6 @@
             this.DGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.DGV.ColumnHeadersHeight = 35;
             this.DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.DGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Delete});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(233)))), ((int)(((byte)(252)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -87,6 +86,7 @@
             this.DGV.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(222)))), ((int)(((byte)(251)))));
             this.DGV.Location = new System.Drawing.Point(0, 58);
             this.DGV.Name = "DGV";
+            this.DGV.ReadOnly = true;
             this.DGV.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.DGV.RowHeadersVisible = false;
             this.DGV.RowHeadersWidth = 62;
@@ -107,7 +107,7 @@
             this.DGV.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.DGV.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.DGV.ThemeStyle.HeaderStyle.Height = 35;
-            this.DGV.ThemeStyle.ReadOnly = false;
+            this.DGV.ThemeStyle.ReadOnly = true;
             this.DGV.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(233)))), ((int)(((byte)(252)))));
             this.DGV.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.DGV.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -115,13 +115,7 @@
             this.DGV.ThemeStyle.RowsStyle.Height = 28;
             this.DGV.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(185)))), ((int)(((byte)(246)))));
             this.DGV.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            // 
-            // Delete
-            // 
-            this.Delete.FillWeight = 30F;
-            this.Delete.HeaderText = "Delete";
-            this.Delete.MinimumWidth = 8;
-            this.Delete.Name = "Delete";
+            this.DGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_CellClick);
             // 
             // PnaleMainHeader
             // 
@@ -222,7 +216,6 @@
 
         public System.Windows.Forms.Panel PnlMain;
         public Guna.UI2.WinForms.Guna2DataGridView DGV;
-        public System.Windows.Forms.DataGridViewButtonColumn Delete;
         public Guna.UI2.WinForms.Guna2Panel PnaleMainHeader;
         public Guna.UI2.WinForms.Guna2ImageButton BtnRefersh;
         public Guna.UI2.WinForms.Guna2ImageButton BtnPrint;

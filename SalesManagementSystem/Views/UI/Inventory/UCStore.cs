@@ -52,7 +52,15 @@ namespace SalesManagementSystem.Views.UI.Inventory_FUnit_FStore_FProduct
         private void BtnRefersh_Click(object sender, System.EventArgs e)
         {
 
-            DGV.DataSource = presenter.Select();
+            try
+            {
+                DGV.DataSource = presenter.Select();
+                LabCountRow.Text = (DGV.RowCount - 1).ToString();
+            }
+            catch
+            {
+                FunMessage.Print();
+            }
         }
 
     }

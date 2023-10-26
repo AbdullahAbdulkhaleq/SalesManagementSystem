@@ -13,25 +13,24 @@ namespace SalesManagementSystem.Presenters.Services
     {
         public static int Insert(ProductModel model)
         {
-            return DB.GetDate("P_Insert", "@Sccessfully", () => Insert(model, DB.Command));
+            return DB.SetDate("P_Insert", "@Sccessfully", () => Insert(model, DB.Command));
         }
         private static void Insert(ProductModel model, SqlCommand command)
         {
-            command.Parameters.Add("@TableName", SqlDbType.NVarChar).Value = "Customer";
+            command.Parameters.Add("@TableName", SqlDbType.NVarChar).Value = "Product";
             command.Parameters.Add("@Name", SqlDbType.Int).Value = model.ProductName;
             command.Parameters.Add("@Price", SqlDbType.Decimal).Value = model.ProductPrice;
             command.Parameters.Add("@UnitId", SqlDbType.Int).Value = model.UnitId;
             command.Parameters.Add("@StoreId", SqlDbType.Int).Value = model.StoreId;
             command.Parameters.Add("@ProductCategoryId", SqlDbType.Int).Value = model.ProductCategoryId;
         }
-
-        public static DataTable Select(ProductModel customer)
+        public static DataTable Select()
         {
             return DB.GetDate("P_Select_All", () => Select(DB.Command));
         }
         private static void Select(SqlCommand command)
         {
-            command.Parameters.Add("@TableName", SqlDbType.NVarChar).Value = "Customer";
+            command.Parameters.Add("@TableName", SqlDbType.NVarChar).Value = "Product";
         }
     }
 }

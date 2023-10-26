@@ -28,7 +28,7 @@ namespace SalesManagementSystem.Views.UI.Designer
         }
 
 
-        private void BtnExit_Click(object sender, EventArgs e)
+        public virtual void BtnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
