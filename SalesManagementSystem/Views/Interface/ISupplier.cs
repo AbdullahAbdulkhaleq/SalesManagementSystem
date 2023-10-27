@@ -10,5 +10,9 @@ namespace SalesManagementSystem.Views.Interface
     {
         int SupplierId { get; set; }
         string SupplierName { get; set; }
+        string SupplierEmail { get; set; }
+        string SupplierType { get; set; }
+        string SupplierPhone { get; set; }
+        string SupplierBrand { get; set; }
     }
 }

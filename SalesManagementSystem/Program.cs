@@ -1,8 +1,6 @@
 ﻿using SalesManagementSystem.Views.UI;
+using SalesManagementSystem.Views.UI.Access;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SalesManagementSystem
@@ -17,7 +15,7 @@ namespace SalesManagementSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FMain());
+            Application.Run(new FHomeAdmin());
         }
     }
 }
